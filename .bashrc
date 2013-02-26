@@ -15,4 +15,6 @@ $ '
 # Ignore .suo from tab completion
 FIGNORE=$FIGNORE:.suo
 
+set -o vi
+
 cd ~
