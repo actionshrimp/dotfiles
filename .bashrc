@@ -16,7 +16,6 @@ $ '
 # Horrible tree implementation - my bash skills are severely lacking
 tree()
 {
-    echo
     local directory=
     if [[ "${1:0:1}" != "-" ]]
     then #positional argument
@@ -41,14 +40,14 @@ tree()
     then
         if [[ "$directory" != "" ]]
         then
-            find $directory -maxdepth $depth -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
+            find $directory -maxdepth $depth -type d ! -path '*.svn*' | cut -b `expr length $directory`- | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         else
             find -maxdepth $depth -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         fi
     else
         if [[ "$directory" != "" ]]
         then
-            find $directory -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
+            find $directory -type d ! -path '*.svn*' | cut -b `expr length $directory`- | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         else
             find -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         fi
@@ -56,10 +55,9 @@ tree()
 
     if [ `ls -F -1 | grep "/" | wc -l` = 0 ]   # check if no folders
        then echo "   -> no sub-directories"
-       fi
+    fi
     echo
 }
-
 
 # Ignore .suo from tab completion
 FIGNORE=$FIGNORE:.suo
