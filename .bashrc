@@ -1,4 +1,5 @@
-alias ls="ls -l --color=auto"
+alias ls="ls --color=auto"
+alias lsl="ls -l --color=auto"
 
 alias vim="powershell -File 'D:\\cmd\\powershell\\gvim-shared.ps1'"
 
