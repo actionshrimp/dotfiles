@@ -13,7 +13,6 @@ PS1='\[\033]0;$MSYSTEM:\w\007
 \033[31m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\]
 $ '
 
-# Horrible tree implementation - my bash skills are severely lacking
 tree()
 {
     local directory=
@@ -40,14 +39,14 @@ tree()
     then
         if [[ "$directory" != "" ]]
         then
-            find $directory -maxdepth $depth -type d ! -path '*.svn*' | cut -b `expr length $directory`- | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
+            find $directory -maxdepth $depth -type d ! -path '*.svn*' | sed -e "s#$directory#./#" -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         else
             find -maxdepth $depth -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         fi
     else
         if [[ "$directory" != "" ]]
         then
-            find $directory -type d ! -path '*.svn*' | cut -b `expr length $directory`- | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
+            find $directory -type d ! -path '*.svn*' | sed -e "s#$directory#./#" -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         else
             find -type d ! -path '*.svn*' | sed -e 's/[^-][^\/]*\//--/g' -e 's/\/\([^\/]*\)$/--\1/' -e 's/^/\|/'
         fi
