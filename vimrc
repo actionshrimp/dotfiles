@@ -27,6 +27,10 @@ set guioptions-=t
 set guioptions-=T
 set guioptions-=e
 
+syntax on
+set foldmethod=syntax
+let g:xml_syntax_folding=1
+
 filetype on
 filetype plugin indent on
 set autoindent
