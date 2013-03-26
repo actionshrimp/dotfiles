@@ -65,4 +65,7 @@ FIGNORE=$FIGNORE:.suo
 
 set -o vi
 
+alias in='powershell -C invoke-item'
+
 cd ~
+

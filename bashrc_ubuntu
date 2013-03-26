@@ -84,3 +84,5 @@ $ '
 FIGNORE=$FIGNORE:.suo
 
 set -o vi
+
+alias in=nautilus
