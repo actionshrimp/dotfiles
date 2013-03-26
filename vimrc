@@ -48,3 +48,5 @@ set gfn=Ubuntu_Mono:h12:cANSI
 colorscheme solarized
 set background=dark
 set t_Co=16
+
+set backupdir=~/.backups/vim
