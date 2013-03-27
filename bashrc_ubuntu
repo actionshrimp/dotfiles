@@ -86,3 +86,7 @@ FIGNORE=$FIGNORE:.suo
 set -o vi
 
 alias in=nautilus
+
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
