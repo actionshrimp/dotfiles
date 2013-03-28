@@ -8,6 +8,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
 
 set backspace=indent,eol,start
 set hidden
