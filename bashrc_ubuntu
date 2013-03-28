@@ -90,5 +90,6 @@ set -o vi
 alias in=nautilus
 
 if [[ ! $TERM =~ screen ]]; then
+    TERM=xterm-256color
     exec tmux
 fi
