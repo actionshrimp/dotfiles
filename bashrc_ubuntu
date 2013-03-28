@@ -91,5 +91,5 @@ alias in=nautilus
 
 if [[ ! $TERM =~ screen ]]; then
     TERM=xterm-256color
-    exec tmux
+    exec tmux attach
 fi
