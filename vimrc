@@ -1,4 +1,5 @@
 set nocompatible
+set shellslash
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
