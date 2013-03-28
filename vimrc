@@ -1,4 +1,5 @@
 set nocompatible
+"Must be disabled for :BundleInstall
 set shellslash
 
 set rtp+=~/.vim/bundle/vundle/
