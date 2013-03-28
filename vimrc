@@ -57,3 +57,12 @@ set background=dark
 set t_Co=16
 
 set backupdir=~/.backups/vim
+
+function! ToggleSemicolon()
+    if (mapcheck(';', 'n') != '')
+        nun ;
+    else
+        nnoremap ; :
+    endif
+endfunction
+command ToggleSemicolon :call ToggleSemicolon()
