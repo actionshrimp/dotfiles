@@ -30,6 +30,8 @@ set guioptions-=t
 set guioptions-=T
 set guioptions-=e
 
+set laststatus=2
+
 syntax on
 set foldmethod=syntax
 let g:xml_syntax_folding=1
@@ -54,7 +56,7 @@ nmap <SPACE> <SPACE>:noh<CR>
 set gfn=Ubuntu_Mono:h12:cANSI
 colorscheme solarized
 set background=dark
-set t_Co=16
+set t_Co=256
 
 set backupdir=~/.backups/vim
 
