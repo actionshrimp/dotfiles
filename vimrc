@@ -35,7 +35,7 @@ set guioptions-=e
 
 "Statusline (and powerline) config
 set laststatus=2
-let g:Powerline_theme='short'
+let g:Powerline_symbols='fancy'
 let g:Powerline_colorscheme='solarized256'
 
 syntax on
