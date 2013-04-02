@@ -11,6 +11,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'stephenmckinney/vim-solarized-powerline'
 
 set backspace=indent,eol,start
 set hidden
@@ -30,7 +32,10 @@ set guioptions-=t
 set guioptions-=T
 set guioptions-=e
 
+"Statusline (and powerline) config
 set laststatus=2
+let g:Powerline_theme='short'
+let g:Powerline_colorscheme='solarized256'
 
 syntax on
 set foldmethod=syntax
