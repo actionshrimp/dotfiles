@@ -11,7 +11,6 @@ alias gc="git commit"
 alias gp="git pull"
 alias gpush="git push"
 
-code=$dev/code
 
 if [ $ISWINDOWS == true ]; then
     #Windows only stuff
@@ -26,3 +25,6 @@ else
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+dev=~/dev
+code=$dev/code

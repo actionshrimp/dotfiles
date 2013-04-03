@@ -46,7 +46,7 @@ if ! $ISWINDOWS ; then
     #   sleep 10; alert
     alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-    if [[ ! $TERM =~ screen ]]; then
+    if [ ! ${TERM:0:6} = screen ]; then
         TERM=xterm-256color
         exec tmux attach
     fi
