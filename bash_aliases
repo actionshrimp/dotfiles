@@ -28,3 +28,4 @@ fi
 
 dev=~/dev
 code=$dev/code
+dotcom=$code/sevendigital-com
