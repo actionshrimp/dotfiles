@@ -17,6 +17,8 @@ if [ $ISWINDOWS == true ]; then
     alias vim="powershell -File $HOME/dotfiles/gvim-shared.ps1"
     alias in='powershell -C invoke-item'
 
+    iislogs=/c/inetpub/logs/logfiles
+
 else
     #Unix-only stuff
     alias in=nautilus
