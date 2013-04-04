@@ -14,13 +14,11 @@ alias gpush="git push"
 
 if [ $ISWINDOWS == true ]; then
     #Windows only stuff
-    dev=/d
     alias in='powershell -C invoke-item'
     
     alias vim="powershell -File $HOME/dotfiles/gvim-shared.ps1"
 else
     #Unix-only stuff
-    dev=~/dev
     alias in=nautilus
 
     alias grep='grep --color=auto'
@@ -28,4 +26,5 @@ else
     alias egrep='egrep --color=auto'
 fi
 
+dev=~/dev
 code=$dev/code
