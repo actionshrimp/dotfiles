@@ -14,6 +14,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'kien/ctrlp.vim'
+Bundle 'actionshrimp/vim-xpath'
 
 set backspace=indent,eol,start
 set hidden
