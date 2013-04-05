@@ -12,6 +12,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gp="git pull"
 alias gpush="git push"
+alias gco="git checkout"
 
 
 if [ $ISWINDOWS == true ]; then
