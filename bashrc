@@ -79,7 +79,7 @@ PS1='\[\033]0;$MSYSTEM:\w\007
 $ '
 
 # Ignore .suo from tab completion
-FIGNORE=$FIGNORE:.suo
+FIGNORE=$FIGNORE:.suo:.pyc
 
 set -o vi
 
