@@ -21,6 +21,7 @@ set backspace=indent,eol,start
 set hidden
 set ruler
 set number
+set colorcolumn=80
 
 set ignorecase
 set smartcase
