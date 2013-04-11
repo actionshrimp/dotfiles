@@ -1,6 +1,9 @@
+[push]
+    default = upstream
+
 [user]
-	name = Dave Aitken
-	email = dave.aitken@gmail.com
+    name = Dave Aitken
+    email = dave.aitken@gmail.com
 
 [color]
     ui = true
