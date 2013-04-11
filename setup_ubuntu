@@ -1,8 +1,8 @@
-rm ~/.bashrc
-rm ~/.bash_aliases
-rm ~/.vimrc
-rm ~/.dircolors
-rm ~/.gitconfig
+rm -f ~/.bashrc
+rm -f ~/.bash_aliases
+rm -f ~/.vimrc
+rm -f ~/.dircolors
+rm -f ~/.gitconfig
 
 ln -s dotfiles/bashrc ~/.bashrc
 ln -s dotfiles/bash_aliases ~/.bash_aliases
