@@ -7,9 +7,15 @@ esac
 if [ -z "$MSYSTEM" ]; then
     #If running on unix
     ISWINDOWS=false
+    ISOSX=false
 else
     #If running on windows
     ISWINDOWS=true
+    ISOSX=false
+fi
+
+if [ "$OSTYPE" == "darwin11" ]; then
+    ISOSX=true
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -32,7 +38,9 @@ if ! $ISWINDOWS ; then
 
     # If set, the pattern "**" used in a pathname expansion context will
     # match all files and zero or more directories and subdirectories.
-    shopt -s globstar
+    if ! $ISOSX; then
+        shopt -s globstar
+    fi
 
     # make less more friendly for non-text input files, see lesspipe(1)
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -51,7 +59,9 @@ if ! $ISWINDOWS ; then
         exec tmux attach
     fi
 
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if ! $ISOSX; then
+        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    fi
 
     # Add RVM to PATH for scripting
     PATH=$PATH:$HOME/.rvm/bin
@@ -79,12 +89,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+if $ISOSX; then
+    alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+fi
+
 PS1='\[\033]0;$MSYSTEM:\w\007
-\033[31m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\]
+\033[31m\]\u@\h \[\033[33m\w $(__git_ps1)\033[0m\]
 $ '
 
 # Ignore .suo from tab completion
 FIGNORE=$FIGNORE:.suo:.pyc
+
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 set -o vi
 

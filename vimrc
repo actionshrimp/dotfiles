@@ -86,4 +86,6 @@ if has('windows')
 endif
 
 "Fullscreen when entering the gui
-au GUIEnter * simalt ~x
+if has('gui')
+    au GUIEnter * simalt ~x
+endif

@@ -1,9 +1,0 @@
-rm ~/.bashrc
-rm ~/.bash_aliases
-rm ~/.vimrc
-rm ~/.gitconfig
-
-ln -s dotfiles/bashrc ~/.bashrc
-ln -s dotfiles/bash_aliases ~/.bash_aliases
-ln -s dotfiles/vimrc ~/.vimrc
-ln -s dotfiles/gitconfig ~/.gitconfig

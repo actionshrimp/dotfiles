@@ -1,4 +1,8 @@
-alias ls='ls --color=auto'
+if $ISOSX; then
+  alias ls='ls -Gp'
+else
+  alias ls='ls -p --color=auto'
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
