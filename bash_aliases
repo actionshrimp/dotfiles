@@ -19,7 +19,7 @@ alias gpush="git push"
 alias gco="git checkout"
 
 
-if [ $ISWINDOWS == true ]; then
+if $ISWINDOWS; then
     #Windows only stuff
     alias in='powershell -C invoke-item'
     
@@ -31,6 +31,10 @@ else
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+fi
+
+if $ISOSX; then
+    alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 fi
 
 dev=~/dev
