@@ -52,6 +52,11 @@ if ! $ISWINDOWS ; then
     fi
 
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+    # Add RVM to PATH for scripting
+    PATH=$PATH:$HOME/.rvm/bin
+
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fi
 
 # Alias definitions.
@@ -89,5 +94,3 @@ rm-swp-files()
 }
 
 cd ~
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
