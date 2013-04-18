@@ -89,3 +89,5 @@ rm-swp-files()
 }
 
 cd ~
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
