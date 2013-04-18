@@ -83,4 +83,9 @@ FIGNORE=$FIGNORE:.suo:.pyc
 
 set -o vi
 
+rm-swp-files()
+{
+    rm $(find . -iname '.*.swp')
+}
+
 cd ~
