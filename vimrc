@@ -80,3 +80,10 @@ endfunction
 command ToggleSemicolon :call ToggleSemicolon()
 
 nmap <F2> :NERDTreeToggle<CR>
+
+if has('windows')
+    let g:ruby_path = 'C:\TeamCityBuildTools\ruby\1.9.2'
+endif
+
+"Fullscreen when entering the gui
+au GUIEnter * simalt ~x
