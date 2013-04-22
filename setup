@@ -14,7 +14,7 @@ ln -s dotfiles/dircolors ~/.dircolors
 ln -s dotfiles/gitconfig ~/.gitconfig
 ln -s dotfiles/tmux.conf ~/.tmux.conf
 
-if [ ! -f ~/.vim ]; then
+if [ ! -e ~/.vim ]; then
   mkdir -p ~/.vim/bundle
   mkdir -p ~/.backups/vim
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
