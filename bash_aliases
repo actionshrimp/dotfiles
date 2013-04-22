@@ -24,6 +24,7 @@ if $ISWINDOWS; then
     alias in='powershell -C invoke-item'
     
     alias vim="powershell -File $HOME/dotfiles/gvim-shared.ps1"
+    alias hosts="/c/windows/system32/drivers/etc/hosts"
 else
     #Unix-only stuff
     alias in=nautilus
@@ -31,6 +32,7 @@ else
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias hosts="/etc/hosts"
 fi
 
 if $ISOSX; then
