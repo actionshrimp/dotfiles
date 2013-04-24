@@ -17,6 +17,7 @@ alias gc="git commit"
 alias gp="git pull"
 alias gpush="git push"
 alias gco="git checkout"
+alias gcp="git cherry-pick"
 
 
 if $ISWINDOWS; then
