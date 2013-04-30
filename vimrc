@@ -46,9 +46,13 @@ syntax on
 set foldmethod=syntax
 let g:xml_syntax_folding=1
 
+"Indentation
 filetype on
 filetype plugin indent on
 set autoindent
+
+"Filetype specific
+au BufEnter *.{rb,feature} setlocal ts=2 sw=2 sts=2 et
 
 set completeopt+=longest
 set completeopt+=menuone
