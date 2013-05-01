@@ -10,3 +10,16 @@
 
 [core]
     editor = vim
+
+[alias]
+    s = status
+    st = status
+    c = commit
+    pom = push origin master
+    a = add
+    cp = cherry-pick
+    p = pull
+    co = checkout
+    d = diff
+    dc = diff --cached
+    l = log
