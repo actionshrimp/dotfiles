@@ -103,8 +103,6 @@ FIGNORE=$FIGNORE:.suo:.pyc
 
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
-set -o vi
-
 rm-swp-files()
 {
     rm $(find . -iname '.*.swp')
