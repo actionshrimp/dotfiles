@@ -94,3 +94,17 @@ endif
 if has('gui')
     au GUIEnter * simalt ~x
 endif
+
+let g:spaces = 1
+function! ToggleTabsSpaces()
+    if g:spaces
+        set ts=4 sw=4 sts=4 noet
+        let g:spaces = 0
+    else
+        set ts=4 sw=4 sts=4 et
+        let g:spaces = 1
+    endif
+endfunction
+command ToggleTabsSpaces :call ToggleTabsSpaces()
+
+noremap <leader>t :ToggleTabsSpaces<CR>
