@@ -102,6 +102,7 @@ function! ToggleColours()
         colorscheme solarized
         let g:Powerline_colorscheme='solarized256'
         let g:is_solarized = 1
+        set background=dark
     endif
     PowerlineReloadColorscheme
 endfunction
