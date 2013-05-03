@@ -68,7 +68,7 @@ set ts=4 sw=4 sts=4 et
 "Maps space to clear search highlighting
 nmap <SPACE> <SPACE>:noh<CR>
 
-set gfn=Droid_Sans_Mono_for_Powerline:h10:cANSI
+set gfn=Droid_Sans_Mono_for_Powerline:h9:cANSI
 colorscheme solarized
 set background=dark
 set t_Co=256
