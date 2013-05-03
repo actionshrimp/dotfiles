@@ -58,6 +58,9 @@ set completeopt+=longest
 set completeopt+=menuone
 set wildmenu
 
+set path+=**
+set suffixesadd+=.js,.rb,.cs,.py
+
 set encoding=utf8
 
 set list
