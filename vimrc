@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'actionshrimp/vim-xpath'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'jnurmine/Zenburn'
 
 set backspace=indent,eol,start
 set hidden
@@ -40,7 +41,6 @@ set guioptions-=e
 "Statusline (and powerline) config
 set laststatus=2
 let g:Powerline_symbols='fancy'
-let g:Powerline_colorscheme='solarized256'
 
 syntax on
 set foldmethod=syntax
@@ -72,20 +72,9 @@ set ts=4 sw=4 sts=4 et
 nmap <SPACE> <SPACE>:noh<CR>
 
 set gfn=Droid_Sans_Mono_for_Powerline:h9:cANSI
-colorscheme solarized
-set background=dark
 set t_Co=256
 
 set backupdir=~/.backups/vim
-
-function! ToggleSemicolon()
-    if (mapcheck(';', 'n') != '')
-        nun ;
-    else
-        nnoremap ; :
-    endif
-endfunction
-command ToggleSemicolon :call ToggleSemicolon()
 
 nmap <F2> :NERDTreeToggle<CR>
 
@@ -98,6 +87,36 @@ if has('gui')
     au GUIEnter * simalt ~x
 endif
 
+"Colorscheme settings
+set background=dark
+colorscheme solarized
+let g:is_solarized = 1
+let g:Powerline_colorscheme='solarized256'
+
+function! ToggleColours()
+    if g:is_solarized
+        colorscheme zenburn
+        let g:Powerline_colorscheme='default'
+        let g:is_solarized = 0
+    else
+        colorscheme solarized
+        let g:Powerline_colorscheme='solarized256'
+        let g:is_solarized = 1
+    endif
+    PowerlineReloadColorscheme
+endfunction
+command ToggleColours :call ToggleColours()
+noremap <leader>c :ToggleColours<CR>
+
+function! ToggleSemicolon()
+    if (mapcheck(';', 'n') != '')
+        nun ;
+    else
+        nnoremap ; :
+    endif
+endfunction
+command ToggleSemicolon :call ToggleSemicolon()
+
 let g:spaces = 1
 function! ToggleTabsSpaces()
     if g:spaces
@@ -109,5 +128,4 @@ function! ToggleTabsSpaces()
     endif
 endfunction
 command ToggleTabsSpaces :call ToggleTabsSpaces()
-
 noremap <leader>t :ToggleTabsSpaces<CR>
