@@ -18,6 +18,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'actionshrimp/vim-xpath'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jnurmine/Zenburn'
+Bundle 'othree/xml.vim'
 
 set backspace=indent,eol,start
 set hidden
