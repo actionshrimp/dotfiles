@@ -23,3 +23,5 @@
     d = diff
     dc = diff --cached
     l = log
+[rerere]
+	enabled = 1
