@@ -1,4 +1,5 @@
 set nocompatible
+filetype off
 "Must be disabled for :BundleInstall
 set shellslash
 
@@ -20,6 +21,7 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'jnurmine/Zenburn'
 Bundle 'othree/xml.vim'
 Bundle 'othree/html5.vim'
+Bundle 'guns/vim-clojure-static'
 
 set backspace=indent,eol,start
 set hidden
@@ -49,7 +51,6 @@ set foldmethod=syntax
 let g:xml_syntax_folding=1
 
 "Indentation
-filetype on
 filetype plugin indent on
 set autoindent
 
