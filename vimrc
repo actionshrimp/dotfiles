@@ -22,6 +22,7 @@ Bundle 'jnurmine/Zenburn'
 Bundle 'othree/xml.vim'
 Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
 
 set backspace=indent,eol,start
 set hidden
@@ -133,3 +134,19 @@ function! ToggleTabsSpaces()
 endfunction
 command ToggleTabsSpaces :call ToggleTabsSpaces()
 noremap <leader>t :ToggleTabsSpaces<CR>
+
+let g:rainbows=0
+function! ToggleRainbows()
+    let g:rainbows = !g:rainbows
+    echo g:rainbows
+    RainbowParenthesesToggle
+    RainbowParenthesesLoadRound
+    RainbowParenthesesLoadSquare
+    RainbowParenthesesLoadBraces
+    if !g:rainbows
+        "required to get built in syntax highlighting back on parens
+        syn on
+    endif
+endfunction
+command ToggleRainbows :call ToggleRainbows()
+noremap <leader>r :ToggleRainbows<CR>
