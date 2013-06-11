@@ -116,14 +116,16 @@ endfunction
 command ToggleColours :call ToggleColours()
 noremap <leader>c :ToggleColours<CR>
 
-function! ToggleSemicolon()
+function! ToggleRaoulMode()
     if (mapcheck(';', 'n') != '')
         nun ;
+        iun jj
     else
         nnoremap ; :
+        inoremap jj <Esc>
     endif
 endfunction
-command ToggleSemicolon :call ToggleSemicolon()
+command ToggleRaoulMode :call ToggleRaoulMode()
 
 let g:spaces = 1
 function! ToggleTabsSpaces()
