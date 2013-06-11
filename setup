@@ -5,6 +5,7 @@ rm -f ~/.vimrc
 rm -f ~/.dircolors
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
+rm -f ~/.ackrc
 
 ln -s dotfiles/bash_profile ~/.bash_profile
 ln -s dotfiles/bashrc ~/.bashrc
@@ -13,6 +14,7 @@ ln -s dotfiles/vimrc ~/.vimrc
 ln -s dotfiles/dircolors ~/.dircolors
 ln -s dotfiles/gitconfig ~/.gitconfig
 ln -s dotfiles/tmux.conf ~/.tmux.conf
+ln -s dotfiles/ackrc ~/.ackrc
 
 if [ ! -e ~/.vim ]; then
   mkdir -p ~/.vim/bundle
