@@ -25,6 +25,7 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'ack.vim'
 Bundle 'paredit.vim'
+Bundle 'tpope/vim-fireplace'
 
 set backspace=indent,eol,start
 set hidden
@@ -170,3 +171,9 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+
+let g:paredit_electric_return = 0
+
+if filereadable(glob('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
