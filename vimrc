@@ -23,6 +23,7 @@ Bundle 'othree/xml.vim'
 Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'ack.vim'
 
 set backspace=indent,eol,start
 set hidden
