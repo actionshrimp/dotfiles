@@ -94,6 +94,10 @@ if $ISOSX; then
     alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
 fi
 
+if $ISWINDOWS; then
+    export TERM=msys
+fi
+
 PS1='\[\033]0;$MSYSTEM:\w\007
 \033[31m\]\u@\h \[\033[33m\w $(__git_ps1)\033[0m\]
 $ '
