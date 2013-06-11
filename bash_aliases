@@ -40,7 +40,7 @@ if $ISOSX; then
     alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 fi
 
-$dotfiles=~/dotfiles
+dotfiles=~/dotfiles
 dev=~/dev
 code=$dev/code
 dotcom=$code/sevendigital-com
