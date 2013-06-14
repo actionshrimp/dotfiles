@@ -32,8 +32,6 @@ else
     else
         #Unix-only stuff
         alias in=nautilus
-
-        alias ack='ack-grep'
     fi
 
     alias grep='grep --color=auto'
