@@ -10,7 +10,6 @@
 
 [core]
     editor = vim
-    autocrlf = true
     whitespace = cr-at-eol
 
 [alias]
