@@ -31,7 +31,7 @@ else
         alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
     else
         #Unix-only stuff
-        alias in=nautilus
+        alias in=gnome-open
     fi
 
     alias grep='grep --color=auto'
