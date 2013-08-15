@@ -34,12 +34,14 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 if ! $ISWINDOWS ; then
-    #Unix only stuff
+    #Unix/mac only stuff
 
     # If set, the pattern "**" used in a pathname expansion context will
     # match all files and zero or more directories and subdirectories.
     if ! $ISOSX; then
         shopt -s globstar
+        #Disable Ctrl+s 'freezing' terminal
+        stty -ixon
     fi
 
     # make less more friendly for non-text input files, see lesspipe(1)
