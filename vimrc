@@ -179,3 +179,5 @@ let g:paredit_electric_return = 0
 if filereadable(glob('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+let g:ctrlp_root_markers = ['.ctrlp_root']
