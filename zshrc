@@ -21,8 +21,9 @@ plugins=(git tmux npm web-search vi-mode zsh-syntax-highlighting)
 export ZSH_TMUX_AUTOSTART=true
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH_CUSTOM/aliases.sh
 source $ZSH_CUSTOM/platform.sh
+
+source $ZSH_CUSTOM/aliases.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl

@@ -29,6 +29,7 @@ if $ISWINDOWS; then
 else
     if $ISOSX; then
         alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+        alias in=open
     else
         #Unix-only stuff
         alias in=gnome-open
