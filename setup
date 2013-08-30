@@ -1,9 +1,10 @@
-rm -f ~/.vimrc
-rm -f ~/.dircolors
-rm -f ~/.gitconfig
-rm -f ~/.tmux.conf
-rm -f ~/.ackrc
-rm -f ~/.oh-my-zsh-custom
+rm ~/.vimrc
+rm ~/.dircolors
+rm ~/.gitconfig
+rm ~/.tmux.conf
+rm ~/.ackrc
+rm ~/.oh-my-zsh-custom
+rm ~/.zshrc
 
 ln -s dotfiles/zshrc ~/.zshrc
 ln -s dotfiles/vimrc ~/.vimrc

@@ -22,8 +22,13 @@ export ZSH_TMUX_AUTOSTART=true
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/aliases.sh
+source $ZSH_CUSTOM/platform.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl
 
-eval `dircolors ~/.dircolors`
+if [[ $platform == 'osx' ]]; then
+    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+else
+    eval `dircolors ~/.dircolors`
+fi
