@@ -1,20 +1,21 @@
-rm -f ~/.bash_profile
-rm -f ~/.bashrc
-rm -f ~/.bash_aliases
 rm -f ~/.vimrc
 rm -f ~/.dircolors
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
 rm -f ~/.ackrc
+rm -f ~/.oh-my-zsh-custom
 
-ln -s dotfiles/bash_profile ~/.bash_profile
-ln -s dotfiles/bashrc ~/.bashrc
-ln -s dotfiles/bash_aliases ~/.bash_aliases
+ln -s dotfiles/zshrc ~/.zshrc
 ln -s dotfiles/vimrc ~/.vimrc
 ln -s dotfiles/dircolors ~/.dircolors
 ln -s dotfiles/gitconfig ~/.gitconfig
 ln -s dotfiles/tmux.conf ~/.tmux.conf
 ln -s dotfiles/ackrc ~/.ackrc
+ln -s dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
+
+if [ ! -e ~/.oh-my-zsh ]; then
+  curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+fi
 
 if [ ! -e ~/.vim ]; then
   mkdir -p ~/.vim/bundle
