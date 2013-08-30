@@ -15,7 +15,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git tmux)
+plugins=(git tmux npm web-search)
 
 # Plugin settings
 export ZSH_TMUX_AUTOSTART=true
