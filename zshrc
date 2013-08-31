@@ -3,6 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 ZSH_THEME="actionshrimp"
+TERM="xterm-256color"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
