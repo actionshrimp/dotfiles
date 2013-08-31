@@ -10,11 +10,7 @@ alias gpush="git push"
 alias gco="git checkout"
 alias gcp="git cherry-pick"
 
-if [[ $platform == 'linux' ]]; then
-    alias in=gnome-open
-elif [[ $platform == 'osx' ]]; then
-    alias in=open
-fi
+alias in=xdg-open
 
 hosts=/etc/hosts
 
