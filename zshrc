@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 ZSH_THEME="actionshrimp"
-TERM="xterm-256color"
+TERM="screen-256color"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -27,7 +27,8 @@ source $ZSH_CUSTOM/platform.sh
 source $ZSH_CUSTOM/aliases.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl
+export GEM_HOME=~/.gem/ruby/2.0.0
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl:/home/dave/.gem/ruby/2.0.0/bin
 
 if [[ $platform == 'osx' ]]; then
     export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
