@@ -15,10 +15,9 @@ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/ackrc ~/.ackrc
 ln -s ~/dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
 
-if [ ! -e ~/.fonts.conf.d ]
+if [ ! -e ~/.config/fontconfig ]
   sudo pacman -S fontconfig
-  mkdir ~/.fonts.conf.d
-  ln -s ~/dotfiles/fonts/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
+  ln -s ~/dotfiles/fonts/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
 fi
 
 if [ ! -e ~/.oh-my-zsh ]; then
