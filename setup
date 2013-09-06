@@ -5,14 +5,21 @@ rm ~/.tmux.conf
 rm ~/.ackrc
 rm ~/.oh-my-zsh-custom
 rm ~/.zshrc
+rm ~/.fonts.conf.d/10-powerline-symbols.conf
 
-ln -s dotfiles/zshrc ~/.zshrc
-ln -s dotfiles/vimrc ~/.vimrc
-ln -s dotfiles/dircolors ~/.dircolors
-ln -s dotfiles/gitconfig ~/.gitconfig
-ln -s dotfiles/tmux.conf ~/.tmux.conf
-ln -s dotfiles/ackrc ~/.ackrc
-ln -s dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
+ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/dircolors ~/.dircolors
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/ackrc ~/.ackrc
+ln -s ~/dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
+
+if [ ! -e ~/.fonts.conf.d ]
+  sudo pacman -S fontconfig
+  mkdir ~/.fonts.conf.d
+  ln -s ~/dotfiles/fonts/10-powerline-symbols.conf ~/.fonts.conf.d/10-powerline-symbols.conf
+fi
 
 if [ ! -e ~/.oh-my-zsh ]; then
   curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh

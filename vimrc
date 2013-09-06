@@ -26,6 +26,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'ack.vim'
 Bundle 'paredit.vim'
 Bundle 'tpope/vim-fireplace'
+Bundle 'jelera/vim-javascript-syntax'
 
 set backspace=indent,eol,start
 set hidden
