@@ -41,5 +41,9 @@ if [ ! -e ~/.vim ]; then
   mkdir -p ~/.vim/bundle
   mkdir -p ~/.backups/vim
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim -u NONE +"silent! so ~/.vimrc" +BundleInstall +qall
+  if [ $platform == "windows" ]; then
+      vim -u NONE +"silent! so ~/.vimrc" +"set noshellslash" +BundleInstall +qall
+  else
+      vim -u NONE +"silent! so ~/.vimrc" +BundleInstall +qall
+  fi
 fi
