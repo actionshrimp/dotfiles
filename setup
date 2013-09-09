@@ -1,27 +1,40 @@
+. ~/dotfiles/oh-my-zsh-custom/platform.sh
+
 rm ~/.vimrc
 rm ~/.dircolors
 rm ~/.gitconfig
-rm ~/.tmux.conf
 rm ~/.ackrc
-rm ~/.oh-my-zsh-custom
-rm ~/.zshrc
-rm ~/.fonts.conf.d/10-powerline-symbols.conf
 
-ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/dircolors ~/.dircolors
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/ackrc ~/.ackrc
-ln -s ~/dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
 
-if [ ! -e ~/.config/fontconfig ]
-  sudo pacman -S fontconfig
-  ln -s ~/dotfiles/fonts/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
-fi
+if [ $platform == "windows" ]; then
+  rm ~/.bashrc
+  rm ~/.bash_aliases
 
-if [ ! -e ~/.oh-my-zsh ]; then
-  curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+  ln -s ~/dotfiles/bash/bashrc ~/.bashrc
+  ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
+
+else
+
+  rm ~/.zshrc
+  rm ~/.tmux.conf
+  rm ~/.oh-my-zsh-custom
+
+  ln -s ~/dotfiles/zshrc ~/.zshrc
+  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+  ln -s ~/dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
+
+  if [ ! -e ~/.config/fontconfig ]; then
+    sudo pacman -S fontconfig
+    ln -s ~/dotfiles/fonts/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+  fi
+
+  if [ ! -e ~/.oh-my-zsh ]; then
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+  fi
 fi
 
 if [ ! -e ~/.vim ]; then

@@ -24,7 +24,7 @@ if $ISWINDOWS; then
     #Windows only stuff
     alias in='powershell -C invoke-item'
     
-    alias vim="powershell -File $HOME/dotfiles/gvim-shared.ps1"
+    alias vim="powershell -File $HOME/dotfiles/windows/gvim-shared.ps1"
     hosts=/c/windows/system32/drivers/etc/hosts
 else
     if $ISOSX; then
