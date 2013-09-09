@@ -35,3 +35,6 @@ if [[ $platform == 'osx' ]]; then
 else
     eval `dircolors ~/.dircolors`
 fi
+
+#Disable Ctrl-S terminal 'freeze' escape character
+stty -ixon
