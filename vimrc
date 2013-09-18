@@ -27,6 +27,8 @@ Bundle 'ack.vim'
 Bundle 'paredit.vim'
 Bundle 'tpope/vim-fireplace'
 Bundle 'pangloss/vim-javascript'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
 
 set backspace=indent,eol,start
 set hidden
