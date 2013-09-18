@@ -10,7 +10,7 @@ Add-Type @"
 "@
 
 if ($args) {
-    & 'C:\Program Files (x86)\Vim\vim73\gvim.exe' --servername GVIM --remote-tab-silent $args 
+    & 'C:\Program Files (x86)\Vim\vim74\gvim.exe' --servername GVIM --remote-tab-silent $args 
 } else {
     try
     {
@@ -19,10 +19,10 @@ if ($args) {
         {
             $p = $p[0]
         }
-        & 'C:\Program Files (x86)\Vim\vim73\gvim.exe' --remote-send "<Esc>:tabe<CR>"
+        & 'C:\Program Files (x86)\Vim\vim74\gvim.exe' --remote-send "<Esc>:tabe<CR>"
         $h = ($p).MainWindowHandle
         [void] [ProfileCalls]::SetForegroundWindow($h)
     } catch {
-        & 'C:\Program Files (x86)\Vim\vim73\gvim.exe'
+        & 'C:\Program Files (x86)\Vim\vim74\gvim.exe'
     }
 }
