@@ -26,7 +26,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'ack.vim'
 Bundle 'paredit.vim'
 Bundle 'tpope/vim-fireplace'
-Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
 
 set backspace=indent,eol,start
 set hidden
@@ -58,6 +58,9 @@ let g:xml_syntax_folding=1
 "Indentation
 filetype plugin indent on
 set autoindent
+
+"Folding - unfold everything by default
+au BufRead * normal zR
 
 "Filetype specific
 au BufEnter *.{rb,feature} setlocal ts=2 sw=2 sts=2 et
