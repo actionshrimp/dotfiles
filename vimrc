@@ -132,17 +132,6 @@ endfunction
 command ToggleColours :call ToggleColours()
 noremap <leader>c :ToggleColours<CR>
 
-function! ToggleRaoulMode()
-    if (mapcheck(';', 'n') != '')
-        nun ;
-        iun jj
-    else
-        nnoremap ; :
-        inoremap jj <Esc>
-    endif
-endfunction
-command ToggleRaoulMode :call ToggleRaoulMode()
-
 let g:spaces = 1
 function! ToggleTabsSpaces()
     if g:spaces
@@ -197,3 +186,13 @@ if filereadable(glob('~/.vimrc.local'))
 endif
 
 let g:ctrlp_root_markers = ['.ctrlp_root']
+
+noremap <leader>d :windo ToggleDiff<CR>
+function! ToggleDiff()
+    if &diff
+        set nodiff noscrollbind
+    else
+        set diff scrollbind
+    endif
+endfunction
+command ToggleDiff :call ToggleDiff()
