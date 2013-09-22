@@ -100,6 +100,11 @@ set t_Co=256
 
 set backupdir=~/.backups/vim
 
+vnoremap < <gv
+vnoremap > >gv
+
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 nmap <F2> :NERDTreeToggle<CR>
 
 function! ToggleGStatus()
