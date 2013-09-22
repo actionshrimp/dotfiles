@@ -12,8 +12,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'stephenmckinney/vim-solarized-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'actionshrimp/vim-xpath'
@@ -51,7 +50,18 @@ set guioptions-=e
 
 "Statusline (and powerline) config
 set laststatus=2
-let g:Powerline_symbols='fancy'
+let g:airline_theme = 'solarized'
+let g:airline_enable_branch = 1
+let g:airline_enable_syntastic = 1
+
+" vim-powerline symbols
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_branch_prefix = '⭠'
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
 
 syntax on
 set foldmethod=syntax
@@ -114,20 +124,16 @@ endif
 set background=dark
 colorscheme solarized
 let g:is_solarized = 1
-let g:Powerline_colorscheme='solarized256'
 
 function! ToggleColours()
     if g:is_solarized
         colorscheme zenburn
-        let g:Powerline_colorscheme='default'
         let g:is_solarized = 0
     else
         colorscheme solarized
-        let g:Powerline_colorscheme='solarized256'
         let g:is_solarized = 1
         set background=dark
     endif
-    PowerlineReloadColorscheme
 endfunction
 command ToggleColours :call ToggleColours()
 noremap <leader>c :ToggleColours<CR>
