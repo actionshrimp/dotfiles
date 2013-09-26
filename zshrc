@@ -38,3 +38,11 @@ fi
 
 #Disable Ctrl-S terminal 'freeze' escape character
 stty -ixon
+
+function scroll-natural() {
+    xmodmap ~/.config/xmodmap/scroll-natural
+}
+
+function scroll-normal() {
+    xmodmap ~/.config/xmodmap/scroll-normal
+}
