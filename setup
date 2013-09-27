@@ -4,13 +4,11 @@ rm ~/.vimrc
 rm ~/.dircolors
 rm ~/.gitconfig
 rm ~/.ackrc
-rm -rf ~/.config/xmodmap
 
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/dircolors ~/.dircolors
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/ackrc ~/.ackrc
-ln -s ~/dotfiles/xmodmap ~/.config/xmodmap
 
 if [ $platform == "windows" ]; then
   rm ~/.bashrc
@@ -24,10 +22,12 @@ else
   rm ~/.zshrc
   rm ~/.tmux.conf
   rm ~/.oh-my-zsh-custom
+  rm -rf ~/.config/xmodmap
 
   ln -s ~/dotfiles/zshrc ~/.zshrc
   ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
   ln -s ~/dotfiles/oh-my-zsh-custom ~/.oh-my-zsh-custom
+  ln -s ~/dotfiles/xmodmap ~/.config/xmodmap
 
   if [ ! -e ~/.config/fontconfig ]; then
     sudo pacman -S fontconfig
