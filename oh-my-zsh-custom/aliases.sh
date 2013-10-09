@@ -9,6 +9,7 @@ alias gp="git pull"
 alias gpush="git push"
 alias gco="git checkout"
 alias gcp="git cherry-pick"
+alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 
 alias in=xdg-open
 

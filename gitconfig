@@ -24,5 +24,6 @@
     d = diff
     dc = diff --cached
     l = log
+    lg = log --pretty=oneline --decorate --graph --abbrev-commit
 [rerere]
 	enabled = 1
