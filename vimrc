@@ -104,6 +104,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost /tmp*clj set bufhidden=delete
 
 nmap <F2> :NERDTreeToggle<CR>
 
