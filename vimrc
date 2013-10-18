@@ -211,5 +211,5 @@ endfunction
 command ToggleDiff :call ToggleDiff()
 
 "Vim fireplace bindings
-noremap <leader>ea :silent! %Eval<CR>:Last!<CR>
-noremap <leader>ec :silent! Eval<CR>:Last!<CR>
+noremap <leader>ea :silent %Eval<CR>:Last!<CR>
+noremap <leader>ec :silent Eval<CR>:Last!<CR>
