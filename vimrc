@@ -28,6 +28,8 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'vim-scripts/tComment'
 
 set backspace=indent,eol,start
 set hidden
@@ -130,20 +132,6 @@ endif
 "Colorscheme settings
 set background=dark
 colorscheme solarized
-let g:is_solarized = 1
-
-function! ToggleColours()
-    if g:is_solarized
-        colorscheme zenburn
-        let g:is_solarized = 0
-    else
-        colorscheme solarized
-        let g:is_solarized = 1
-        set background=dark
-    endif
-endfunction
-command ToggleColours :call ToggleColours()
-noremap <leader>c :ToggleColours<CR>
 
 let g:spaces = 1
 function! ToggleTabsSpaces()
