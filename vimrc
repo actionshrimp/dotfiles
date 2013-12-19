@@ -187,6 +187,7 @@ if filereadable(glob('~/.vimrc.local'))
 endif
 
 let g:ctrlp_root_markers = ['.ctrlp_root']
+let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
 
 noremap <leader>d :windo ToggleDiff<CR>
 function! ToggleDiff()
@@ -205,5 +206,3 @@ noremap <leader>ec :silent Eval<CR>:Last!<CR>
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-
-let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
