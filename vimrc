@@ -129,7 +129,7 @@ set background=dark
 colorscheme solarized
 
 "Use local vimrc to change this per-project
-set ts=4 sw=4 sts=4 noet
+set ts=4 sw=4 sts=4 et
 
 let g:rainbows=0
 function! ToggleRainbows()
