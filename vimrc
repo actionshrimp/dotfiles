@@ -77,9 +77,6 @@ set autoindent
 "Folding - unfold everything by default
 au BufRead * normal zR
 
-"Filetype specific
-au BufEnter *.{rb,feature} setlocal ts=2 sw=2 sts=2 et
-
 set completeopt+=longest
 set completeopt+=menuone
 set wildmenu
@@ -91,8 +88,6 @@ set encoding=utf8
 
 set list
 set listchars=tab:›\ ,eol:¬
-
-set ts=4 sw=4 sts=4 et
 
 "Maps space to clear search highlighting
 nmap <SPACE> <SPACE>:noh<CR>
@@ -133,18 +128,8 @@ endif
 set background=dark
 colorscheme solarized
 
-let g:spaces = 1
-function! ToggleTabsSpaces()
-    if g:spaces
-        set ts=4 sw=4 sts=4 noet
-        let g:spaces = 0
-    else
-        set ts=4 sw=4 sts=4 et
-        let g:spaces = 1
-    endif
-endfunction
-command ToggleTabsSpaces :call ToggleTabsSpaces()
-noremap <leader>t :ToggleTabsSpaces<CR>
+"Use local vimrc to change this per-project
+set ts=4 sw=4 sts=4 noet
 
 let g:rainbows=0
 function! ToggleRainbows()
@@ -206,3 +191,6 @@ noremap <leader>ec :silent Eval<CR>:Last!<CR>
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+set exrc
+set secure
