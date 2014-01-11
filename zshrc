@@ -23,18 +23,13 @@ export ZSH_TMUX_AUTOSTART=true
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/platform.sh
-
 source $ZSH_CUSTOM/aliases.sh
 
 # Customize to your needs...
 export GEM_HOME=~/.gem/ruby/2.0.0
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl:/home/dave/.gem/ruby/2.0.0/bin
 
-if [[ $platform == 'osx' ]]; then
-    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
-else
-    eval `dircolors ~/.dircolors`
-fi
+eval `dircolors ~/.dircolors`
 
 #Disable Ctrl-S terminal 'freeze' escape character
 stty -ixon
@@ -46,3 +41,5 @@ function scroll-natural() {
 function scroll-normal() {
     xmodmap ~/.config/xmodmap/scroll-normal
 }
+
+setopt menu_complete
