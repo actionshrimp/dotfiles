@@ -30,6 +30,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
+Bundle 'christoomey/vim-tmux-navigator'
 
 set backspace=indent,eol,start
 set hidden
@@ -172,7 +173,7 @@ if filereadable(glob('~/.vimrc.local'))
 endif
 
 let g:ctrlp_root_markers = ['.ctrlp_root']
-let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components)$'
 
 noremap <leader>d :windo ToggleDiff<CR>
 function! ToggleDiff()
