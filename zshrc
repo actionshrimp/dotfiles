@@ -21,9 +21,12 @@ plugins=(git tmux npm web-search zsh-syntax-highlighting)
 # Plugin settings
 export ZSH_TMUX_AUTOSTART=true
 
+source-if-exists(){ [[ -r "$1" ]] && source "$1"; true }
+
 source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/platform.sh
 source $ZSH_CUSTOM/aliases.sh
+source-if-exists ~/.env
 
 # Customize to your needs...
 export GEM_HOME=~/.gem/ruby/2.0.0
