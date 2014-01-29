@@ -98,9 +98,6 @@ set t_Co=256
 
 set backupdir=~/.backups/vim
 
-vnoremap < <gv
-vnoremap > >gv
-
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost /tmp*clj set bufhidden=delete
 
@@ -131,6 +128,16 @@ colorscheme solarized
 
 "Use local vimrc to change this per-project
 set ts=4 sw=4 sts=4 et
+"Strip trailing whitespace on save
+au BufWritePre * %s/\s*$// | norm zz
+
+"Use js-beautify for gq in js files
+au FileType javascript setl formatprg=js-beautify\ -t\ -j\ -w\ 80\ -f\ -
+
+"Allow multiple visual indents
+vnoremap < <gv
+vnoremap > >gv
+
 
 let g:rainbows=0
 function! ToggleRainbows()
