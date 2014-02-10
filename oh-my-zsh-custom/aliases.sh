@@ -19,3 +19,4 @@ dev=~/dev
 code=$dev/code
 dotcom=$code/sevendigital-com
 js=$dotcom/src/SevenDigital.Com.Web/Static/js
+reboot=$code/direct-reboot
