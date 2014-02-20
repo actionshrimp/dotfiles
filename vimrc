@@ -138,6 +138,7 @@ au BufWritePre * %s/\s*$// | norm zz
 
 "Use js-beautify for gq in js files
 au FileType javascript setl formatprg=js-beautify\ -t\ -j\ -w\ 80\ -f\ -
+let g:javascript_indent_to_parens = 0
 
 "Allow multiple visual indents
 vnoremap < <gv
