@@ -32,6 +32,8 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
 Bundle 'christoomey/vim-tmux-navigator'
 
+set fileformats=unix,dos
+set fileformat=unix
 set backspace=indent,eol,start
 set hidden
 set ruler
@@ -70,6 +72,9 @@ let g:airline_linecolumn_prefix = '⭡'
 syntax on
 set foldmethod=syntax
 let g:xml_syntax_folding=1
+
+"Make :W typo do what you want
+command W :w
 
 "Indentation
 filetype plugin indent on
