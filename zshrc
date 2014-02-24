@@ -20,6 +20,7 @@ plugins=(git tmux npm web-search zsh-syntax-highlighting)
 
 # Plugin settings
 export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOQUIT=false
 
 source-if-exists(){ [[ -r "$1" ]] && source "$1"; true }
 
