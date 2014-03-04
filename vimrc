@@ -31,6 +31,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'tommcdo/vim-exchange'
 
 set fileformats=unix,dos
 set fileformat=unix
@@ -133,8 +134,6 @@ colorscheme solarized
 
 "Use local vimrc to change this per-project
 set ts=4 sw=4 sts=4 et
-"Strip trailing whitespace on save
-au BufWritePre * %s/\s*$// | norm zz
 
 "Use js-beautify for gq in js files
 au FileType javascript setl formatprg=js-beautify\ -t\ -j\ -w\ 80\ -f\ -
