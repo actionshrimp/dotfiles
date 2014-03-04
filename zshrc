@@ -16,7 +16,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git tmux npm web-search zsh-syntax-highlighting)
+plugins=(git tmux npm web-search zsh-syntax-highlighting grunt)
 
 # Plugin settings
 export ZSH_TMUX_AUTOSTART=true
