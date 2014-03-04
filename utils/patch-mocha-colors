@@ -1,1 +1,1 @@
-ack -li "'pass': 90" --noignore-dir=node_modules | xargs sed -i "s/'pass': 90/'pass': 92/; s/'error stack': 90/'error stack': 92/; s/'fast': 90/'fast': 92/; s/'light': 90/'light': 92/; s/'diff gutter': 90/'diff gutter': 92/"
+ack -li "'pass': 90" --noignore-dir=node_modules | xargs sed -i "s/'pass': 90/'pass': 92/; s/'error stack': 90/'error stack': 92/; s/'fast': 90/'fast': 92/; s/'light': 90/'light': 92/; s/'diff gutter': 90/'diff gutter': 92/; s/'diff added': 42/'diff added': 34/; s/'diff removed': 41/'diff removed': 33/"
