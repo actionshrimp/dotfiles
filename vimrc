@@ -100,7 +100,6 @@ set listchars=tab:›\ ,eol:¬
 nmap <SPACE> <SPACE>:noh<CR>
 
 set gfn=Droid_Sans_Mono_for_Powerline:h9:cANSI
-set t_Co=256
 
 set backupdir=~/.backups/vim
 
