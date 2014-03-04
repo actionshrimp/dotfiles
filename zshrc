@@ -30,6 +30,7 @@ source $ZSH_CUSTOM/aliases.sh
 source-if-exists ~/.env
 
 # Customize to your needs...
+export CHROME_BIN=google-chrome-stable
 export GEM_HOME=~/.gem/ruby/2.0.0
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl:/home/dave/.gem/ruby/2.0.0/bin
 
