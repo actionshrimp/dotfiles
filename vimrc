@@ -140,7 +140,7 @@ function! BeautifyJs()
     let currentET = &et
     set et
     let startline = v:lnum
-    let endline = v:lnum + v:count
+    let endline = v:lnum + v:count - 1
     exe startline . "," . endline . "retab!"
     exe startline . "," . endline . " ! js-beautify -t -j -w 80 -f -"
     let &et = currentET
