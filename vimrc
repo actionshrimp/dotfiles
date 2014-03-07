@@ -135,7 +135,19 @@ colorscheme solarized
 set ts=4 sw=4 sts=4 et
 
 "Use js-beautify for gq in js files
-au FileType javascript setl formatprg=js-beautify\ -t\ -j\ -w\ 80\ -f\ -
+function! BeautifyJs()
+    echo "calling js beautify"
+    let currentET = &et
+    set et
+    let startline = v:lnum
+    let endline = v:lnum + v:count
+    exe startline . "," . endline . "retab!"
+    exe startline . "," . endline . " ! js-beautify -t -j -w 80 -f -"
+    let &et = currentET
+    retab!
+endfunction
+
+au FileType javascript setl formatexpr=BeautifyJs()
 let g:javascript_indent_to_parens = 0
 
 "Allow multiple visual indents
