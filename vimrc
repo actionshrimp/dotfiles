@@ -131,6 +131,9 @@ endif
 set background=dark
 colorscheme solarized
 
+"Make incsearch more readable
+hi! IncSearch term=standout,reverse cterm=standout,reverse ctermbg=NONE
+
 "Use local vimrc to change this per-project
 set ts=4 sw=4 sts=4 et
 
