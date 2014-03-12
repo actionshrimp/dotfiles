@@ -48,4 +48,6 @@ if [ ! -e ~/.vim ]; then
   else
       vim -u NONE +"silent! so ~/.vimrc" +BundleInstall +qall
   fi
+
+  ln -s ~/dotfiles/ultisnips ~/.vim/UltiSnips
 fi
