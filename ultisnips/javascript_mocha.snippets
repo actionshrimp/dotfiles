@@ -1,0 +1,34 @@
+snippet itp "it - pending (js)"
+it('${1:description}');
+endsnippet
+
+snippet ita "it - async (js)"
+it('${1:description}', function (done) {
+	$0
+	done();
+});
+endsnippet
+
+snippet des "Describe (js)" b
+describe('${1:description}', function () {
+	$0
+});
+endsnippet
+
+snippet it "it (js)" b
+it('${1:description}', function () {
+	$0
+});
+endsnippet
+
+snippet bef "before each (js)" b
+beforeEach(function () {
+	$0
+});
+endsnippet
+
+snippet aft "after each (js)" b
+afterEach(function () {
+	$0
+});
+endsnippet

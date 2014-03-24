@@ -1,5 +1,61 @@
-snippet f "anonymous function (f)"
-function (${1:arguments}) {
+snippet f "anonymous function (js)"
+function (${1}) {
 	$2
 }
+endsnippet
+
+snippet client-module "client side module (js)"
+define([${1:'jquery', 'lodash'}], function (${2:$, _}) {
+	$3
+});
+endsnippet
+
+snippet client-tests "client side test module (js)"
+define([
+	'chai',
+	'testhelpers',
+	'test/fakes/spies',
+	'test/fakes/page',
+	'jquery',
+	'lodash',
+	'handlebars'
+], function (chai, helpers, spies, fakePage, $, _, Handlebars) {
+	
+	var assert = chai.assert;
+
+	describe('${1:module name}', function () {
+		var squire, page;
+
+		beforeEach(function () {
+			squire = helpers.createSquireWithNiceErrors();
+			squire.mock('jquery', helpers.returns($));
+			squire.mock('handlebars', helpers.returns(Handlebars));
+
+			page = fakePage.create($);
+		});
+
+		afterEach(function () {
+			page.destroy();
+		});
+
+		it('${2:does something}', function (done) {
+
+			squire.require(done, ['${3:path/to/module}'], function (${4:moduleName}) {
+				$5
+				done();
+			});
+		});
+	});
+});
+endsnippet
+
+snippet sqr "squire require (js)"
+squire.require(done, ['${1:path/to/module}'], function (${2:moduleName}) {
+	$3
+	done();
+});
+endsnippet
+
+snippet sqm "squire mock (js)"
+squire.mock('${1:path/to/module}', ${2:mock});
 endsnippet
