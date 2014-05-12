@@ -73,6 +73,7 @@ let g:airline_linecolumn_prefix = '⭡'
 syntax on
 set foldmethod=syntax
 let g:xml_syntax_folding=1
+set foldlevelstart=99
 
 "Make :W typo do what you want
 command W :w
