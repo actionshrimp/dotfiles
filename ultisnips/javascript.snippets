@@ -14,12 +14,12 @@ snippet client-tests "client side test module (js)"
 define([
 	'chai',
 	'testhelpers',
-	'test/fakes/spies',
+	'i-spy',
 	'test/fakes/page',
 	'jquery',
 	'lodash',
 	'handlebars'
-], function (chai, helpers, spies, fakePage, $, _, Handlebars) {
+], function (chai, helpers, iSpy, createFakePage, $, _, Handlebars) {
 	
 	var assert = chai.assert;
 
@@ -31,7 +31,7 @@ define([
 			squire.mock('jquery', helpers.returns($));
 			squire.mock('handlebars', helpers.returns(Handlebars));
 
-			page = fakePage.create($);
+			page = createFakePage($);
 		});
 
 		afterEach(function () {
