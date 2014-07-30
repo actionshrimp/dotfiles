@@ -3,10 +3,10 @@ filetype off
 "Must be disabled for :BundleInstall
 set shellslash
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
@@ -25,6 +25,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'ack.vim'
 Bundle 'paredit.vim'
 Bundle 'tpope/vim-fireplace'
+Bundle 'jiangmiao/simple-javascript-indenter'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
@@ -32,6 +33,12 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tommcdo/vim-exchange'
+
+call vundle#end()
+
+"Indentation
+filetype plugin indent on
+set autoindent
 
 set fileformats=unix,dos
 set fileformat=unix
@@ -78,9 +85,6 @@ set foldlevelstart=99
 "Make :W typo do what you want
 command W :w
 
-"Indentation
-filetype plugin indent on
-set autoindent
 
 "Folding - unfold everything by default
 au BufRead * normal zR
@@ -152,7 +156,7 @@ function! BeautifyJs()
 endfunction
 
 au FileType javascript setl formatexpr=BeautifyJs()
-let g:javascript_indent_to_parens = 0
+let g:SimpleJsIndenter_BriefMode = 1 
 
 "Allow multiple visual indents
 vnoremap < <gv
