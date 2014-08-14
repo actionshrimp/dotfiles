@@ -28,6 +28,7 @@ source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/platform.sh
 source $ZSH_CUSTOM/aliases.sh
 source-if-exists ~/.env
+setopt APPEND_HISTORY
 
 # Customize to your needs...
 export CHROME_BIN=google-chrome-stable
