@@ -33,6 +33,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tommcdo/vim-exchange'
+Bundle 'vim-scripts/BufOnly.vim'
 
 call vundle#end()
 
