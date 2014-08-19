@@ -78,6 +78,10 @@ let g:airline_branch_prefix = '⭠'
 let g:airline_readonly_symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 
+let g:airline#extensions#tabline#left_sep = '⮀'
+let g:airline#extensions#tabline#right_sep = '⮂'
+let g:airline#extensions#branch#enabled = 1
+
 syntax on
 set foldmethod=syntax
 let g:xml_syntax_folding=1
