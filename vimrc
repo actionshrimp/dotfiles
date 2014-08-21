@@ -92,6 +92,7 @@ command W :w
 
 "Folding - unfold everything by default
 au BufRead * normal zR
+au FileType gitcommit setlocal foldlevel=99
 
 set completeopt+=longest
 set completeopt+=menuone
