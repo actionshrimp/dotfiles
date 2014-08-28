@@ -12,6 +12,7 @@
     editor = vim
     whitespace = cr-at-eol
     autocrlf = false
+    pager = less -X
 
 [alias]
     s = status
@@ -27,4 +28,4 @@
     l = log
     lg = log --pretty=oneline --decorate --graph --abbrev-commit
 [rerere]
-	enabled = 1
+    enabled = 1
