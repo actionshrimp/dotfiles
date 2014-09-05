@@ -34,6 +34,7 @@ Bundle 'vim-scripts/tComment'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'vim-scripts/BufOnly.vim'
+Bundle 'b4winckler/vim-angry'
 
 call vundle#end()
 
