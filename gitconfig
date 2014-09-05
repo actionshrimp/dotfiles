@@ -12,7 +12,7 @@
     editor = vim
     whitespace = cr-at-eol
     autocrlf = false
-    pager = less -X
+    pager = less -XF
 
 [alias]
     s = status
