@@ -91,6 +91,9 @@ set foldlevelstart=99
 "Make :W typo do what you want
 command W :w
 
+"Print directory of current file
+command Pfd echo expand('%:p:h')
+
 
 "Folding - unfold everything by default
 au BufRead * normal zR
