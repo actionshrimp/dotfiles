@@ -3,3 +3,6 @@ source ~/dotfiles/zsh/aliases
 source ~/dotfiles/zsh/settings
 source ~/dotfiles/zsh/antigen
 source ~/dotfiles/zsh/bundle
+
+antigen bundle osx
+antigen bundle brew

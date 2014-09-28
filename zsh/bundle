@@ -1,0 +1,11 @@
+antigen use oh-my-zsh
+
+antigen bundle tmux
+antigen bundle git
+antigen bundle lein
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle tmuxinator
+
+antigen theme ~/dotfiles/zsh/theme
+antigen apply

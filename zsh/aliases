@@ -11,12 +11,6 @@ alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 
-alias in=xdg-open
-
-hosts=/etc/hosts
-
-dev=~/dev
-code=$dev/code
+code=~/dev/code
 dotcom=$code/sevendigital-com
-js=$dotcom/src/SevenDigital.Com.Web/Static/js
 webstore=$code/webstore

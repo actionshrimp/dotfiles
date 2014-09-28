@@ -1,0 +1,3 @@
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export HOMEBREW_GITHUB_API_TOKEN=XXXXXXXXXXXXX
+export CLICOLOR=YES
