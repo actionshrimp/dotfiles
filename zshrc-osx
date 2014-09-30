@@ -6,3 +6,5 @@ source ~/dotfiles/zsh/bundle
 
 antigen bundle osx
 antigen bundle brew
+
+source ~/dotfiles/zsh/scripts/sane-completion.zsh
