@@ -5,3 +5,4 @@ source ~/dotfiles/zsh/antigen
 source ~/dotfiles/zsh/bundle
 
 source ~/dotfiles/zsh/scripts/sane-completion.zsh
+source ~/dotfiles/zsh/scripts/fzf.zsh
