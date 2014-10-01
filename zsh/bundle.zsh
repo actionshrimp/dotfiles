@@ -8,6 +8,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle tmuxinator
 antigen bundle ~/dotfiles/zsh/scripts/sane-completion.zsh
 antigen bundle junegunn/fzf
+antigen bundle yonchu/grunt-zsh-completion
 
 antigen theme ~/dotfiles/zsh/themes/actionshrimp.zsh
 antigen apply
