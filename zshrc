@@ -1,4 +1,3 @@
-source ~/.env
 source ~/dotfiles/zsh/platform.zsh
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/settings.zsh
@@ -15,3 +14,6 @@ fi
 if [[ $platform == "osx" ]]; then
     source ~/dotfiles/zsh/platforms/osx.zsh
 fi
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f ~/.env ] && source ~/.env
