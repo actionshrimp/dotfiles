@@ -119,6 +119,7 @@ set backupdir=~/.backups/vim
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost /tmp*clj set bufhidden=delete
+noremap <leader>bo :BufOnly<CR>
 
 nmap <F2> :NERDTreeToggle<CR>
 
