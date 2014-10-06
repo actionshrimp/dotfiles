@@ -41,7 +41,7 @@ let s:os = "windows"
 if has("unix")
     let s:os = "unix"
     let s:uname = system("uname -s")
-    if s:uname == "Darwin"
+    if s:uname =~ "Darwin"
         let s:os = "osx"
     endif
 endif
