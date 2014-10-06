@@ -237,7 +237,7 @@ if filereadable(glob('~/.vimrc.local'))
 endif
 
 let g:ctrlp_root_markers = ['.ctrlp_root']
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|build)$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|build|out|resources\/public\/out)$'
 
 noremap <leader>d :windo ToggleDiff<CR>
 function! ToggleDiff()
@@ -252,6 +252,7 @@ command ToggleDiff :call ToggleDiff()
 "Vim fireplace bindings
 noremap <leader>ea :silent %Eval<CR>:Last!<CR>
 noremap <leader>ec :silent Eval<CR>:Last!<CR>
+command WeaselConnect :Piggieback (weasel.repl.websocket/repl-env :ip "0.0.0.0" :port 9001)<CR>
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
