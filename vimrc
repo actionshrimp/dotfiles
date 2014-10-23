@@ -34,6 +34,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'b4winckler/vim-angry'
+Bundle 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
@@ -257,6 +258,11 @@ command WeaselConnect :Piggieback (weasel.repl.websocket/repl-env :ip "0.0.0.0" 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_aggregate_errors = 1
 
 set iskeyword+=-
 
