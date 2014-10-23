@@ -238,7 +238,7 @@ if filereadable(glob('~/.vimrc.local'))
 endif
 
 let g:ctrlp_root_markers = ['.ctrlp_root']
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|build|out|resources\/public\/out)$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|build|out|(resources\/public\/(out|css)))$'
 
 noremap <leader>d :windo ToggleDiff<CR>
 function! ToggleDiff()
