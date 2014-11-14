@@ -35,6 +35,7 @@ Bundle 'tommcdo/vim-exchange'
 Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'b4winckler/vim-angry'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'mxw/vim-jsx'
 
 call vundle#end()
 
@@ -263,6 +264,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_javascript_checkers = ["jshint", "jscs"]
+au BufNewFile,BufRead *.jsx let b:syntastic_checkers = ['jsxhint']
 
 set iskeyword+=-
 
