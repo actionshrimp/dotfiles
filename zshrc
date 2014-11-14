@@ -18,3 +18,5 @@ fi
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f ~/.env ] && source ~/.env
+
+export PATH=./node_modules/.bin:$PATH
