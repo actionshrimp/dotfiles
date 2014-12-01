@@ -35,7 +35,8 @@ Bundle 'tommcdo/vim-exchange'
 Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'b4winckler/vim-angry'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'mxw/vim-jsx'
+Bundle 'reedes/vim-wordy'
+Bundle 'honza/dockerfile.vim'
 
 call vundle#end()
 
