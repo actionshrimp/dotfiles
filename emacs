@@ -84,10 +84,6 @@
   "q:" 'helm-complex-command-history
   "\\\\w" 'evil-ace-jump-word-mode)
 
-;;; Uncomment these key-chord lines if you like that "remap 'jk' to ESC" trick.
-;; (key-chord-mode t)
-;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Filetype-style hooks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -154,7 +150,7 @@
    (quote
 	("cdc7555f0b34ed32eb510be295b6b967526dd8060e5d04ff0dce719af789f8e5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
  '(evil-mode t)
- '(evil-paredit-mode t)
+ '(evil-paredit-mode t t)
  '(evil-want-C-u-scroll t)
  '(fci-rule-color "#073642")
  '(flycheck-checkers
@@ -194,6 +190,7 @@
  '(linum-format "%3d ")
  '(magit-diff-use-overlays nil)
  '(nlinum-format "%d")
+ '(projectile-global-mode t)
  '(show-trailing-whitespace t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(speedbar-default-position (quote left))
@@ -239,10 +236,6 @@
  '(linum ((t (:background "black" :foreground "brightgreen"))))
  '(whitespace-newline ((t (:foreground "brightgreen" :weight normal))))
  '(whitespace-tab ((t (:background "black" :foreground "brightcyan")))))
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
 
 (setq whitespace-display-mappings
       '((space-mark 32 [183] [46])
