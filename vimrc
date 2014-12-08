@@ -108,7 +108,12 @@ if s:os == "osx"
 endif
 let g:airline#extensions#branch#enabled = 1
 
-syntax on
+set t_Co=16
+syntax enable
+"Colorscheme settings
+set background=dark
+colorscheme solarized
+
 set foldmethod=syntax
 let g:xml_syntax_folding=1
 set foldlevelstart=99
@@ -167,10 +172,6 @@ endif
 if has('gui')
     au GUIEnter * simalt ~x
 endif
-
-"Colorscheme settings
-set background=dark
-colorscheme solarized
 
 "Make incsearch more readable
 hi! IncSearch term=standout,reverse cterm=standout,reverse ctermbg=NONE
