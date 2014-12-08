@@ -24,8 +24,7 @@
 					  clojure-mode clojure-cheatsheet
 					  nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
 					  projectile helm-projectile
-					  smart-mode-line-powerline-theme flycheck js2-mode
-                      ac-js2 neotree
+					  smart-mode-line-powerline-theme flycheck neotree
 					  )
   "A list of packages to check for and install at launch.")
 
@@ -155,8 +154,12 @@
    (quote
 	("cdc7555f0b34ed32eb510be295b6b967526dd8060e5d04ff0dce719af789f8e5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
  '(evil-mode t)
+ '(evil-paredit-mode t)
  '(evil-want-C-u-scroll t)
  '(fci-rule-color "#073642")
+ '(flycheck-checkers
+   (quote
+	(javascript-jscs ada-gnat asciidoc c/c++-clang c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint d-dmd elixir emacs-lisp emacs-lisp-checkdoc erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck haml handlebars haskell-ghc haskell-hlint html-tidy javascript-jshint json-jsonlint less lua make perl perl-perlcritic php php-phpmd php-phpcs puppet-parser puppet-lint python-flake8 python-pylint racket rpm-rpmlint rst rst-sphinx ruby-rubocop ruby-rubylint ruby ruby-jruby rust sass scala scala-scalastyle scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim tex-chktex tex-lacheck texinfo verilog-verilator xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby)))
  '(foreground-color "#626262")
  '(fringe-mode (quote (5 . 0)) nil (fringe))
  '(global-flycheck-mode t nil (flycheck))
@@ -185,11 +188,17 @@
  '(hl-fg-colors
    (quote
 	("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(js3-global-externs (quote (module exports)))
+ '(js3-mode-show-parse-errors nil)
+ '(js3-mode-show-strict-warnings nil)
  '(linum-format "%3d ")
  '(magit-diff-use-overlays nil)
  '(nlinum-format "%d")
  '(show-trailing-whitespace t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(speedbar-default-position (quote left))
+ '(speedbar-verbosity-level 0)
+ '(sr-speedbar-right-side nil)
  '(tab-width 4)
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
@@ -240,8 +249,6 @@
         (newline-mark 10 [172 10])
         (tab-mark 9 [8250 9])))
 
-(add-hook 'js-mode-hook 'js2-minor-mode)
-
 (flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
  :safe #'stringp)
 
@@ -257,8 +264,15 @@ See URL `https://github.com/mdevils/node-jscs'."
 
 (add-to-list 'flycheck-checkers 'javascript-jscs)
 
-(global-set-key [f2] 'neotree-toggle)
-
 (add-hook 'find-file-hook
 		  (lambda ()
 			(setq default-directory command-line-default-directory)))
+
+(add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+(global-set-key [f2] 'neotree-toggle)
