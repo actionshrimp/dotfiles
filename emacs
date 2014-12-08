@@ -14,17 +14,19 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (defvar my-packages '(evil 
-		      evil-leader evil-tabs evil-paredit surround
-		      elscreen ace-jump-mode
-		      helm helm-descbinds
-		      key-chord
-		      recentf smart-mode-line
-		      rainbow-delimiters highlight
-		      paredit smartparens
-		      clojure-mode clojure-cheatsheet
-		      nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
-		      projectile helm-projectile
-		      )
+					  evil-leader evil-tabs evil-paredit surround
+					  elscreen ace-jump-mode
+					  helm helm-descbinds
+					  key-chord
+					  recentf smart-mode-line
+					  rainbow-delimiters highlight
+					  paredit smartparens
+					  clojure-mode clojure-cheatsheet
+					  nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
+					  projectile helm-projectile
+					  smart-mode-line-powerline-theme flycheck js2-mode
+                      ac-js2
+					  )
   "A list of packages to check for and install at launch.")
 
 (defun my-missing-packages ()
@@ -142,6 +144,7 @@
    ["#e4e4e4" "#d70000" "#5f8700" "#af8700" "#0087ff" "#af005f" "#00afaf" "#808080"])
  '(background-color "#ffffd7")
  '(background-mode light)
+ '(backup-directory-alist (quote ((".*" . "~/.backups/emacs"))))
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
@@ -151,9 +154,13 @@
  '(custom-safe-themes
    (quote
 	("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
+ '(evil-mode t)
  '(evil-want-C-u-scroll t)
  '(fci-rule-color "#073642")
  '(foreground-color "#626262")
+ '(fringe-mode (quote (5 . 0)) nil (fringe))
+ '(global-flycheck-mode t nil (flycheck))
+ '(global-linum-mode t)
  '(global-whitespace-mode t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
@@ -178,7 +185,9 @@
  '(hl-fg-colors
    (quote
 	("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(linum-format "%3d ")
  '(magit-diff-use-overlays nil)
+ '(nlinum-format "%d")
  '(show-trailing-whitespace t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(tab-width 4)
@@ -208,13 +217,17 @@
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (quote
-	(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))))
+	(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(whitespace-style
+   (quote
+	(face tabs trailing lines space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(helm-selection ((t (:background "blue" :foreground "white" :underline "blue"))))
+ '(linum ((t (:background "black" :foreground "brightgreen"))))
  '(whitespace-newline ((t (:foreground "brightgreen" :weight normal))))
  '(whitespace-tab ((t (:background "black" :foreground "brightcyan")))))
 
@@ -226,3 +239,20 @@
       '((space-mark 32 [183] [46])
         (newline-mark 10 [172 10])
         (tab-mark 9 [8250 9])))
+
+(add-hook 'js-mode-hook 'js2-minor-mode)
+
+(flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
+  :safe #'stringp)
+
+(flycheck-define-checker javascript-jscs
+    "A JavaScript code style checker.
+See URL `https://github.com/mdevils/node-jscs'."
+	:command ("jscs" "--reporter" "checkstyle"
+			  (config-file "--config" flycheck-jscs)
+			  source)
+	:error-parser flycheck-parse-checkstyle
+	:modes (js-mode js2-mode js3-mode)
+	:next-checkers (javascript-jshint))
+
+(add-to-list 'flycheck-checkers 'javascript-jscs)
