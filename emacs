@@ -25,7 +25,7 @@
 					  nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
 					  projectile helm-projectile
 					  smart-mode-line-powerline-theme flycheck js2-mode
-                      ac-js2
+                      ac-js2 neotree
 					  )
   "A list of packages to check for and install at launch.")
 
@@ -243,10 +243,10 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 
 (flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
-  :safe #'stringp)
+ :safe #'stringp)
 
 (flycheck-define-checker javascript-jscs
-    "A JavaScript code style checker.
+   "A JavaScript code style checker.
 See URL `https://github.com/mdevils/node-jscs'."
 	:command ("jscs" "--reporter" "checkstyle"
 			  (config-file "--config" flycheck-jscs)
@@ -256,3 +256,9 @@ See URL `https://github.com/mdevils/node-jscs'."
 	:next-checkers (javascript-jshint))
 
 (add-to-list 'flycheck-checkers 'javascript-jscs)
+
+(global-set-key [f2] 'neotree-toggle)
+
+(add-hook 'find-file-hook
+		  (lambda ()
+			(setq default-directory command-line-default-directory)))
