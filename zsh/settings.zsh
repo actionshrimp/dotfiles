@@ -1,4 +1,3 @@
-TERM="screen-256color"
 setopt APPEND_HISTORY
 stty -ixon
 
