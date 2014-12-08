@@ -23,6 +23,7 @@
 		      paredit smartparens
 		      clojure-mode clojure-cheatsheet
 		      nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
+		      projectile helm-projectile
 		      )
   "A list of packages to check for and install at launch.")
 
@@ -117,9 +118,9 @@
 	     (mapc '(lambda (char)
 		      (modify-syntax-entry char "w" clojure-mode-syntax-table))
 		   '(?- ?_ ?/ ?< ?> ?: ?' ?.))
-  
+	     
 	     (require 'clojure-test-mode)
-  
+	     
 	     (require 'ac-nrepl)
 	     (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 	     (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
@@ -149,64 +150,79 @@
  '(cursor-color "#626262")
  '(custom-safe-themes
    (quote
-    ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
+	("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
+ '(evil-want-C-u-scroll t)
  '(fci-rule-color "#073642")
  '(foreground-color "#626262")
+ '(global-whitespace-mode t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+	(solarized-color-blend it "#002b36" 0.25)
+	(quote
+	 ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
    (quote
-    (("#073642" . 0)
-     ("#546E00" . 20)
-     ("#00736F" . 30)
-     ("#00629D" . 50)
-     ("#7B6000" . 60)
-     ("#8B2C02" . 70)
-     ("#93115C" . 85)
-     ("#073642" . 100))))
+	(("#073642" . 0)
+	 ("#546E00" . 20)
+	 ("#00736F" . 30)
+	 ("#00629D" . 50)
+	 ("#7B6000" . 60)
+	 ("#8B2C02" . 70)
+	 ("#93115C" . 85)
+	 ("#073642" . 100))))
  '(hl-bg-colors
    (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+	("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
  '(hl-fg-colors
    (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+	("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(magit-diff-use-overlays nil)
+ '(show-trailing-whitespace t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(tab-width 4)
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
-    ((20 . "#dc322f")
-     (40 . "#ff7f00")
-     (60 . "#ffbf00")
-     (80 . "#b58900")
-     (100 . "#ffff00")
-     (120 . "#ffff00")
-     (140 . "#ffff00")
-     (160 . "#ffff00")
-     (180 . "#859900")
-     (200 . "#aaff55")
-     (220 . "#7fff7f")
-     (240 . "#55ffaa")
-     (260 . "#2affd4")
-     (280 . "#2aa198")
-     (300 . "#00ffff")
-     (320 . "#00ffff")
-     (340 . "#00ffff")
-     (360 . "#268bd2"))))
+	((20 . "#dc322f")
+	 (40 . "#ff7f00")
+	 (60 . "#ffbf00")
+	 (80 . "#b58900")
+	 (100 . "#ffff00")
+	 (120 . "#ffff00")
+	 (140 . "#ffff00")
+	 (160 . "#ffff00")
+	 (180 . "#859900")
+	 (200 . "#aaff55")
+	 (220 . "#7fff7f")
+	 (240 . "#55ffaa")
+	 (260 . "#2affd4")
+	 (280 . "#2aa198")
+	 (300 . "#00ffff")
+	 (320 . "#00ffff")
+	 (340 . "#00ffff")
+	 (360 . "#268bd2"))))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))))
+	(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(helm-selection ((t (:background "blue" :foreground "white" :underline "blue"))))
+ '(whitespace-newline ((t (:foreground "brightgreen" :weight normal))))
+ '(whitespace-tab ((t (:background "black" :foreground "brightcyan")))))
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+(setq whitespace-display-mappings
+      '((space-mark 32 [183] [46])
+        (newline-mark 10 [172 10])
+        (tab-mark 9 [8250 9])))
