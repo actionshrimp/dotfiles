@@ -21,6 +21,7 @@ channels = (
   { name = "#direct-tech"; chatnet = "7digital"; autojoin = "Yes"; },
   { name = "#7digital-bar"; chatnet = "7digital"; autojoin = "Yes"; },
   { name = "#systems"; chatnet = "7digital"; autojoin = "Yes"; },
+  { name = "#systems-notifications"; chatnet = "7digital"; autojoin = "Yes"; },
   { name = "#dev"; chatnet = "7digital"; autojoin = "Yes"; },
   { name = "#ldnclj";  chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#riemann"; chatnet = "Freenode"; autojoin = "Yes"; },
