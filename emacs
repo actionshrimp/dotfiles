@@ -224,7 +224,7 @@
 	(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
  '(whitespace-style
    (quote
-	(face tabs trailing lines space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
+	(face tabs trailing space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
