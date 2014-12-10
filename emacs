@@ -116,8 +116,6 @@
 		      (modify-syntax-entry char "w" clojure-mode-syntax-table))
 		   '(?- ?_ ?/ ?< ?> ?: ?' ?.))
 	     
-	     (require 'clojure-test-mode)
-	     
 	     (require 'ac-nrepl)
 	     (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 	     (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
