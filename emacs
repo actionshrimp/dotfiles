@@ -25,6 +25,7 @@
 					  nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
 					  projectile helm-projectile
 					  smart-mode-line-powerline-theme flycheck neotree
+					  grizzl
 					  )
   "A list of packages to check for and install at launch.")
 
@@ -80,9 +81,13 @@
   (add-hook 'after-init-hook 'sml/setup))
 
 (evil-define-key 'normal global-map
-  "\C-p" 'helm-mini
+  "\C-p" 'helm-projectile
   "q:" 'helm-complex-command-history
-  "\\\\w" 'evil-ace-jump-word-mode)
+  "\\\\w" 'evil-ace-jump-word-mode
+  ",<" 'paredit-forward-barf-sexp
+  ",>" 'paredit-forward-slurp-sexp
+  ",S" 'paredit-splice-sexp
+  ",w" 'paredit-wrap-sexp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Filetype-style hooks.
@@ -135,9 +140,10 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#e4e4e4" "#d70000" "#5f8700" "#af8700" "#0087ff" "#af005f" "#00afaf" "#808080"])
+ '(auto-save-file-name-transforms (quote (("([^/])*$" "~/.backups/emacs/autosave/\\1" t))))
  '(background-color "#ffffd7")
  '(background-mode light)
- '(backup-directory-alist (quote ((".*" . "~/.backups/emacs"))))
+ '(backup-directory-alist (quote ((".*" . "~/.backups/emacs/backups/"))))
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
@@ -188,6 +194,7 @@
  '(linum-format "%3d ")
  '(magit-diff-use-overlays nil)
  '(nlinum-format "%d")
+ '(projectile-completion-system (quote grizzl))
  '(projectile-global-mode t)
  '(show-trailing-whitespace t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
@@ -261,9 +268,10 @@ See URL `https://github.com/mdevils/node-jscs'."
 
 (add-hook 'neotree-mode-hook
             (lambda ()
-              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+			(define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+			(define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+			(define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+			(define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+			(define-key evil-normal-state-local-map (kbd "a") 'neotree-create-node)))
 
 (global-set-key [f2] 'neotree-toggle)
