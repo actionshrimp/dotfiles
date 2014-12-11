@@ -25,7 +25,7 @@
 					  nrepl-eval-sexp-fu ac-nrepl color-theme-solarized
 					  projectile helm-projectile
 					  smart-mode-line-powerline-theme flycheck neotree
-					  grizzl
+					  grizzl js3-mode
 					  )
   "A list of packages to check for and install at launch.")
 
@@ -188,7 +188,7 @@
  '(hl-fg-colors
    (quote
 	("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(js3-global-externs (quote (module exports)))
+ '(js3-global-externs (quote ("module" "exports" "require")))
  '(js3-mode-show-parse-errors nil)
  '(js3-mode-show-strict-warnings nil)
  '(linum-format "%3d ")
