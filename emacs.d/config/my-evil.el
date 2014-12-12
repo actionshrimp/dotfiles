@@ -1,5 +1,16 @@
-;; In order to work properly, we need to load evil-leader-mode before we load
-;; evil-mode.
+(setq evil-want-C-u-scroll t)
+(setq evil-want-C-w-in-emacs-state t)
+(setq evil-search-module        'isearch)
+(setq evil-magic                'very-magic)
+(setq evil-emacs-state-cursor   '("#dfaf8f" box))
+(setq evil-normal-state-cursor  '("#f8f893" box))
+(setq evil-insert-state-cursor  '("#f8f893" box))
+(setq evil-replace-state-cursor '("#cc9393" box))
+(setq evil-want-fine-undo t)
+(setq evil-want-change-word-to-end t)
+
+;;In order to work properly, we need to load evil-leader-mode before we load
+;;evil-mode.
 (use-package evil-leader
   :commands (evil-leader-mode global-evil-leader-mode)
   :ensure evil-leader
@@ -13,19 +24,8 @@
 ;; Recreate Vim inside Emacs.
 (use-package evil
   :ensure evil
-  :config
-  (progn
+  :config (progn
     (evil-mode 1)
-    (setq evil-want-C-u-scroll t)
-    (setq evil-want-C-w-in-emacs-state t)
-    (setq evil-search-module        'isearch)
-    (setq evil-magic                'very-magic)
-    (setq evil-emacs-state-cursor   '("#dfaf8f" box))
-    (setq evil-normal-state-cursor  '("#f8f893" box))
-    (setq evil-insert-state-cursor  '("#f8f893" box))
-    (setq evil-replace-state-cursor '("#cc9393" box))
-    (setq evil-want-fine-undo t)
-    (setq evil-want-change-word-to-end t)
 
     (use-package evil-matchit
       :ensure evil-matchit
@@ -57,6 +57,7 @@
         (key-chord-mode 1)))
 
     (define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
+    (define-key evil-visual-state-map (kbd ",c") 'comment-region)
 
     (use-package evil-paredit
       :ensure evil-paredit
@@ -70,12 +71,11 @@
                   ",w" 'paredit-wrap-sexp)))
     ))
 
+
 (use-package evil-jumper
   :ensure evil-jumper
   :init
   ;; C-i and C-o don't work unless we load it again like this ...
   (require 'evil-jumper))
-
-
 
 (provide 'my-evil)

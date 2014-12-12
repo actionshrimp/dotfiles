@@ -2,6 +2,7 @@
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode-enable)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'enable-common-lang)
 
 (use-package slime
   :ensure slime
