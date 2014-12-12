@@ -9,14 +9,12 @@
     (evil-leader/set-leader ",")
     (global-evil-leader-mode t)))
 
-
 ;; Here's what we've all been waiting for.
 ;; Recreate Vim inside Emacs.
 (use-package evil
   :ensure evil
   :config
   (progn
-
     (evil-mode 1)
     (setq evil-want-C-u-scroll t)
     (setq evil-want-C-w-in-emacs-state t)
@@ -60,10 +58,16 @@
 
     (define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
 
-    ;(define-key evil-normal-state-map (kbd "C-h")   'evil-window-left)
-    ;(define-key evil-normal-state-map (kbd "C-j")   'evil-window-down)
-    ;(define-key evil-normal-state-map (kbd "C-k")   'evil-window-up)
-    ;(define-key evil-normal-state-map (kbd "C-l")   'evil-window-right)
+    (use-package evil-paredit
+      :ensure evil-paredit
+      :commands evil-paredit-mode
+      :init (add-hook 'paredit-mode-hook 'evil-paredit-mode)
+      :config (progn
+                (evil-define-key 'normal paredit-mode-map
+                  ",<" 'paredit-backward-slurp-sexp
+                  ",>" 'paredit-forward-slurp-sexp
+                  ",S" 'paredit-splice-sexp
+                  ",w" 'paredit-wrap-sexp)))
     ))
 
 (use-package evil-jumper
@@ -72,15 +76,6 @@
   ;; C-i and C-o don't work unless we load it again like this ...
   (require 'evil-jumper))
 
-(use-package evil-paredit
-  :ensure evil-paredit
-  :commands evil-paredit-mode
-  :init (add-hook 'paredit-mode-hook 'evil-paredit-mode)
-  :config (progn
-     (evil-define-key 'normal paredit-mode-map
-       ",<" 'paredit-forward-barf-sexp
-       ",>" 'paredit-forward-slurp-sexp
-       ",S" 'paredit-splice-sexp
-       ",w" 'paredit-wrap-sexp)))
+
 
 (provide 'my-evil)
