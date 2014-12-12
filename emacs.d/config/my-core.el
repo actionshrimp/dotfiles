@@ -13,5 +13,9 @@
 (setq require-final-newline t)
 (setq-default indent-tabs-mode nil)
 
+(use-package color-theme-solarized
+  :ensure color-theme-solarized
+  :defer t)
+
 (load-theme 'solarized-dark t)
 (provide 'my-core)

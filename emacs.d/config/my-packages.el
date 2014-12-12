@@ -1,7 +1,3 @@
-(use-package color-theme-solarized
-  :ensure color-theme-solarized
-  :defer t)
-
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
   :idle

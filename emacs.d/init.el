@@ -13,10 +13,9 @@
     (package-install 'use-package))
 
 (require 'use-package)
-(require 'my-packages)
-
-(require 'my-core)
 (require 'my-evil)
+(require 'my-core)
 
+(require 'my-packages)
 (require 'my-elisp)
 
