@@ -6,6 +6,6 @@
 (use-package paredit
   :ensure paredit
   :commands paredit-mode
-  :idle) 
+  :idle)
 
 (provide 'my-packages)

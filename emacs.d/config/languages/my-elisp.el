@@ -32,4 +32,4 @@
     (evil-define-key 'normal emacs-lisp-mode-map (kbd "K")
       'my-jump-to-elisp-docs)))
 
-(provide 'my-elisp) 
+(provide 'my-elisp)

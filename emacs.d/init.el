@@ -17,6 +17,7 @@
 (require 'my-evil)
 (require 'my-neotree)
 (require 'my-whitespace)
+(require 'my-projectile)
 
 (require 'my-custom)
 

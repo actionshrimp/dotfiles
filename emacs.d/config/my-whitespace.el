@@ -5,4 +5,6 @@
     (set-face-attribute 'whitespace-tab nil :foreground "blue" :background "black")
     ))
 
+(setq next-line-add-newlines nil)
+(setq scroll-conservatively 1000000)
 (provide 'my-whitespace)

@@ -79,11 +79,11 @@
                   ",w{" 'paredit-wrap-curly)))
     ))
 
-
 (use-package evil-jumper
   :ensure evil-jumper
   :init
   ;; C-i and C-o don't work unless we load it again like this ...
   (require 'evil-jumper))
+
 
 (provide 'my-evil)
