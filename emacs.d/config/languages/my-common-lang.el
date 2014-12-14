@@ -8,4 +8,4 @@
   (progn
     (whitespace-mode)))
 
-(provide 'common-lang)
+(provide 'my-common-lang)

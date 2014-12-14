@@ -68,7 +68,15 @@
                   ",<" 'paredit-backward-slurp-sexp
                   ",>" 'paredit-forward-slurp-sexp
                   ",S" 'paredit-splice-sexp
-                  ",w" 'paredit-wrap-sexp)))
+                  ",W" 'paredit-wrap-sexp
+                  ",w(" 'paredit-wrap-round
+                  ",w[" 'paredit-wrap-square
+                  ",w{" 'paredit-wrap-curly)
+                (evil-define-key 'visual paredit-mode-map
+                  ",W" 'paredit-wrap-round
+                  ",w(" 'paredit-wrap-round
+                  ",w[" 'paredit-wrap-square
+                  ",w{" 'paredit-wrap-curly)))
     ))
 
 

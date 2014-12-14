@@ -15,9 +15,11 @@
 (require 'use-package)
 (require 'my-core)
 (require 'my-evil)
+(require 'my-neotree)
+
 (require 'my-custom)
 
-(require 'common-lang)
+(require 'my-common-lang)
 
 (require 'my-packages)
 (require 'my-elisp)
