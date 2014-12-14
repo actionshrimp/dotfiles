@@ -2,3 +2,4 @@ elpa/
 .saves/
 *.swp
 #*
+auto-save-list/

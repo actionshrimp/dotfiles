@@ -16,6 +16,7 @@
 (require 'my-core)
 (require 'my-evil)
 (require 'my-neotree)
+(require 'my-whitespace)
 
 (require 'my-custom)
 

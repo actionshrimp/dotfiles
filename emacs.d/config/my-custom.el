@@ -9,8 +9,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-newline ((t (:foreground "blue" :weight normal))))
- '(whitespace-tab ((t (:background "black" :foreground "blue"))))
  )
 
 (provide 'my-custom)
