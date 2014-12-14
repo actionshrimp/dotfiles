@@ -15,8 +15,9 @@
 (require 'use-package)
 (require 'my-core)
 (require 'my-evil)
+(require 'my-custom)
+
 (require 'common-lang)
 
 (require 'my-packages)
 (require 'my-elisp)
-
