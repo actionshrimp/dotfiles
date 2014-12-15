@@ -8,4 +8,8 @@
   :commands paredit-mode
   :idle)
 
+(use-package flycheck
+  :ensure flycheck
+  :idle)
+
 (provide 'my-packages)
