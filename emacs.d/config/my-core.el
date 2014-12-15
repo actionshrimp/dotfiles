@@ -13,6 +13,8 @@
 (setq require-final-newline t)
 (setq-default indent-tabs-mode nil)
 
+(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+
 (use-package color-theme-solarized
   :ensure color-theme-solarized
   :defer t)
