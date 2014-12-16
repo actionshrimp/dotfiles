@@ -10,6 +10,10 @@
 
 (use-package flycheck
   :ensure flycheck
+  :commands global-flycheck-mode)
+
+(use-package magit
+  :ensure magit
   :idle)
 
 (provide 'my-packages)
