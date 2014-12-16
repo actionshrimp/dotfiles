@@ -20,4 +20,5 @@
   :defer t)
 
 (load-theme 'solarized-dark t)
+(set-default-font "Ubuntu Mono 16")
 (provide 'my-core)
