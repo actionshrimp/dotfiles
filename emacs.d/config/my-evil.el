@@ -58,6 +58,9 @@
 
     (define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
     (define-key evil-visual-state-map (kbd ",c") 'comment-region)
+    (evil-define-key 'normal global-map
+      "]b" 'my-next-user-buffer
+      "[b" 'my-previous-user-buffer)
 
     (use-package evil-paredit
       :ensure evil-paredit

@@ -15,6 +15,7 @@
 (require 'use-package)
 (require 'my-core)
 (require 'my-theme)
+(require 'my-functions)
 (require 'my-evil)
 (require 'my-neotree)
 (require 'my-whitespace)

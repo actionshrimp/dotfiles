@@ -6,6 +6,7 @@
 
 (defun enable-common-lang ()
   (progn
-    (enable-whitespace)))
+    (enable-whitespace)
+    (linum-mode)))
 
 (provide 'my-common-lang)

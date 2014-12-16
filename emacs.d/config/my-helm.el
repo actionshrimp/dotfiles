@@ -7,7 +7,11 @@
 
 (use-package helm-projectile
   :ensure helm-projectile
-  :idle)
+  :idle
+  :config (progn
+            (setq projectile-completion-system 'helm)
+            (helm-projectile-on)
+            (projectile-global-mode)))
 
 ;(set-face-attribute 'helm-selection nil :foreground "black" :background "blue" :underline t)
 
