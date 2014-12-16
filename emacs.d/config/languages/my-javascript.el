@@ -23,6 +23,8 @@ See URL `https://github.com/mdevils/node-jscs'."
 (defun check-javascript ()
   (setq flycheck-checkers '(javascript-jscs javascript-jshint))
   (flycheck-mode))
+
 (add-hook 'js3-mode-hook 'check-javascript)
+(add-hook 'js3-mode-hook 'enable-common-lang)
 
 (provide 'my-javascript)

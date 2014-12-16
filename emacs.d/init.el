@@ -14,6 +14,7 @@
 
 (require 'use-package)
 (require 'my-core)
+(require 'my-theme)
 (require 'my-evil)
 (require 'my-neotree)
 (require 'my-whitespace)
