@@ -19,6 +19,8 @@
 (setq helm-M-x-fuzzy-match t)
 
 (evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
+(define-key shell-mode-map (kbd "C-p") 'helm-projectile)
+
 (evil-define-key 'normal global-map (kbd "C-f") 'helm-projectile-grep)
 
 (provide 'my-helm)

@@ -29,3 +29,5 @@
 (require 'my-packages)
 (require 'my-elisp)
 (require 'my-javascript)
+(require 'my-ruby)
+(require 'my-sass)
