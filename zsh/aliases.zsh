@@ -11,8 +11,6 @@ alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 
-alias emacs="emacs -nw"
-
 code=~/dev/code
 dotcom=$code/sevendigital-com
 webstore=$code/webstore
