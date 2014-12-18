@@ -13,9 +13,6 @@
             (helm-projectile-on)
             (projectile-global-mode)))
 
-(set-face-attribute 'helm-selection nil :foreground (theme-color 'base2) :background (theme-color 'base02))
-(set-face-attribute 'helm-source-header nil :foreground (theme-color 'yellow) :background (theme-color 'base02))
-
 (global-set-key (kbd "M-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t)
 
