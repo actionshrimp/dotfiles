@@ -36,13 +36,6 @@
     (evil-set-initial-state 'term-mode 'emacs)
     (evil-set-initial-state 'multi-term-mode 'emacs)
 
-    (use-package key-chord
-      :ensure key-chord
-      :diminish key-chord-mode
-      :config
-      (progn
-        (key-chord-mode 1)))
-
     (define-key evil-visual-state-map (kbd ",c") 'comment-region)
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer

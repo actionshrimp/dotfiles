@@ -1,19 +1,17 @@
 (add-to-list 'load-path (concat user-emacs-directory "config"))
 (add-to-list 'load-path (concat user-emacs-directory "config" "/languages"))
 
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")))
-
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file) (load custom-file))
-
 (require 'package)
-(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
 (setq package-enable-at-startup nil)
+(package-initialize)
 (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
+
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file) (load custom-file))
 
 (require 'use-package)
 (require 'my-core)
