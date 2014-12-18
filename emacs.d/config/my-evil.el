@@ -6,22 +6,8 @@
 (setq evil-normal-state-cursor  '("#f8f893" box))
 (setq evil-insert-state-cursor  '("#f8f893" box))
 (setq evil-replace-state-cursor '("#cc9393" box))
-(setq evil-want-fine-undo t)
 (setq evil-want-change-word-to-end t)
 
-;;In order to work properly, we need to load evil-leader-mode before we load
-;;evil-mode.
-(use-package evil-leader
-  :commands (evil-leader-mode global-evil-leader-mode)
-  :ensure evil-leader
-  :demand evil-leader
-  :init
-  (progn
-    (evil-leader/set-leader ",")
-    (global-evil-leader-mode t)))
-
-;; Here's what we've all been waiting for.
-;; Recreate Vim inside Emacs.
 (use-package evil
   :ensure evil
   :config (progn
@@ -44,6 +30,7 @@
     (evil-set-initial-state 'flycheck-error-list-mode 'normal)
     (evil-set-initial-state 'git-commit-mode 'insert)
     (evil-set-initial-state 'shell-mode 'emacs)
+    (evil-set-initial-state 'eshell-mode 'emacs)
     (evil-set-initial-state 'esup-mode 'emacs)
     (evil-set-initial-state 'diff-mode 'emacs)
     (evil-set-initial-state 'term-mode 'emacs)
@@ -56,7 +43,6 @@
       (progn
         (key-chord-mode 1)))
 
-    (define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
     (define-key evil-visual-state-map (kbd ",c") 'comment-region)
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer

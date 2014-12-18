@@ -12,21 +12,23 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file) (load custom-file))
+
 (require 'use-package)
 (require 'my-core)
 (require 'my-theme)
 (require 'my-functions)
 (require 'my-evil)
 (require 'my-neotree)
+(require 'my-magit)
 (require 'my-whitespace)
 (require 'my-helm)
 (require 'my-autocomplete)
-
-(require 'my-custom)
+(require 'my-packages)
 
 (require 'my-common-lang)
 
-(require 'my-packages)
 (require 'my-elisp)
 (require 'my-javascript)
 (require 'my-ruby)

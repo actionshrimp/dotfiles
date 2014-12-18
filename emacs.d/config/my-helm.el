@@ -21,6 +21,8 @@
 
 (evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
 (define-key shell-mode-map (kbd "C-p") 'helm-projectile)
+(add-hook 'eshell-mode-hook
+          '(lambda () (define-key eshell-mode-map (kbd "C-p") 'helm-projectile)))
 
 (evil-define-key 'normal global-map (kbd "C-f") 'helm-projectile-grep)
 

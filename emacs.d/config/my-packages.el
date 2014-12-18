@@ -12,8 +12,9 @@
   :ensure flycheck
   :commands global-flycheck-mode)
 
-(use-package magit
-  :ensure magit
+;Requires installation of editorconfig-core!
+(use-package editorconfig
+  :ensure editorconfig
   :idle)
 
 (provide 'my-packages)

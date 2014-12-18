@@ -1,11 +1,13 @@
+(setq js3-global-externs '("module" "exports" "require" "process" "__dirname"))
+(setq js3-mode-show-parse-errors nil)
+(setq js3-mode-show-strict-warnings nil)
+(setq js3-auto-indent-p t)
+(setq js3-enter-indents-newline t)
+(setq js3-indent-on-enter-key t)
+
 (use-package js3-mode
   :ensure js3-mode
-  :idle
-  :config (progn
-            (setq js3-global-externs '("module" "exports" "require" "process" "__dirname"))
-            (setq js3-mode-show-parse-errors nil)
-            (setq js3-mode-show-strict-warnings nil)
-            ))
+  :idle)
 
 (flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
    :safe #'stringp)
@@ -24,7 +26,7 @@ See URL `https://github.com/mdevils/node-jscs'."
   (setq flycheck-checkers '(javascript-jscs javascript-jshint))
   (flycheck-mode))
 
-(add-hook 'js3-mode-hook 'check-javascript)
 (add-hook 'js3-mode-hook 'enable-common-lang)
+(add-hook 'js3-mode-hook 'check-javascript)
 
 (provide 'my-javascript)
