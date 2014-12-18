@@ -1,7 +1,7 @@
 (use-package solarized-theme
     :ensure solarized-theme
     :demand
-    :config (progn (load-theme 'solarized-dark)))
+    :config (load-theme 'solarized-dark))
 
 (setq s-base00    "#657b83"
       s-base01    "#586e75"
@@ -19,7 +19,6 @@
       s-blue      "#268bd2"
       s-cyan      "#2aa198"
       s-green     "#859900")
-
 
 (set-default-font "Ubuntu Mono 15")
 (add-to-list 'default-frame-alist

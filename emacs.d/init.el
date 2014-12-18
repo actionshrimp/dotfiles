@@ -5,6 +5,9 @@
                          ("org" . "http://orgmode.org/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file) (load custom-file))
+
 (require 'package)
 (package-initialize)
 (setq package-enable-at-startup nil)
@@ -12,12 +15,10 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file) (load custom-file))
-
 (require 'use-package)
 (require 'my-core)
 (require 'my-theme)
+
 (require 'my-functions)
 (require 'my-evil)
 (require 'my-neotree)
