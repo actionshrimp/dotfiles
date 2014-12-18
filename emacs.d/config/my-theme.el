@@ -1,7 +1,11 @@
 (use-package solarized-theme
-    :ensure solarized-theme
-    :demand
-    :config (load-theme 'solarized-dark))
+  :ensure solarized-theme
+  :demand
+  :config (load-theme 'solarized-dark))
+
+(use-package smart-mode-line
+  :ensure smart-mode-line
+  :config (progn (sml/setup) (sml/apply-theme 'respectful)))
 
 (setq s-base00    "#657b83"
       s-base01    "#586e75"
