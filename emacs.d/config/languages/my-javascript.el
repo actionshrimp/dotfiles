@@ -10,8 +10,7 @@
    :safe #'stringp)
 
 (flycheck-define-checker javascript-jscs
-     "A JavaScript code style checker.
-See URL `https://github.com/mdevils/node-jscs'."
+     "A JavaScript code style checker"
      :command ("jscs" "--reporter" "checkstyle"
                  (config-file "--config" flycheck-jscs)
                    source)
