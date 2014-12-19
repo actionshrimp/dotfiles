@@ -19,12 +19,12 @@
 
 (require 'my-functions)
 (require 'my-evil)
-(require 'my-neotree)
 (require 'my-magit)
 (require 'my-whitespace)
 (require 'my-helm)
 (require 'my-autocomplete)
 (require 'my-packages)
+(require 'my-eshell)
 
 (require 'my-common-lang)
 
