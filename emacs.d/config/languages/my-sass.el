@@ -1,5 +1,4 @@
-(use-package scss-mode
-  :ensure scss-mode)
+(use-package scss-mode :ensure scss-mode)
 
 (add-hook 'scss-mode-hook 'enable-common-lang)
 

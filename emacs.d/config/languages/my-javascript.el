@@ -18,11 +18,5 @@
      :modes (js-mode js2-mode js3-mode)
      :next-checkers (javascript-jshint))
 
-(defun check-javascript ()
-  (setq flycheck-checkers '(javascript-jscs javascript-jshint))
-  (flycheck-mode))
-
 (add-hook 'js3-mode-hook 'enable-common-lang)
-(add-hook 'js3-mode-hook 'check-javascript)
-
 (provide 'my-javascript)
