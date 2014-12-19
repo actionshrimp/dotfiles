@@ -41,6 +41,8 @@
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer
       "[b" 'my-previous-user-buffer)
+    (evil-define-key 'emacs global-map
+      (kbd "C-w") 'backward-kill-word)
 
     (use-package evil-paredit
       :ensure evil-paredit
