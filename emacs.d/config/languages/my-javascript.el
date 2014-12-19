@@ -1,4 +1,4 @@
-(setq js3-global-externs '("module" "exports" "require" "process" "__dirname"))
+;(setq js3-global-externs '("module" "exports" "require" "process" "__dirname"))
 (setq js3-mode-show-parse-errors nil)
 (setq js3-mode-show-strict-warnings nil)
 
