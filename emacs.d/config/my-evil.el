@@ -1,5 +1,4 @@
 (setq evil-want-C-u-scroll t)
-(setq evil-want-C-w-in-emacs-state t)
 (setq evil-search-module        'isearch)
 (setq evil-magic                'very-magic)
 (setq evil-emacs-state-cursor   '("#dfaf8f" box))
@@ -41,8 +40,16 @@
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer
       "[b" 'my-previous-user-buffer)
-    (evil-define-key 'emacs global-map
-      (kbd "C-w") 'backward-kill-word)
+
+    (evil-define-key 'emacs global-map (kbd "C-w") 'backward-kill-word)
+    (evil-define-key 'normal global-map (kbd "C-h") 'evil-window-left)
+    (evil-define-key 'normal global-map (kbd "C-j") 'evil-window-down)
+    (evil-define-key 'normal global-map (kbd "C-k") 'evil-window-up)
+    (evil-define-key 'normal global-map (kbd "C-l") 'evil-window-right)
+    (evil-define-key 'emacs global-map (kbd "C-h") 'evil-window-left)
+    (evil-define-key 'emacs global-map (kbd "C-j") 'evil-window-down)
+    (evil-define-key 'emacs global-map (kbd "C-k") 'evil-window-up)
+    (evil-define-key 'emacs global-map (kbd "C-l") 'evil-window-right)
 
     (use-package evil-paredit
       :ensure evil-paredit
