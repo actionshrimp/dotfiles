@@ -32,3 +32,5 @@
 (require 'my-javascript)
 (require 'my-ruby)
 (require 'my-sass)
+
+(require 'my-erc)
