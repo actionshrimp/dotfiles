@@ -14,6 +14,7 @@
 (when (file-exists-p custom-file) (load custom-file))
 
 (require 'use-package)
+(require 'my-env)
 (require 'my-core)
 (require 'my-theme)
 
@@ -23,8 +24,8 @@
 (require 'my-whitespace)
 (require 'my-helm)
 (require 'my-autocomplete)
-(require 'my-packages)
 (require 'my-eshell)
+(require 'my-packages)
 
 (require 'my-common-lang)
 
