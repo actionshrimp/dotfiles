@@ -23,8 +23,9 @@
 (require 'my-magit)
 (require 'my-whitespace)
 (require 'my-helm)
+(require 'my-tree)
 (require 'my-autocomplete)
-(require 'my-eshell)
+(require 'my-shells)
 (require 'my-packages)
 
 (require 'my-common-lang)
@@ -33,5 +34,6 @@
 (require 'my-javascript)
 (require 'my-ruby)
 (require 'my-sass)
+(require 'my-scala)
 
 (require 'my-erc)

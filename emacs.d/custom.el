@@ -16,6 +16,7 @@
  '(js3-mode-show-parse-errors nil)
  '(js3-mode-show-strict-warnings nil)
  '(magit-use-overlays nil)
+ '(scss-compile-at-save nil)
  '(solarized-distinct-fringe-background t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -19,6 +19,4 @@
 (evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
 (evil-define-key 'emacs global-map (kbd "C-p") 'helm-projectile)
 
-(evil-define-key 'normal global-map (kbd "C-f") 'helm-projectile-grep)
-
 (provide 'my-helm)

@@ -3,4 +3,4 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-(provide 'my-eshell)
+(provide 'my-shells)

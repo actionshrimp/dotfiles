@@ -17,8 +17,4 @@
   :ensure editorconfig
   :idle)
 
-(use-package helm-spotify
-  :ensure helm-spotify
-  :idle)
-
 (provide 'my-packages)
