@@ -35,5 +35,6 @@
 (require 'my-ruby)
 (require 'my-sass)
 (require 'my-scala)
+(require 'my-clojure)
 
 (require 'my-erc)

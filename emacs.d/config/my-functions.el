@@ -5,7 +5,9 @@
   (let (original-buffer (buffer-name))
     (next-buffer)
     (let ((i 0))
-      (while (and (string-equal "*" (substring (buffer-name) 0 1)) (< i 20))
+      (while (and (or (string-equal "*" (substring (buffer-name) 0 1))
+                      (string-equal "ERC" mode-name))
+                  (< i 20))
         (setq i (1+ i)) (next-buffer))
       (if (= i 20) (switch-to-buffer original-buffer)))))
 
@@ -16,7 +18,9 @@
   (let (original-buffer (buffer-name))
     (previous-buffer)
     (let ((i 0))
-      (while (and (string-equal "*" (substring (buffer-name) 0 1)) (< i 20))
+      (while (and (or (string-equal "*" (substring (buffer-name) 0 1))
+                      (string-equal "ERC" mode-name))
+                  (< i 20))
         (setq i (1+ i)) (previous-buffer))
       (if (= i 20) (switch-to-buffer original-buffer)))))
 
