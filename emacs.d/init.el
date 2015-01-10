@@ -11,11 +11,12 @@
     (package-install 'use-package))
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file) (load custom-file))
 
 (require 'use-package)
 (require 'my-env)
 (require 'my-core)
+(require 'my-packages)
+(when (file-exists-p custom-file) (load custom-file))
 (require 'my-theme)
 
 (require 'my-functions)
@@ -26,7 +27,7 @@
 (require 'my-tree)
 (require 'my-autocomplete)
 (require 'my-shells)
-(require 'my-packages)
+
 
 (require 'my-common-lang)
 
