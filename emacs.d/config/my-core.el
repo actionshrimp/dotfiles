@@ -19,4 +19,10 @@
 
 (setq initial-frame-alist '((fullscreen . maximized)))
 
+(defmacro after (feature &rest body)
+  "After FEATURE is loaded, evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
+
 (provide 'my-core)

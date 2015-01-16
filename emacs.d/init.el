@@ -28,7 +28,6 @@
 (require 'my-autocomplete)
 (require 'my-shells)
 
-
 (require 'my-common-lang)
 
 (require 'my-elisp)
