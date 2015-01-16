@@ -7,6 +7,7 @@
 (defun enable-common-lang ()
   (progn
     (enable-whitespace)
-    (linum-mode)))
+    (linum-mode)
+    (column-marker-1 80)))
 
 (provide 'my-common-lang)

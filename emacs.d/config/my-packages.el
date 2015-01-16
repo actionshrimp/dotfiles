@@ -25,4 +25,8 @@
   :ensure hippie-exp
   :idle)
 
+(use-package column-marker
+  :ensure column-marker
+  :idle)
+
 (provide 'my-packages)
