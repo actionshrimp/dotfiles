@@ -50,6 +50,7 @@
     (evil-define-key 'emacs global-map (kbd "C-j") 'evil-window-down)
     (evil-define-key 'emacs global-map (kbd "C-k") 'evil-window-up)
     (evil-define-key 'emacs global-map (kbd "C-l") 'evil-window-right)
+    (evil-define-key 'insert global-map (kbd "C-x C-l") (make-hippie-expand-function '(try-expand-line-all-buffers)))
 
     (use-package evil-paredit
       :ensure evil-paredit

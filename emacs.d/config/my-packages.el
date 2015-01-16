@@ -21,4 +21,8 @@
   :ensure editorconfig
   :idle)
 
+(use-package hippie-exp
+  :ensure hippie-exp
+  :idle)
+
 (provide 'my-packages)
