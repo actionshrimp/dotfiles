@@ -14,7 +14,7 @@
  '(js3-enter-indents-newline t)
  '(js3-global-externs
    (quote
-    ("require" "module" "process" "setTimeout" "setImmediate")))
+    ("require" "module" "process" "setTimeout" "setImmediate" "before" "beforeEach" "describe" "it" "afterEach" "after")))
  '(js3-indent-level 4)
  '(js3-indent-on-enter-key t)
  '(js3-mode-show-parse-errors nil)
