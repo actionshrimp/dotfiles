@@ -12,6 +12,9 @@
  '(js3-auto-indent-p t)
  '(js3-boring-indentation t)
  '(js3-enter-indents-newline t)
+ '(js3-global-externs
+   (quote
+    ("require" "module" "process" "setTimeout" "setImmediate")))
  '(js3-indent-level 4)
  '(js3-indent-on-enter-key t)
  '(js3-mode-show-parse-errors nil)
