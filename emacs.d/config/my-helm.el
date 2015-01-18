@@ -16,7 +16,10 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t)
 
-(evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
-(evil-define-key 'emacs global-map (kbd "C-p") 'helm-projectile)
+(after 'evil
+  (evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
+  (evil-define-key 'emacs global-map (kbd "C-p") 'helm-projectile)
+  (evil-define-key 'normal global-map (kbd "C-c b") 'helm-buffers-list)
+  (evil-define-key 'emacs global-map (kbd "C-c b") 'helm-buffers-list))
 
 (provide 'my-helm)

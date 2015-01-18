@@ -25,8 +25,7 @@
 
 (flycheck-define-checker jsx-jsxhint
   "A JSX syntax and style checker based on JSXHint."
-
-  :command ("jsxhint" source)
+  :command ("jsxhint" (config-file "--config" flycheck-jshintrc) source)
   :error-patterns
   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
   :modes (web-mode))
@@ -35,7 +34,7 @@
           (lambda ()
             (when (equal web-mode-content-type "jsx")
               ;; enable flycheck
-              (flycheck-select-checker 'jsxhint-checker))))
+              (flycheck-select-checker 'jsx-jsxhint))))
 
 
 (provide 'my-javascript)
