@@ -36,5 +36,6 @@
 (require 'my-sass)
 (require 'my-scala)
 (require 'my-clojure)
+(require 'my-web-mode)
 
 (require 'my-erc)
