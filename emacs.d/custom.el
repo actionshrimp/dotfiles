@@ -10,7 +10,7 @@
  '(global-flycheck-mode t nil (flycheck))
  '(indent-tabs-mode nil)
  '(js3-auto-indent-p t)
- '(js3-boring-indentation t)
+ '(js3-consistent-level-indent-inner-bracket t)
  '(js3-enter-indents-newline t)
  '(js3-global-externs
    (quote
