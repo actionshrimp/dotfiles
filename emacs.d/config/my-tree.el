@@ -43,12 +43,13 @@
 (defun toggle-tree ()
   (interactive)
   (let ((killed nil))
-    (dolist (window (window-list))
-      (select-window window)
-      (if (string-equal " *NeoTree*" (buffer-name))
-          (progn
-            (kill-buffer-and-window)
-            (setq killed t))))
+    (save-selected-window
+      (dolist (window (window-list))
+        (select-window window)
+        (if (string-equal " *NeoTree*" (buffer-name))
+            (progn
+              (kill-buffer-and-window)
+              (setq killed t)))))
     (unless killed
       (tree-in-project-root))))
 
