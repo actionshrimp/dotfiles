@@ -53,8 +53,6 @@
     (unless killed
       (tree-in-project-root))))
 
-(defun neotree-copy-node)
-
 (defun neotree-menu (arg)
   (interactive (list (read-key "[a]dd / [m]ove / [d]elete / [c]opy? ")))
   (let ((current-path (neo-buffer--get-filename-current-line)))
