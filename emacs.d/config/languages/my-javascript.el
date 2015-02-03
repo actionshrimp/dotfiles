@@ -37,4 +37,9 @@
               (flycheck-select-checker 'jsx-jsxhint))))
 
 
+(add-to-list 'auto-mode-alist
+             '("\\.json$" . (lambda ()
+                              (js3-mode)
+                              (flycheck-disable-checker 'javascript-jscs))))
+
 (provide 'my-javascript)
