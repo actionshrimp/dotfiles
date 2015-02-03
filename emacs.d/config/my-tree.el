@@ -1,7 +1,3 @@
-(defun tree-in-project-root ()
-  (interactive)
-  (dirtree (projectile-project-root) nil))
-
 (use-package dirtree
   :ensure dirtree
   :idle
@@ -15,10 +11,14 @@
     (evil-define-key 'normal dirtree-mode-map (kbd "<f5>") 'tree-mode-reflesh)
     ))
 
+(defun tree-in-project-root ()
+  (interactive)
+  (dirtree (projectile-project-root) t))
+
 (defun toggle-tree ()
   (interactive)
   (let ((killed nil))
-    (save-excursion
+    (save-selected-window
       (dolist (window (window-list))
         (select-window window)
         (if (string-equal "*dirtree*" (buffer-name))
