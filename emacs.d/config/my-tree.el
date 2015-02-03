@@ -1,18 +1,3 @@
-;; (use-package dirtree
-;;   :ensure dirtree
-;;   :idle
-;;   :config
-
-;;   (progn
-;;     (evil-define-key 'normal global-map (kbd "<f2>") 'toggle-tree)
-;;     (evil-define-key 'emacs global-map (kbd "<f2>") 'toggle-tree)
-;;     (evil-define-key 'normal dirtree-mode-map (kbd "<f2>") 'toggle-tree)
-;;     (evil-define-key 'normal dirtree-mode-map (kbd "q") 'toggle-tree)
-;;     (evil-define-key 'normal dirtree-mode-map (kbd "<f5>") 'tree-mode-reflesh)
-;;     ))
-
-
-
 (use-package neotree
   :ensure neotree
   :idle
