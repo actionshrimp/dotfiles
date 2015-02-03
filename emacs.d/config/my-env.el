@@ -1,5 +1,9 @@
+
 (use-package exec-path-from-shell
   :ensure exec-path-from-shell
-  :config (exec-path-from-shell-initialize))
+  :config (progn
+            (exec-path-from-shell-copy-env "JDK_HOME")
+            (exec-path-from-shell-copy-env "JAVA_HOME")
+            (exec-path-from-shell-initialize)))
 
 (provide 'my-env)
