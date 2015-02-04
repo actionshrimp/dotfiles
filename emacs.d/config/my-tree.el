@@ -8,6 +8,7 @@
             (evil-define-key 'normal neotree-mode-map (kbd "<f2>") 'neotree-hide)
             (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
             (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-refresh)
+            (evil-define-key 'normal neotree-mode-map (kbd "I") 'neotree-hidden-file-toggle)
             (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
             (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
             (evil-define-key 'normal neotree-mode-map (kbd "m") 'neotree-menu)
