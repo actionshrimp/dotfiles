@@ -9,6 +9,7 @@
       (evil-set-initial-state 'magit-diff-mode 'normal)
       (evil-set-initial-state 'magit-log-mode 'normal)
       (evil-set-initial-state 'magit-process-mode 'normal)
+      (evil-set-initial-state 'git-rebase-mode 'normal)
 
       (define-key magit-status-mode-map (kbd "C-n") 'magit-goto-next-sibling-section)
       (define-key magit-status-mode-map (kbd "C-p") 'magit-goto-previous-sibling-section)
@@ -171,7 +172,19 @@
       (evil-define-key 'normal magit-process-mode-map (kbd "k") 'magit-goto-previous-section)
 
       (evil-define-key 'normal magit-branch-manager-mode-map (kbd "j") 'magit-goto-next-section)
-      (evil-define-key 'normal magit-branch-manager-mode-map (kbd "k") 'magit-goto-previous-section))))
+      (evil-define-key 'normal magit-branch-manager-mode-map (kbd "k") 'magit-goto-previous-section)
+
+      ;; rebase mode
+      (evil-define-key 'normal git-rebase-mode-map
+        (kbd "p") 'git-rebase-pick
+        (kbd "r") 'git-rebase-reword
+        (kbd "e") 'git-rebase-edit
+        (kbd "s") 'git-rebase-squash
+        (kbd "f") 'git-rebase-fixup
+        (kbd "C-k") 'git-rebase-move-line-up
+        (kbd "C-j") 'git-rebase-move-line-down
+        )
+      )))
 
 (global-set-key (kbd "<f3>") 'magit-status)
 (provide 'my-magit)
