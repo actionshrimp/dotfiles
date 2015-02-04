@@ -5,6 +5,10 @@
             (define-key helm-map (kbd "C-w") 'backward-kill-word)
             ))
 
+(use-package helm-ag
+  :ensure helm-ag
+  :idle)
+
 (use-package helm-projectile
   :ensure helm-projectile
   :idle
