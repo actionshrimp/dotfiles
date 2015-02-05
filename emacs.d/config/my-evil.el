@@ -12,20 +12,6 @@
   :config (progn
     (evil-mode 1)
 
-    (use-package evil-matchit
-      :ensure evil-matchit
-      :commands evilmi-jump-items
-      :init
-      (progn
-        (setq global-evil-matchit-mode t)
-        (define-key evil-normal-state-map "%" 'evilmi-jump-items)))
-
-    (use-package evil-surround
-      :ensure evil-surround
-      :config
-      (progn
-        (global-evil-surround-mode 1)))
-
     (evil-set-initial-state 'flycheck-error-list-mode 'normal)
     (evil-set-initial-state 'git-commit-mode 'insert)
     (evil-set-initial-state 'shell-mode 'emacs)
@@ -55,31 +41,45 @@
     (evil-define-key 'insert global-map (kbd "C-n")
       (make-hippie-expand-function '(try-expand-dabbrev)))
 
-    (use-package evil-paredit
-      :ensure evil-paredit
-      :commands evil-paredit-mode
-      :init (add-hook 'paredit-mode-hook 'evil-paredit-mode)
-      :config (progn
-                (evil-define-key 'normal paredit-mode-map
-                  ",<" 'paredit-backward-slurp-sexp
-                  ",>" 'paredit-forward-slurp-sexp
-                  ",S" 'paredit-splice-sexp
-                  ",W" 'paredit-wrap-sexp
-                  ",w(" 'paredit-wrap-round
-                  ",w[" 'paredit-wrap-square
-                  ",w{" 'paredit-wrap-curly)
-                (evil-define-key 'visual paredit-mode-map
-                  ",W" 'paredit-wrap-round
-                  ",w(" 'paredit-wrap-round
-                  ",w[" 'paredit-wrap-square
-                  ",w{" 'paredit-wrap-curly)))
     ))
+
+(use-package evil-matchit
+  :ensure evil-matchit
+  :commands evilmi-jump-items
+  :init
+  (progn
+    (setq global-evil-matchit-mode t)
+    (define-key evil-normal-state-map "%" 'evilmi-jump-items)))
+
+(use-package evil-surround
+  :ensure evil-surround
+  :config
+  (progn
+    (global-evil-surround-mode 1)))
+
+(use-package evil-paredit
+  :ensure evil-paredit
+  :commands evil-paredit-mode
+  :init (add-hook 'paredit-mode-hook 'evil-paredit-mode)
+  :config (progn
+            (evil-define-key 'normal paredit-mode-map
+              ",<" 'paredit-backward-slurp-sexp
+              ",>" 'paredit-forward-slurp-sexp
+              ",S" 'paredit-splice-sexp
+              ",W" 'paredit-wrap-sexp
+              ",w(" 'paredit-wrap-round
+              ",w[" 'paredit-wrap-square
+              ",w{" 'paredit-wrap-curly)
+            (evil-define-key 'visual paredit-mode-map
+              ",W" 'paredit-wrap-round
+              ",w(" 'paredit-wrap-round
+              ",w[" 'paredit-wrap-square
+              ",w{" 'paredit-wrap-curly)))
 
 (use-package evil-jumper
   :ensure evil-jumper
   :init
   ;; C-i and C-o don't work unless we load it again like this ...
   (require 'evil-jumper))
-
 
 (provide 'my-evil)

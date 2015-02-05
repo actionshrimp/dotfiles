@@ -1,5 +1,6 @@
 (use-package magit
   :ensure magit
+  :commands (magit-status)
   :config
   (progn
     (after 'evil

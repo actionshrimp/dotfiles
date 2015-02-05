@@ -4,7 +4,12 @@
 
 (use-package js3-mode
   :ensure js3-mode
-  :idle)
+  :commands (js3-mode)
+  :config (progn
+            (add-hook 'js3-mode-hook 'enable-common-lang)
+            ;(add-hook 'js-mode-hook 'enable-common-lang)
+            )
+  )
 
 (flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
    :safe #'stringp)
@@ -18,8 +23,6 @@
      :modes (js-mode js2-mode js3-mode)
      :next-checkers (javascript-jshint))
 
-(add-hook 'js3-mode-hook 'enable-common-lang)
-(add-hook 'js-mode-hook 'enable-common-lang)
 
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 

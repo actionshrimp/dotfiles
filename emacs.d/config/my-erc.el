@@ -15,6 +15,8 @@
 
 (defun erc-connect ()
   (interactive)
+  (erc-notifications-mode 1)
+  (erc-services-mode 1)
   (if (file-exists-p "~/.erc-local.el")
     (load-file "~/.erc-local.el")
     (print "Could not find ~/.erc-local.el")))
@@ -40,6 +42,4 @@
 (evil-define-key 'emacs global-map (kbd "C-c i") 'helm-erc)
 
 (setq erc-prompt-for-nickserv-password nil)
-(erc-notifications-mode 1)
-(erc-services-mode 1)
 (provide 'my-erc)

@@ -1,9 +1,9 @@
 (use-package solarized-theme
   :ensure solarized-theme
-  :demand
   :config (load-theme 'solarized-dark))
 
 (use-package smart-mode-line
+  :idle
   :ensure smart-mode-line
   :config (progn (sml/setup) (sml/apply-theme 'respectful)))
 

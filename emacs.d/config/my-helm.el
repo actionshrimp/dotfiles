@@ -1,25 +1,23 @@
 (use-package helm
   :ensure helm
-  :idle
+  :commands (helm-M-x helm-projectile helm-buffers-list)
   :config (progn
-            (define-key helm-map (kbd "C-w") 'backward-kill-word)
-            ))
+            (setq helm-M-x-fuzzy-match t)
+            (helm-projectile-on)
+            (define-key helm-map (kbd "C-w") 'backward-kill-word)))
 
 (use-package helm-ag
   :ensure helm-ag
-  :idle)
+  :commands (helm-ag helm-projectile-ag))
 
 (use-package helm-projectile
   :ensure helm-projectile
-  :idle
+  :commands (helm-projectile-on)
   :config (progn
             (setq projectile-completion-system 'helm)
-            (helm-projectile-on)
-            (projectile-global-mode)))
+            (helm-projectile-on)))
 
 (global-set-key (kbd "M-x") 'helm-M-x)
-(setq helm-M-x-fuzzy-match t)
-
 (after 'evil
   (evil-define-key 'normal global-map (kbd "C-p") 'helm-projectile)
   (evil-define-key 'emacs global-map (kbd "C-p") 'helm-projectile)

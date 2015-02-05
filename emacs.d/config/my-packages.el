@@ -1,12 +1,10 @@
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
-  :idle
   :commands rainbow-delimiters-mode-enable)
 
 (use-package paredit
   :ensure paredit
-  :commands paredit-mode
-  :idle)
+  :commands paredit-mode)
 
 (use-package flycheck
   :ensure flycheck
@@ -19,7 +17,7 @@
 
 (use-package hippie-exp
   :ensure hippie-exp
-  :idle)
+  :commands (make-hippie-expand-function))
 
 (use-package column-marker
   :ensure column-marker
