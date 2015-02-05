@@ -37,5 +37,6 @@
 (require 'my-scala)
 (require 'my-clojure)
 (require 'my-web-mode)
+(require 'my-haskell)
 
 (require 'my-erc)
