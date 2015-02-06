@@ -1,3 +1,7 @@
+(use-package projectile
+  :ensure projectile
+  :config (projectile-global-mode))
+
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
   :commands rainbow-delimiters-mode-enable)

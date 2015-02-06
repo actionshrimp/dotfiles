@@ -1,3 +1,7 @@
+(set-default-font "Ubuntu Mono 15")
+(add-to-list 'default-frame-alist
+             '(font . "Ubuntu Mono 15"))
+
 (use-package solarized-theme
   :ensure solarized-theme
   :config (load-theme 'solarized-dark))
@@ -23,9 +27,5 @@
       s-blue      "#268bd2"
       s-cyan      "#2aa198"
       s-green     "#859900")
-
-(set-default-font "Ubuntu Mono 15")
-(add-to-list 'default-frame-alist
-             '(font . "Ubuntu Mono 15"))
 
 (provide 'my-theme)
