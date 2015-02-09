@@ -6,4 +6,6 @@
 
 (setq next-line-add-newlines nil)
 (setq scroll-conservatively 1000000)
+
+(add-hook 'whitespace-mode-hook (lambda () (diminish 'whitespace-mode)))
 (provide 'my-whitespace)

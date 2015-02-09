@@ -1,4 +1,5 @@
 (use-package projectile
+  :diminish projectile-mode
   :ensure projectile
   :config (projectile-global-mode))
 
@@ -11,6 +12,7 @@
   :commands paredit-mode)
 
 (use-package flycheck
+  :diminish flycheck-mode
   :ensure flycheck
   :commands global-flycheck-mode)
 
@@ -26,5 +28,7 @@
 (use-package column-marker
   :ensure column-marker
   :idle)
+
+(after 'undo-tree (diminish 'undo-tree-mode))
 
 (provide 'my-packages)

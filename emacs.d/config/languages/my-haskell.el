@@ -1,3 +1,5 @@
+(add-to-list 'load-path "~/.emacs.d/structured-haskell-mode/elisp")
+
 (defun haskell-process-completions-at-point ()
   "A company-mode-compatible complete-at-point function."
   (interactive)
@@ -13,26 +15,34 @@
       flycheck-haskell-hlint-executable "~/.cabal/bin/hlint"
       )
 
+(defun haskell-mode-setup ()
+  (enable-common-lang)
+  (flycheck-haskell-setup)
+  (structured-haskell-mode)
+  )
+
 (use-package haskell-mode
   :ensure haskell-mode
   :mode ("\\.l?hs$" . haskell-mode)
   :config (progn
-            (defun on-haskell-mode ()
-              (enable-common-lang)
-              (turn-on-haskell-simple-indent)
-              (flycheck-haskell-setup)
-              ;(flycheck-select-checker 'haskell-ghc)
-              )
-            (add-hook 'haskell-mode-hook 'on-haskell-mode)
+            (require 'shm)
+            (add-hook 'haskell-mode-hook 'haskell-mode-setup)
             (evil-define-key 'normal haskell-mode-map
               (kbd ",t") 'haskell-process-do-type
               (kbd ",i") 'haskell-process-do-info
-              (kbd ",;") 'haskell-interactive-switch
+              (kbd ",;") 'haskell-process-load-file
+              (kbd "C-c ;") 'haskell-interactive-switch
               )
 
             (evil-set-initial-state 'haskell-interactive-mode 'emacs)
             (evil-define-key 'emacs haskell-interactive-mode-map
-              (kbd "<RET>") 'haskell-interactive-mode-return)
+              (kbd "<RET>") 'haskell-interactive-mode-return
+              (kbd "C-c ;") 'haskell-interactive-switch-back
+              (kbd "<up>") 'haskell-interactive-mode-history-previous
+              (kbd "<down>") 'haskell-interactive-mode-history-next
+              (kbd "C-c C-c") 'haskell-interactive-mode-prompt-next
+              )
             ))
+
 
 (provide 'my-haskell)

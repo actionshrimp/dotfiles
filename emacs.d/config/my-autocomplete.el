@@ -7,6 +7,7 @@
 
 (use-package company
   :ensure company
+  :diminish company-mode
   :idle
   :config (progn
 
