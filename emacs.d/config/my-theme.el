@@ -1,6 +1,8 @@
-(set-default-font "Ubuntu Mono 15")
-(add-to-list 'default-frame-alist
-             '(font . "Ubuntu Mono 15"))
+;(set-default-font "Ubuntu Mono 15")
+;(add-to-list 'default-frame-alist
+;             '(font . "Ubuntu Mono 15"))
+
+(set-face-attribute 'default nil :height 150)
 
 (use-package solarized-theme
   :ensure solarized-theme
