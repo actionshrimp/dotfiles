@@ -8,6 +8,7 @@
   (progn
     (enable-whitespace)
     (linum-mode)
-    (column-marker-1 80)))
+    (column-marker-1 80)
+    (company-mode)))
 
 (provide 'my-common-lang)

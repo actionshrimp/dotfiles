@@ -21,8 +21,9 @@
     (evil-set-initial-state 'diff-mode 'emacs)
     (evil-set-initial-state 'term-mode 'emacs)
     (evil-set-initial-state 'multi-term-mode 'emacs)
+    (evil-set-initial-state 'help-mode 'emacs)
 
-    (define-key evil-visual-state-map (kbd ",c") 'comment-region)
+    (define-key evil-visual-state-map (kbd ",c") 'comment-or-uncomment-region)
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer
       "[b" 'my-previous-user-buffer)
@@ -38,9 +39,6 @@
     (evil-define-key 'emacs global-map (kbd "C-l") 'evil-window-right)
     (evil-define-key 'insert global-map (kbd "C-x C-l")
       (make-hippie-expand-function '(try-expand-line-all-buffers)))
-    (evil-define-key 'insert global-map (kbd "C-n")
-      (make-hippie-expand-function '(try-expand-dabbrev)))
-
     ))
 
 (use-package evil-matchit
