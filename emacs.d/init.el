@@ -27,6 +27,7 @@
 (require 'my-tree)
 (require 'my-autocomplete)
 (require 'my-shells)
+(require 'my-paredit)
 
 (require 'my-common-lang)
 

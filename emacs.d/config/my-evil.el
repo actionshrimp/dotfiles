@@ -58,21 +58,7 @@
 (use-package evil-paredit
   :ensure evil-paredit
   :commands evil-paredit-mode
-  :init (add-hook 'paredit-mode-hook 'evil-paredit-mode)
-  :config (progn
-            (evil-define-key 'normal paredit-mode-map
-              ",<" 'paredit-backward-slurp-sexp
-              ",>" 'paredit-forward-slurp-sexp
-              ",S" 'paredit-splice-sexp
-              ",W" 'paredit-wrap-sexp
-              ",w(" 'paredit-wrap-round
-              ",w[" 'paredit-wrap-square
-              ",w{" 'paredit-wrap-curly)
-            (evil-define-key 'visual paredit-mode-map
-              ",W" 'paredit-wrap-round
-              ",w(" 'paredit-wrap-round
-              ",w[" 'paredit-wrap-square
-              ",w{" 'paredit-wrap-curly)))
+  :init (add-hook 'paredit-mode-hook 'evil-paredit-mode))
 
 (use-package evil-jumper
   :ensure evil-jumper

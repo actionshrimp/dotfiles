@@ -7,10 +7,6 @@
   :ensure rainbow-delimiters
   :commands rainbow-delimiters-mode-enable)
 
-(use-package paredit
-  :ensure paredit
-  :commands paredit-mode)
-
 (use-package flycheck
   :diminish flycheck-mode
   :ensure flycheck
