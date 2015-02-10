@@ -18,6 +18,7 @@
 (defun haskell-mode-setup ()
   (enable-common-lang)
   (flycheck-haskell-setup)
+  (turn-on-haskell-indentation)
   (structured-haskell-mode)
   )
 
@@ -31,10 +32,25 @@
               (kbd ",t") 'haskell-process-do-type
               (kbd ",i") 'haskell-process-do-info
               (kbd ",;") 'haskell-process-load-file
-              (kbd "C-c ;") 'haskell-interactive-switch
-              )
+              (kbd "C-c ;") 'haskell-interactive-switch)
 
-            (evil-set-initial-state 'haskell-interactive-mode 'emacs)
+            (dolist (state '(insert normal))
+              (evil-define-key state haskell-mode-map
+                (kbd "M-l") '(lambda () (interactive)
+                               (evil-insert-state)
+                               (shm/goto-parent-end))
+                (kbd "M-h") '(lambda () (interactive)
+                               (evil-insert-state)
+                               (shm/goto-parent))
+                (kbd "M-j") '(lambda () (interactive)
+                               (evil-insert-state)
+                               (shm/newline-indent))
+                (kbd "M-k") '(lambda () (interactive)
+                               (evil-insert-state)
+                               (shm/delete-indentation))
+                )
+
+              (evil-set-initial-state 'haskell-interactive-mode 'emacs))
             (evil-define-key 'emacs haskell-interactive-mode-map
               (kbd "<RET>") 'haskell-interactive-mode-return
               (kbd "C-c ;") 'haskell-interactive-switch-back
