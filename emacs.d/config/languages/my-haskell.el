@@ -17,10 +17,15 @@
 
 (defun haskell-mode-setup ()
   (enable-common-lang)
-  (flycheck-haskell-setup)
+  (flycheck-haskell-configure)
   (turn-on-haskell-indentation)
   (structured-haskell-mode)
   )
+
+(use-package flycheck-haskell
+  :ensure flycheck-haskell
+  :idle
+  :config (flycheck-haskell-setup))
 
 (use-package haskell-mode
   :ensure haskell-mode
