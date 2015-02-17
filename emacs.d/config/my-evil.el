@@ -23,7 +23,14 @@
     (evil-set-initial-state 'multi-term-mode 'emacs)
     (evil-set-initial-state 'help-mode 'emacs)
 
-    (define-key evil-visual-state-map (kbd ",c") 'comment-or-uncomment-region)
+    (evil-define-key 'visual global-map
+      (kbd ",c") 'comment-or-uncomment-region)
+    (evil-define-key 'normal global-map
+      (kbd ",c") '(lambda ()
+                    (interactive)
+                    (comment-or-uncomment-region
+                     (line-beginning-position) (line-end-position))))
+
     (evil-define-key 'normal global-map
       "]b" 'my-next-user-buffer
       "[b" 'my-previous-user-buffer)
