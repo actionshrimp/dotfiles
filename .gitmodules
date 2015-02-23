@@ -2,3 +2,6 @@
 	path = emacs.d/structured-haskell-mode
 	url = https://github.com/chrisdone/structured-haskell-mode.git
     ignore = dirty
+[submodule "emacs.d/hindent"]
+	path = emacs.d/hindent
+	url = git@github.com:chrisdone/hindent

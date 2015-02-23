@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/structured-haskell-mode/elisp")
+(add-to-list 'load-path "~/.emacs.d/hindent/elisp")
 
 (defun haskell-process-completions-at-point ()
   "A company-mode-compatible complete-at-point function."
@@ -18,7 +19,7 @@
 (defun haskell-mode-setup ()
   (enable-common-lang)
   (flycheck-haskell-configure)
-  (turn-on-haskell-indentation)
+  (turn-on-haskell-simple-indent)
   (structured-haskell-mode)
   )
 
@@ -32,12 +33,18 @@
   :mode ("\\.l?hs$" . haskell-mode)
   :config (progn
             (require 'shm)
+            (require 'hindent)
             (add-hook 'haskell-mode-hook 'haskell-mode-setup)
             (evil-define-key 'normal haskell-mode-map
               (kbd ",t") 'haskell-process-do-type
+              (kbd ",T") '(lambda () (interactive)
+                            (let ((current-prefix-arg 4))
+                              (call-interactively 'haskell-process-do-type)))
               (kbd ",i") 'haskell-process-do-info
               (kbd ",;") 'haskell-process-load-file
-              (kbd "C-c ;") 'haskell-interactive-switch)
+              (kbd "C-c ;") 'haskell-interactive-switch
+              (kbd "gqq") 'hindent/reformat-decl
+              )
 
             (dolist (state '(insert normal))
               (evil-define-key state haskell-mode-map
