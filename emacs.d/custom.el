@@ -35,5 +35,4 @@
  '(font-lock-keyword-face ((t (:foreground "#b58900" :weight bold))))
  '(js3-external-variable-face ((t (:foreground "#dc322f"))))
  '(js3-function-param-face ((t (:foreground "dark gray"))))
- '(linum ((t (:background "#073642" :foreground "#586e75"))))
- '(shm-quarantine-face ((t (:slant italic :background nil)))))
+ '(linum ((t (:background "#073642" :foreground "#586e75")))))

@@ -1,5 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/structured-haskell-mode/elisp")
-
 (defun haskell-process-completions-at-point ()
   "A company-mode-compatible complete-at-point function."
   (interactive)
@@ -19,7 +17,6 @@
   (enable-common-lang)
   (flycheck-haskell-configure)
   (turn-on-haskell-indentation)
-  (structured-haskell-mode)
   )
 
 (use-package flycheck-haskell
@@ -31,7 +28,6 @@
   :ensure haskell-mode
   :mode ("\\.l?hs$" . haskell-mode)
   :config (progn
-            (require 'shm)
             (add-hook 'haskell-mode-hook 'haskell-mode-setup)
             (evil-define-key 'normal haskell-mode-map
               (kbd ",t") 'haskell-process-do-type
@@ -39,23 +35,8 @@
               (kbd ",;") 'haskell-process-load-file
               (kbd "C-c ;") 'haskell-interactive-switch)
 
-            (dolist (state '(insert normal))
-              (evil-define-key state haskell-mode-map
-                (kbd "M-l") '(lambda () (interactive)
-                               (evil-insert-state)
-                               (shm/goto-parent-end))
-                (kbd "M-h") '(lambda () (interactive)
-                               (evil-insert-state)
-                               (shm/goto-parent))
-                (kbd "M-j") '(lambda () (interactive)
-                               (evil-insert-state)
-                               (shm/newline-indent))
-                (kbd "M-k") '(lambda () (interactive)
-                               (evil-insert-state)
-                               (shm/delete-indentation))
-                )
+            (evil-set-initial-state 'haskell-interactive-mode 'emacs)
 
-              (evil-set-initial-state 'haskell-interactive-mode 'emacs))
             (evil-define-key 'emacs haskell-interactive-mode-map
               (kbd "<RET>") 'haskell-interactive-mode-return
               (kbd "C-c ;") 'haskell-interactive-switch-back
