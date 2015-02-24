@@ -44,6 +44,7 @@
               (kbd ",;") 'haskell-process-load-file
               (kbd "C-c ;") 'haskell-interactive-switch
               (kbd "gqq") 'hindent/reformat-decl
+              (kbd "M-)") 'shm/wrap-parens
               )
 
             (dolist (state '(insert normal))

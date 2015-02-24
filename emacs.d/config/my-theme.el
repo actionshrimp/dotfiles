@@ -2,7 +2,7 @@
 ;(add-to-list 'default-frame-alist
 ;             '(font . "Ubuntu Mono 15"))
 
-(set-face-attribute 'default nil :height 150)
+(set-face-attribute 'default nil :height 135)
 
 (use-package solarized-theme
   :ensure solarized-theme
