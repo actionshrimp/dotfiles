@@ -11,6 +11,7 @@
   :ensure evil
   :config (progn
     (evil-mode 1)
+    (evil-ex-define-cmd "W" 'save-buffer)
 
     (evil-set-initial-state 'flycheck-error-list-mode 'normal)
     (evil-set-initial-state 'git-commit-mode 'insert)

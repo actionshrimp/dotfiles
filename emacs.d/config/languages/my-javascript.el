@@ -8,23 +8,31 @@
   :config (progn
             (add-hook 'js3-mode-hook 'enable-common-lang)
             ;(add-hook 'js-mode-hook 'enable-common-lang)
+
             )
   )
 
-(flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json"
-   :safe #'stringp)
+(flycheck-def-config-file-var flycheck-jscs javascript-jscs ".jscs.json" :safe #'stringp)
 
 (flycheck-define-checker javascript-jscs
      "A JavaScript code style checker"
      :command ("jscs" "--reporter" "checkstyle"
                  (config-file "--config" flycheck-jscs)
                    source)
-     :error-parser flycheck-parse-checkstyle
+     :error-parser (lambda (output checker buffer)
+                     (let ((error-list (flycheck-parse-checkstyle output checker buffer))
+                           (value))
+                        (dolist (err error-list value)
+                          (setf (flycheck-error-level err) 'warning)
+                          (setq value (cons err value)))))
      :modes (js-mode js2-mode js3-mode)
      :next-checkers (javascript-jshint))
 
+(add-to-list 'flycheck-checkers 'javascript-jscs)
+
 
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.es6$" . js3-mode))
 
 (flycheck-define-checker jsx-jsxhint
   "A JSX syntax and style checker based on JSXHint."
@@ -44,5 +52,7 @@
              '("\\.json$" . (lambda ()
                               (js3-mode)
                               (flycheck-disable-checker 'javascript-jscs))))
+
+(add-to-list 'company-dabbrev-code-modes 'js3-mode)
 
 (provide 'my-javascript)
