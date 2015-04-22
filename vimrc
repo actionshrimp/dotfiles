@@ -153,6 +153,7 @@ autocmd BufReadPost /tmp*clj set bufhidden=delete
 noremap <leader>bo :BufOnly<CR>
 
 nmap <F2> :NERDTreeToggle<CR>
+nmap <leader><F2> :NERDTreeFind<CR>
 
 function! ToggleGStatus()
     if buflisted(bufname('.git/index'))
