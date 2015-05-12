@@ -37,6 +37,8 @@ Bundle 'b4winckler/vim-angry'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'reedes/vim-wordy'
 Bundle 'honza/dockerfile.vim'
+Bundle 'Shougo/vimproc'
+Bundle 'eagletmt/ghcmod-vim'
 
 call vundle#end()
 
@@ -77,8 +79,8 @@ set guioptions-=e
 "Statusline (and powerline) config
 set laststatus=2
 let g:airline_theme = 'solarized'
-let g:airline_enable_branch = 1
-let g:airline_enable_syntastic = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " airline symbols
@@ -142,7 +144,7 @@ set list
 set listchars=tab:›\ ,eol:¬
 
 "Maps space to clear search highlighting
-nmap <SPACE> <SPACE>:noh<CR>
+nmap <SPACE> <SPACE>:noh<CR>:silent! GhcModTypeClear<CR>:echo<CR>
 
 set gfn=Droid_Sans_Mono_for_Powerline:h9:cANSI
 
@@ -269,6 +271,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ["jshint", "jscs"]
 au BufNewFile,BufRead *.jsx let b:syntastic_checkers = ['jsxhint']
+
+noremap ,t :GhcModType<CR>
+noremap ,T :GhcModTypeInsert<CR>
 
 set iskeyword+=-
 
