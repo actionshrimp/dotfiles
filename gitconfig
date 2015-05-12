@@ -13,7 +13,7 @@
     whitespace = cr-at-eol
     autocrlf = false
     pager = less -XF
-    excludesfile = /home/dave/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [alias]
     s = status
