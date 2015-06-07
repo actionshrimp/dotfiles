@@ -271,6 +271,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ["jshint", "jscs"]
 au BufNewFile,BufRead *.jsx let b:syntastic_checkers = ['jsxhint']
+au BufNewFile,BufRead *.hs let b:syntastic_checkers = ['hdevtools', 'hlint']
 
 noremap ,t :GhcModType<CR>
 noremap ,T :GhcModTypeInsert<CR>
