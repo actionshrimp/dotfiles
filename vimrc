@@ -36,7 +36,7 @@ Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'b4winckler/vim-angry'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'reedes/vim-wordy'
-Bundle 'honza/dockerfile.vim'
+Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
 
@@ -144,7 +144,7 @@ set list
 set listchars=tab:›\ ,eol:¬
 
 "Maps space to clear search highlighting
-nmap <SPACE> <SPACE>:noh<CR>:silent! GhcModTypeClear<CR>:echo<CR>
+nmap <SPACE> <SPACE>:noh<CR>:silent! HdevtoolsClear<CR>:echo<CR>
 
 set gfn=Droid_Sans_Mono_for_Powerline:h9:cANSI
 
