@@ -39,6 +39,7 @@ Bundle 'reedes/vim-wordy'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
+Bundle 'lambdatoast/elm.vim'
 
 call vundle#end()
 
