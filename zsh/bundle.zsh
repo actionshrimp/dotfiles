@@ -1,6 +1,7 @@
 antigen use oh-my-zsh
 
 antigen bundle tmux
+antigen bundle ssh-agent
 antigen bundle git
 antigen bundle lein
 antigen bundle command-not-found
