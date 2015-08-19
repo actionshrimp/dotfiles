@@ -1,4 +1,4 @@
-setopt APPEND_HISTORY
+setopt no_share_history
 stty -ixon
 
 COMPLETION_WAITING_DOTS="true"
