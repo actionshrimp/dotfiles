@@ -167,6 +167,12 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (call-interactively 'spacemacs/toggle-maximize-frame)
+  (define-globalized-minor-mode global-fci-mode fci-mode
+    (lambda ()
+      (setq fci-rule-color "#073642")
+      (setq fci-rule-width 4)
+      (fci-mode 1)))
+  (global-fci-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -181,7 +187,7 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(flycheck-check-syntax-automatically (quote (save new-line mode-enabled)))
+ '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(global-whitespace-mode t)
  '(ring-bell-function (quote ignore) t)
  '(vc-follow-symlinks nil)
