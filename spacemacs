@@ -158,14 +158,15 @@ before layers configuration."
    )
   ;; User initialization goes here
   (global-linum-mode)
-  (global-whitespace-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
+  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (call-interactively 'spacemacs/toggle-maximize-frame)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -180,8 +181,10 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(flycheck-check-syntax-automatically (quote (save new-line mode-enabled)))
  '(global-whitespace-mode t)
  '(ring-bell-function (quote ignore) t)
+ '(vc-follow-symlinks nil)
  '(whitespace-style
    (quote
     (face tabs trailing lines space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
@@ -192,4 +195,5 @@ layers configuration."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(whitespace-empty ((t (:foreground "#073642" :inverse-video t))))
  '(whitespace-newline ((t (:foreground "dark slate gray")))))
