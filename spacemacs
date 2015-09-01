@@ -193,7 +193,7 @@ layers configuration."
  '(vc-follow-symlinks nil)
  '(whitespace-style
    (quote
-    (face tabs trailing lines space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
+    (face tabs trailing space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
