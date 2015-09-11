@@ -185,6 +185,8 @@ layers configuration. You are free to put any user code."
       (setq fci-rule-width 4)
       (fci-mode 1)))
   (global-fci-mode)
+  (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
+  (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
