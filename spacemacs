@@ -164,18 +164,21 @@ values."
    ;; specified with an installed package.
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
-   ))
+   )
+  ;; User initialization goes here
+  (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
-(defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
+  (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+  (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
+  (add-to-list 'package-pinned-packages '(cljr-helm . "melpa-stable") t)
+  (add-to-list 'package-pinned-packages '(ac-cider . "melpa-stable") t)
+
   (global-linum-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
   (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
   )
 
-(defun dotspacemacs/user-config ()
+(defun dotspacemacs/config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
