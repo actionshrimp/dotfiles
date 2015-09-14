@@ -169,10 +169,6 @@ endfunction
 command ToggleGStatus :call ToggleGStatus()
 nmap <F3> :ToggleGStatus<CR>
 
-if has('windows')
-    let g:ruby_path = 'C:\TeamCityBuildTools\ruby\1.9.2'
-endif
-
 "Fullscreen when entering the gui
 if has('gui')
     au GUIEnter * simalt ~x
