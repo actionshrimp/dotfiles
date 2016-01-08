@@ -38,6 +38,9 @@ values."
      shell-scripts
      html
      sql
+     elm
+     dockerfile
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -194,8 +197,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   (global-linum-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
-  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
-  )
+  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -215,7 +217,22 @@ layers configuration. You are free to put any user code."
       "msC" 'cider-rotate-default-connection))
 
   (evil-ex-define-cmd "W" "write")
-  (global-unset-key (kbd "M-c")))
+  (global-unset-key (kbd "M-c"))
+  (setq neo-vc-integration nil)
+  (global-flycheck-mode)
+
+  (sp-pair "'" nil :actions :rem)
+  (sp-pair "\"" nil :actions :rem)
+
+  (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down )
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -232,14 +249,52 @@ layers configuration. You are free to put any user code."
  '(cider-prompt-for-project-on-connect nil)
  '(cider-prompt-for-symbol nil)
  '(cider-prompt-save-file-on-load nil)
+ '(cider-repl-pop-to-buffer-on-connect nil)
+ '(cljr-sort-comparator
+   (lambda
+     (s1 s2)
+     (cl-flet*
+         ((extract-segments
+           (s)
+           (s-split "\\." s))
+          (shared-segments
+           (s)
+           (->>
+            (extract-segments
+             (cljr--extract-sexp-content s))
+            (mapcar*
+             (function string=)
+             (extract-segments
+              (clojure-find-ns)))
+            (seq-take-while
+             (function identity)))))
+       (let
+           ((shared-length-s1
+             (length
+              (shared-segments s1)))
+            (shared-length-s2
+             (length
+              (shared-segments s2))))
+         (if
+             (/= shared-length-s1 shared-length-s2)
+             (> shared-length-s1 shared-length-s2)
+           (cljr--string-natural-comparator s1 s2))))))
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
- '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(nrepl-log-messages nil)
+ '(projectile-use-git-grep t)
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
-    ((cider-cljs-repl . "(user/cljs-repl user/foo-system)")
+    ((eval define-clojure-indent
+           (mlet 1)
+           (lazy-seq 0)
+           (match 1)
+           (try+ 0))
+     (cider-refresh-after-fn . "bounce.core/start!")
+     (cider-refresh-before-fn . "bounce.core/stop!")
+     (cider-cljs-lein-repl . "(user/cljs-repl)")
+     (cider-cljs-repl . "(user/cljs-repl user/foo-system)")
      (css-indent-offset . 2)
      (eval define-clojure-indent
            (assoc 1)
