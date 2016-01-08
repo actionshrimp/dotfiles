@@ -17,9 +17,7 @@ if [[ $platform == "osx" ]]; then
 fi
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-[ -f ~/.env ] && source ~/.env
 
-export PATH=./node_modules/.bin:$PATH
 [[ $TERM == eterm-color ]] && export TERM=xterm
 
 if [ -n "$INSIDE_EMACS" ]; then
