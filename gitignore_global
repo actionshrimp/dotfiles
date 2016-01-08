@@ -2,3 +2,4 @@
 .DS_Store
 .agignore
 .tern-port
+.scratch.sql
