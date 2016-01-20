@@ -297,7 +297,9 @@ layers configuration. You are free to put any user code."
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
-    ((eval define-clojure-indent
+    ((js-indent-level . 2)
+     (js2-basic-offset . 2)
+     (eval define-clojure-indent
            (mlet 1)
            (lazy-seq 0)
            (match 1)
