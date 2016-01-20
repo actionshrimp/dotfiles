@@ -46,7 +46,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(evil-smartparens)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -217,12 +217,10 @@ layers configuration. You are free to put any user code."
       "msC" 'cider-rotate-default-connection))
 
   (evil-ex-define-cmd "W" "write")
+
   (global-unset-key (kbd "M-c"))
   (setq neo-vc-integration nil)
   (global-flycheck-mode)
-
-  (sp-pair "'" nil :actions :rem)
-  (sp-pair "\"" nil :actions :rem)
 
   (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
@@ -231,6 +229,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down )
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
   )
 
