@@ -230,8 +230,19 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+  (evil-define-key 'normal sql-interactive-mode-map ";" 'evil-repeat-find-char)
+  (evil-define-key 'visual sql-interactive-mode-map ";" 'evil-repeat-find-char)
+
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
+  (dolist (m (list minibuffer-local-map))
+    (define-key m (kbd "C-w") 'backward-kill-word))
+
+  (add-hook 'helm-after-initialize-hook
+            (lambda ()
+              (dolist (m (list helm-map
+                               helm-grep-map))
+                (define-key m (kbd "C-w") 'backward-kill-word))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
