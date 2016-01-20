@@ -230,6 +230,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+  (setq evil-move-beyond-eol t)
+
   (evil-define-key 'normal sql-interactive-mode-map ";" 'evil-repeat-find-char)
   (evil-define-key 'visual sql-interactive-mode-map ";" 'evil-repeat-find-char)
 
