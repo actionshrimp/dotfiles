@@ -3,3 +3,4 @@
 .agignore
 .tern-port
 .scratch.sql
+.#*
