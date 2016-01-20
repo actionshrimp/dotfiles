@@ -1,10 +1,10 @@
 {:user {:plugins [[cider/cider-nrepl "0.11.0-SNAPSHOT"]
                   [refactor-nrepl "2.0.0-SNAPSHOT"]
-                  [jonase/eastwood "0.1.4"]
-                  [lein-kibit "0.0.8"]
+                  [jonase/eastwood "0.2.3"]
+                  [lein-kibit "0.1.2"]
                   [lein-pprint "1.1.1"]
                   [lein-libdir "0.1.1"]
                   [lein-clean-m2 "0.1.2"]]
         :dependencies [[alembic "0.3.2"]
                        [org.clojure/tools.nrepl "0.2.12"]]
-        :env {} }}
+        :env {}}}
