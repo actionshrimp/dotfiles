@@ -211,10 +211,10 @@ layers configuration. You are free to put any user code."
   (global-fci-mode)
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
   (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
-  (evil-leader/set-key-for-mode 'sql-mode "msc" 'sql-connect)
+  (spacemacs/set-leader-keys-for-major-mode 'sql-mode "sc" 'sql-connect)
   (dolist (m '(clojure-mode clojurec-mode clojurescript-mode clojurex-mode))
-    (evil-leader/set-key-for-mode m
-      "msC" 'cider-rotate-default-connection))
+    (spacemacs/set-leader-keys-for-major-mode m
+      "sC" 'cider-rotate-default-connection))
 
   (evil-ex-define-cmd "W" "write")
 
