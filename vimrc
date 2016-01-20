@@ -123,6 +123,8 @@ set foldlevelstart=99
 
 "Make :W typo do what you want
 command W :w
+command Q :q
+command Qa :qa
 command Wqa :wqa
 
 "Print directory of current file
