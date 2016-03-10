@@ -245,6 +245,9 @@ layers configuration. You are free to put any user code."
               (dolist (m (list helm-map
                                helm-grep-map))
                 (define-key m (kbd "C-w") 'backward-kill-word))))
+
+  (unless (server-running-p)
+    (server-start))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
