@@ -11,6 +11,6 @@ alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 
-code=~/dev/code
-dotcom=$code/sevendigital-com
-webstore=$code/webstore
+function kh {
+  sed -i '' "$1d" ~/.ssh/known_hosts
+}
