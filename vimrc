@@ -40,6 +40,8 @@ Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'lambdatoast/elm.vim'
+Bundle 'actionshrimp/vim-xpath'
+Bundle 'avakhov/vim-yaml'
 
 call vundle#end()
 
