@@ -33,7 +33,7 @@ values."
      syntax-checking
      version-control
      clojure
-     haskell
+     (haskell :variables haskell-enable-ghci-ng-support t)
      javascript
      shell-scripts
      html
@@ -42,11 +42,12 @@ values."
      dockerfile
      yaml
      )
+
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(evil-smartparens)
+   dotspacemacs-additional-packages '(evil-smartparens flycheck-clojure)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -248,6 +249,11 @@ layers configuration. You are free to put any user code."
 
   (unless (server-running-p)
     (server-start))
+
+  (setq haskell-process-wrapper-function
+        (lambda (args)
+          (append args (list "--with-ghc" "ghci-ng"))))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -295,8 +301,11 @@ layers configuration. You are free to put any user code."
              (/= shared-length-s1 shared-length-s2)
              (> shared-length-s1 shared-length-s2)
            (cljr--string-natural-comparator s1 s2))))))
+ '(css-indent-offset 2)
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
+ '(flycheck-pos-tip-timeout 0)
  '(global-whitespace-mode t)
+ '(haskell-process-suggest-hoogle-imports t)
  '(nrepl-log-messages nil)
  '(projectile-use-git-grep t)
  '(ring-bell-function (quote ignore) t)
