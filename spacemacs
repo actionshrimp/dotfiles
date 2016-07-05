@@ -18,7 +18,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     purescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -30,6 +29,7 @@ values."
      ;;                 auto-completion-complete-with-key-sequence nil
      ;;                 auto-completion-complete-with-key-sequence-delay 0.5)
      auto-completion
+     helm
      emacs-lisp
      git
      markdown
@@ -44,7 +44,6 @@ values."
      html
      sql
      elm
-     dockerfile
      yaml
      purescript
      )
@@ -69,7 +68,11 @@ You should not put any user code in there besides modifying the variable
 values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
+
   (setq-default
+   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-timeout 5
+   dotspacemacs-check-for-update t
    ;; One of `vim', `emacs' or `hybrid'. Evil is always enabled but if the
    ;; variable is `emacs' then the `holy-mode' is enabled at startup. `hybrid'
    ;; uses emacs key bindings for vim's insert mode, but otherwise leaves evil
@@ -181,7 +184,7 @@ values."
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -197,20 +200,21 @@ values."
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
+   dotspacemacs-whitespace-cleanup 'all
    ))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
+  It is called immediately after `dotspacemacs/init'.  You are free to put any
+  user code."
   (global-linum-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
   (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
- This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
+  This function is called at the very end of Spacemacs initialization after
+  layers configuration. You are free to put any user code."
   (define-globalized-minor-mode global-fci-mode fci-mode
     (lambda ()
       (setq fci-rule-color "#073642")
@@ -222,23 +226,28 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys-for-major-mode 'sql-mode "sc" 'sql-connect)
   (dolist (m '(clojure-mode clojurec-mode clojurescript-mode clojurex-mode))
     (spacemacs/set-leader-keys-for-major-mode m
-      "sC" 'cider-rotate-default-connection))
+      "sC" 'cider-rotate-default-connection
+      "ep" 'cider-pprint-eval-last-sexp))
+
+  (spacemacs/set-leader-keys-for-major-mode 'purescript-mode
+    "ma" 'psc-ide-load-all
+    "mq" 'psc-ide-server-quit)
 
   (evil-ex-define-cmd "W" "write")
+  (evil-ex-define-cmd "Q" "q")
 
   (global-unset-key (kbd "M-c"))
   (setq neo-vc-integration nil)
   (global-flycheck-mode)
 
   (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
+  (define-key isearch-mode-map (kbd "C-w") 'isearch-exit)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
   (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down )
   (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-
-  (setq evil-move-beyond-eol t)
 
   (evil-define-key 'normal sql-interactive-mode-map ";" 'evil-repeat-find-char)
   (evil-define-key 'visual sql-interactive-mode-map ";" 'evil-repeat-find-char)
@@ -265,7 +274,16 @@ layers configuration. You are free to put any user code."
     "mht"  'ghc-show-type)
 
   (setq cider-pprint-fn 'fipp)
-  )
+
+  (spacemacs/set-leader-keys "j/" #'avy-isearch)
+  (setq evil-magic 'very-magic)
+  (setq evil-move-beyond-eol t)
+
+  (define-key evil-lisp-state-map (kbd "{") (evil-lisp-state-enter-command paredit-wrap-curly))
+  (define-key evil-lisp-state-map (kbd "[") (evil-lisp-state-enter-command paredit-wrap-square))
+  (define-key evil-lisp-state-map (kbd "W") (evil-lisp-state-enter-command paredit-splice-sexp))
+  (define-key evil-lisp-state-map (kbd "K") (evil-lisp-state-enter-command sp-backward-up-sexp))
+  (define-key evil-lisp-state-map (kbd "k") 'evil-lisp-state-prev-opening-paren))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -279,9 +297,8 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(cider-prompt-for-project-on-connect nil)
  '(cider-prompt-for-symbol nil)
- '(cider-prompt-save-file-on-load nil)
+ '(cider-prompt-save-file-on-load t)
  '(cider-repl-pop-to-buffer-on-connect nil)
  '(cljr-sort-comparator
    (lambda
@@ -372,6 +389,7 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cider-deprecated-face ((t (:background "dark slate gray"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(whitespace-empty ((t (:foreground "#073642" :inverse-video t))))
