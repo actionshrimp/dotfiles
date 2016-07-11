@@ -296,6 +296,13 @@ values."
 
   (define-key evil-lisp-state-map (kbd "C") 'evil-sp-change-line)
 
+  (dolist (m `(,clojure-mode-syntax-table
+               ,clojurescript-mode-syntax-table
+               ,clojurec-mode-syntax-table
+               ,emacs-lisp-mode-syntax-table))
+    (dolist (c (string-to-list ":_-?!#*"))
+      (modify-syntax-entry c "w" m))))
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
