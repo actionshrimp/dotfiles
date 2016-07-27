@@ -405,6 +405,7 @@ values."
            (mlet 1))
      (cider-refresh-after-fn . "yoyo/start!")
      (cider-refresh-before-fn . "yoyo/stop!"))))
+ '(sp-highlight-pair-overlay nil)
  '(vc-follow-symlinks nil)
  '(whitespace-style
    (quote
@@ -414,8 +415,9 @@ values."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cider-deprecated-face ((t (:background "dark slate gray"))))
+ '(cider-deprecated-face ((t (:background "dark slate gray" :slant italic))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(sp-pair-overlay-face ((t (:inherit nil))))
  '(whitespace-empty ((t (:foreground "#073642" :inverse-video t))))
  '(whitespace-newline ((t (:foreground "dark slate gray")))))
