@@ -298,6 +298,8 @@ values."
   (define-key evil-lisp-state-map (kbd "j") (evil-lisp-state-enter-command sp-down-sexp))
   (define-key evil-lisp-state-map (kbd "l") (evil-lisp-state-enter-command sp-next-sexp))
 
+  (define-key evil-lisp-state-map (kbd "x") 'evil-lisp-state-sp-kill-sexp)
+
   (define-key evil-lisp-state-map (kbd "A") '(lambda ()
                                                (interactive)
                                                (evil-lisp-state-sp-end-of-sexp)
