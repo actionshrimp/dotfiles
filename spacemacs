@@ -225,7 +225,11 @@ values."
   (global-fci-mode)
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
   (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
-  (spacemacs/set-leader-keys-for-major-mode 'sql-mode "sc" 'sql-connect)
+
+  (spacemacs/set-leader-keys-for-major-mode 'sql-mode
+    "sc" 'sql-connect
+    "ee" 'sql-send-paragraph)
+
   (dolist (m '(clojure-mode clojurec-mode clojurescript-mode clojurex-mode))
     (spacemacs/set-leader-keys-for-major-mode m
       "sC" 'cider-rotate-default-connection
