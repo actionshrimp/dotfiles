@@ -239,6 +239,9 @@ values."
     "ma" 'psc-ide-load-all
     "mq" 'psc-ide-server-quit)
 
+  (spacemacs/set-leader-keys "gg" 'magit-dispatch-popup)
+  (spacemacs/set-leader-keys "gL" 'magit-log-buffer-file)
+
   (evil-ex-define-cmd "W" "write")
   (evil-ex-define-cmd "Q" "q")
 
