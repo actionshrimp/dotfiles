@@ -201,6 +201,8 @@ values."
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'all
+
+   psci/arguments '("src/*.purs" "src/**/*.purs" "bower_components/purescript-*/src/**/*.purs")
    ))
 
 (defun dotspacemacs/user-init ()
