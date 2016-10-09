@@ -1,5 +1,6 @@
 antigen use oh-my-zsh
 
+antigen bundle vi-mode
 antigen bundle tmux
 antigen bundle ssh-agent
 antigen bundle git
