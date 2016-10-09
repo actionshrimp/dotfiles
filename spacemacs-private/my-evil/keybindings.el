@@ -12,3 +12,9 @@
 (define-key isearch-mode-map (kbd "C-w") 'isearch-exit)
 (dolist (m (list minibuffer-local-map))
   (define-key m (kbd "C-w") 'backward-kill-word))
+
+(add-hook 'helm-after-initialize-hook
+          (lambda ()
+            (dolist (m (list helm-map
+                             helm-grep-map))
+              (define-key m (kbd "C-w") 'backward-kill-word))))

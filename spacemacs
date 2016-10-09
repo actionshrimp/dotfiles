@@ -52,6 +52,7 @@ values."
      fix-muscle-memory
      my-clojure
      my-evil-lisp
+     my-sql
      )
 
    ;; List of additional packages that will be installed without being
@@ -209,7 +210,6 @@ values."
    dotspacemacs-whitespace-cleanup 'all
 
    psci/arguments '("src/*.purs" "src/**/*.purs" "bower_components/purescript-*/src/**/*.purs")
-
    ))
 
 (defun dotspacemacs/user-init ()
@@ -218,7 +218,8 @@ values."
   user code."
   (global-linum-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
-  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors))
+  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -230,10 +231,6 @@ values."
       (setq fci-rule-width 4)
       (fci-mode 1)))
   (global-fci-mode)
-
-  (spacemacs/set-leader-keys-for-major-mode 'sql-mode
-    "sc" 'sql-connect
-    "ee" 'sql-send-paragraph)
 
   (spacemacs/set-leader-keys-for-major-mode 'purescript-mode
     "ma" 'psc-ide-load-all
@@ -249,15 +246,6 @@ values."
   (setq neo-vc-integration nil)
   (global-flycheck-mode)
 
-  (evil-define-key 'normal sql-interactive-mode-map ";" 'evil-repeat-find-char)
-  (evil-define-key 'visual sql-interactive-mode-map ";" 'evil-repeat-find-char)
-
-  (add-hook 'helm-after-initialize-hook
-            (lambda ()
-              (dolist (m (list helm-map
-                               helm-grep-map))
-                (define-key m (kbd "C-w") 'backward-kill-word))))
-
   (unless (server-running-p)
     (server-start))
 
@@ -270,10 +258,8 @@ values."
 
   (setq cider-pprint-fn 'fipp)
 
-  (spacemacs/set-leader-keys "j/" #'avy-isearch)
   (setq evil-magic 'very-magic)
-  (setq evil-move-beyond-eol t)
-  )
+  (setq evil-move-beyond-eol t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -288,8 +274,8 @@ values."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(cider-prompt-for-symbol nil)
- '(cider-prompt-save-file-on-load t)
- '(cider-repl-pop-to-buffer-on-connect nil)
+ '(cider-prompt-save-file-on-load t t)
+ '(cider-repl-pop-to-buffer-on-connect nil t)
  '(cljr-sort-comparator
    (lambda
      (s1 s2)
@@ -319,17 +305,54 @@ values."
              (/= shared-length-s1 shared-length-s2)
              (> shared-length-s1 shared-length-s2)
            (cljr--string-natural-comparator s1 s2))))))
+ '(clojure-align-binding-forms
+   (quote
+    ("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs")))
+ '(clojure-defun-indents nil)
  '(css-indent-offset 2)
+ '(fix-muscle-memory-problem-words (quote (("offlein" . "offline") ("seperate" . "separate"))))
+ '(fix-muscle-memory-use-emoji t)
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
+ '(flycheck-checkers
+   (quote
+    (elm ada-gnat asciidoc c/c++-clang c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint d-dmd emacs-lisp emacs-lisp-checkdoc erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck go-unconvert groovy haml handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy jade javascript-eslint javascript-jshint javascript-gjslint javascript-jscs javascript-standard json-jsonlint json-python-json less lua-luacheck lua perl perl-perlcritic php php-phpmd php-phpcs processing puppet-parser puppet-lint python-flake8 python-pylint python-pycompile r-lintr racket rpm-rpmlint markdown-mdl rst-sphinx rst ruby-rubocop ruby-rubylint ruby ruby-jruby rust-cargo rust sass scala scala-scalastyle scss-lint scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim sql-sqlint tex-chktex tex-lacheck texinfo typescript-tslint verilog-verilator xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby psc)))
+ '(flycheck-display-errors-function (quote flycheck-pos-tip-error-messages))
+ '(flycheck-emacs-lisp-load-path (quote inherit))
+ '(flycheck-global-modes
+   (quote
+    (haskell-mode json-mode js2-mode coffee-mode sh-mode web-mode slim-mode scss-mode sass-mode less-mode jade-mode haml-mode)))
+ '(flycheck-pos-tip-mode t)
  '(flycheck-pos-tip-timeout 0)
+ '(flycheck-standard-error-navigation nil)
+ '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(haskell-process-suggest-hoogle-imports t)
+ '(magit-merge-arguments (quote ("--no-ff")))
+ '(magit-rebase-arguments (quote ("--autostash")))
  '(nrepl-log-messages nil)
  '(projectile-use-git-grep t)
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
-    ((js-indent-level . 2)
+    ((eval define-clojure-indent
+           (lazy-seq 0)
+           (match 1)
+           (try+ 0))
+     (eval define-clojure-indent
+           (lazy-seq 0)
+           (match 1)
+           (try+ 0)
+           (deftype
+               (quote defun)))
+     (eval define-clojure-indent
+           (mlet 1)
+           (lazy-seq 0)
+           (match 1)
+           (try+ 0)
+           (deftype
+               (quote defun)))
+     (cider-boot-parameters . "cider repl -s wait")
+     (js-indent-level . 2)
      (js2-basic-offset . 2)
      (eval define-clojure-indent
            (mlet 1)
@@ -366,8 +389,11 @@ values."
             (quote defun))
            (try+ 0)
            (doto-let 1)
-           (match 1)
-           (mlet 1))
+           (match
+            (quote defun))
+           (mlet 1)
+           (deftype
+               (quote defun)))
      (cider-refresh-after-fn . "yoyo/start!")
      (cider-refresh-before-fn . "yoyo/stop!"))))
  '(sp-highlight-pair-overlay nil)
