@@ -38,7 +38,9 @@ values."
      syntax-checking
      version-control
      clojure
-     (haskell :variables haskell-enable-ghci-ng-support t)
+     (haskell :variables
+              haskell-enable-ghci-ng-support t
+              haskell-completion-backend 'intero)
      javascript
      shell-scripts
      html
