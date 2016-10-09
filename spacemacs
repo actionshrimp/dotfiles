@@ -48,13 +48,14 @@ values."
      elm
      yaml
      purescript
+     fix-muscle-memory
      )
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(evil-smartparens flycheck-clojure fix-muscle-memory)
+   dotspacemacs-additional-packages '(evil-smartparens flycheck-clojure)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -206,8 +207,6 @@ values."
 
    psci/arguments '("src/*.purs" "src/**/*.purs" "bower_components/purescript-*/src/**/*.purs")
 
-   ;;needed for fix-muscle-memory
-   abbrev-mode t
    ))
 
 (defun dotspacemacs/user-init ()
@@ -222,7 +221,6 @@ values."
   "Configuration function for user code.
   This function is called at the very end of Spacemacs initialization after
   layers configuration. You are free to put any user code."
-  (require 'fix-muscle-memory)
   (define-globalized-minor-mode global-fci-mode fci-mode
     (lambda ()
       (setq fci-rule-color "#073642")
