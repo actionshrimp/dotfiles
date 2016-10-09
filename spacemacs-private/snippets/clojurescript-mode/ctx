@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : ctx with destructured !app
+#key : ctx
+#contributor : Dave Aitken
+# --
+{:keys [!app] :as ctx}

@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: pprint
+# key: ppr
+# --
+(clojure.pprint/pprint $1)
