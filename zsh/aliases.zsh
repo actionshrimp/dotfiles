@@ -14,3 +14,7 @@ alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 function kh {
   sed -i '' "$1d" ~/.ssh/known_hosts
 }
+
+function plot-uptime {
+  interval -t "$1" "curl -H \"User-Agent: twitterbot\" --connect-timeout 5 -so /dev/null -w \"%{http_code}\n\" $2" | plot
+}
