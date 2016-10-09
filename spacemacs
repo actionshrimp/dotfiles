@@ -54,7 +54,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(evil-smartparens)
+   dotspacemacs-additional-packages '(evil-smartparens flycheck-clojure)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -309,6 +309,7 @@ values."
 
   (define-key evil-lisp-state-map (kbd "C") 'evil-sp-change-line)
 
+  (eval-after-load 'flycheck '(flycheck-clojure-setup))
 
   )
 
