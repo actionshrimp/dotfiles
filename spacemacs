@@ -49,13 +49,15 @@ values."
      yaml
      purescript
      fix-muscle-memory
+     my-clojure
+     my-evil-lisp
      )
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(evil-smartparens flycheck-clojure)
+   dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -234,11 +236,6 @@ values."
     "sc" 'sql-connect
     "ee" 'sql-send-paragraph)
 
-  (dolist (m '(clojure-mode clojurec-mode clojurescript-mode clojurex-mode))
-    (spacemacs/set-leader-keys-for-major-mode m
-      "sC" 'cider-rotate-default-connection
-      "ep" 'cider-pprint-eval-last-sexp))
-
   (spacemacs/set-leader-keys-for-major-mode 'purescript-mode
     "ma" 'psc-ide-load-all
     "mq" 'psc-ide-server-quit)
@@ -265,8 +262,6 @@ values."
   (evil-define-key 'normal sql-interactive-mode-map ";" 'evil-repeat-find-char)
   (evil-define-key 'visual sql-interactive-mode-map ";" 'evil-repeat-find-char)
 
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-
   (dolist (m (list minibuffer-local-map))
     (define-key m (kbd "C-w") 'backward-kill-word))
 
@@ -291,28 +286,6 @@ values."
   (spacemacs/set-leader-keys "j/" #'avy-isearch)
   (setq evil-magic 'very-magic)
   (setq evil-move-beyond-eol t)
-
-  (define-key evil-lisp-state-map (kbd "{") (evil-lisp-state-enter-command paredit-wrap-curly))
-  (define-key evil-lisp-state-map (kbd "}") (evil-lisp-state-enter-command paredit-wrap-curly))
-  (define-key evil-lisp-state-map (kbd "[") (evil-lisp-state-enter-command paredit-wrap-square))
-  (define-key evil-lisp-state-map (kbd "]") (evil-lisp-state-enter-command paredit-wrap-square))
-  (define-key evil-lisp-state-map (kbd "W") (evil-lisp-state-enter-command paredit-splice-sexp))
-  (define-key evil-lisp-state-map (kbd "k") (evil-lisp-state-enter-command sp-backward-up-sexp))
-  (define-key evil-lisp-state-map (kbd "h") (evil-lisp-state-enter-command sp-backward-sexp))
-  (define-key evil-lisp-state-map (kbd "j") (evil-lisp-state-enter-command sp-down-sexp))
-  (define-key evil-lisp-state-map (kbd "l") (evil-lisp-state-enter-command sp-next-sexp))
-
-  (define-key evil-lisp-state-map (kbd "x") 'evil-lisp-state-sp-kill-sexp)
-
-  (define-key evil-lisp-state-map (kbd "A") '(lambda ()
-                                               (interactive)
-                                               (evil-lisp-state-sp-end-of-sexp)
-                                               (evil-lisp-state-evil-insert-state)))
-
-  (define-key evil-lisp-state-map (kbd "C") 'evil-sp-change-line)
-
-  (eval-after-load 'flycheck '(flycheck-clojure-setup))
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
