@@ -64,11 +64,6 @@ if ! $ISWINDOWS ; then
     if ! $ISOSX; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     fi
-
-    # Add RVM to PATH for scripting
-    PATH=$PATH:$HOME/.rvm/bin
-
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fi
 
 # Alias definitions.
