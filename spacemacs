@@ -34,10 +34,10 @@ values."
      emacs-lisp
      git
      markdown
-     ;;org
+     org
      (shell :variables shell-default-height 30 shell-default-position 'bottom)
      syntax-checking
-     version-control
+     (version-control)
      clojure
      (haskell :variables
               haskell-enable-ghci-ng-support t
@@ -49,10 +49,12 @@ values."
      elm
      yaml
      purescript
+     ruby
      fix-muscle-memory
      my-clojure
      my-evil-lisp
      my-sql
+     my-js-json
      )
 
    ;; List of additional packages that will be installed without being
@@ -239,6 +241,9 @@ values."
   (spacemacs/set-leader-keys "gg" 'magit-dispatch-popup)
   (spacemacs/set-leader-keys "gL" 'magit-log-buffer-file)
 
+  (spacemacs/set-leader-keys "w SPC" 'ace-window)
+  (spacemacs/set-leader-keys "j SPC" 'evil-avy-goto-char)
+
   (evil-ex-define-cmd "W" "write")
   (evil-ex-define-cmd "Q" "q")
 
@@ -259,7 +264,13 @@ values."
   (setq cider-pprint-fn 'fipp)
 
   (setq evil-magic 'very-magic)
-  (setq evil-move-beyond-eol t))
+  (setq evil-move-beyond-eol t)
+
+  (evil-add-hjkl-bindings flycheck-errors-mode-map 'emacs
+    (kbd "C-w C-w") 'other-window)
+
+  ;;(setq x-select-enable-clipboard nil)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -273,9 +284,12 @@ values."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(ansi-color-names-vector
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
  '(cider-prompt-for-symbol nil)
- '(cider-prompt-save-file-on-load t t)
- '(cider-repl-pop-to-buffer-on-connect nil t)
+ '(cider-prompt-save-file-on-load t)
+ '(cider-repl-pop-to-buffer-on-connect nil)
+ '(clean-aindent-mode t)
  '(cljr-sort-comparator
    (lambda
      (s1 s2)
@@ -309,8 +323,21 @@ values."
    (quote
     ("let" "when-let" "when-some" "if-let" "if-some" "binding" "loop" "doseq" "for" "with-open" "with-local-vars" "with-redefs")))
  '(clojure-defun-indents nil)
+ '(compilation-message-face (quote default))
  '(css-indent-offset 2)
- '(fix-muscle-memory-problem-words (quote (("offlein" . "offline") ("seperate" . "separate"))))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(fci-rule-color "#073642")
+ '(fix-muscle-memory-problem-words
+   (quote
+    (("iamge" . "image")
+     ("offlein" . "offline")
+     ("seperate" . "separate"))))
  '(fix-muscle-memory-use-emoji t)
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-checkers
@@ -320,18 +347,57 @@ values."
  '(flycheck-emacs-lisp-load-path (quote inherit))
  '(flycheck-global-modes
    (quote
-    (haskell-mode json-mode js2-mode coffee-mode sh-mode web-mode slim-mode scss-mode sass-mode less-mode jade-mode haml-mode)))
- '(flycheck-pos-tip-mode t)
- '(flycheck-pos-tip-timeout 0)
+    (haskell-mode json-mode js2-mode coffee-mode sh-mode web-mode slim-mode scss-mode sass-mode pug-mode less-mode haml-mode yaml-mode purescript-mode enh-ruby-mode ruby-mode)))
+ '(flycheck-pos-tip-mode nil)
+ '(flycheck-pos-tip-timeout 1)
  '(flycheck-standard-error-navigation nil)
  '(global-flycheck-mode t)
  '(global-whitespace-mode t)
  '(haskell-process-suggest-hoogle-imports t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(indent-tabs-mode nil)
+ '(js-indent-level 2)
+ '(js2-basic-offset 2)
+ '(magit-branch-arguments nil)
+ '(magit-diff-use-overlays nil)
  '(magit-merge-arguments (quote ("--no-ff")))
+ '(magit-process-connection-type t)
+ '(magit-process-log-max 3)
  '(magit-rebase-arguments (quote ("--autostash")))
+ '(neo-auto-indent-point t)
  '(nrepl-log-messages nil)
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks cider clojure-mode hydra js2-mode xterm-color web-beautify spaceline rake persp-mode paradox spinner neotree helm-make git-timemachine flycheck-pos-tip evil-mc emmet-mode elm-mode dumb-jump smartparens helm helm-core haskell-mode flycheck yasnippet magit with-editor company dash zenburn-theme yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit sql-indent spacemacs-theme solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pug-mode psci psc-ide powerline pos-tip popwin orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file multi-term move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ido-vertical-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flycheck-haskell flycheck-elm flx-ido fix-muscle-memory fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-smartparens evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
  '(projectile-use-git-grep t)
- '(ring-bell-function (quote ignore) t)
+ '(ring-bell-function (quote ignore))
  '(safe-local-variable-values
    (quote
     ((eval define-clojure-indent
@@ -396,11 +462,46 @@ values."
                (quote defun)))
      (cider-refresh-after-fn . "yoyo/start!")
      (cider-refresh-before-fn . "yoyo/stop!"))))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(solarized-distinct-doc-face t)
+ '(solarized-use-variable-pitch nil)
  '(sp-highlight-pair-overlay nil)
+ '(tab-always-indent (quote complete))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c85d17")
+     (60 . "#be730b")
+     (80 . "#b58900")
+     (100 . "#a58e00")
+     (120 . "#9d9100")
+     (140 . "#959300")
+     (160 . "#8d9600")
+     (180 . "#859900")
+     (200 . "#669b32")
+     (220 . "#579d4c")
+     (240 . "#489e65")
+     (260 . "#399f7e")
+     (280 . "#2aa198")
+     (300 . "#2898af")
+     (320 . "#2793ba")
+     (340 . "#268fc6")
+     (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
  '(vc-follow-symlinks nil)
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
  '(whitespace-style
    (quote
-    (face tabs trailing space-before-tab newline indentation empty space-after-tab tab-mark newline-mark))))
+    (face tabs trailing space-before-tab newline indentation empty space-after-tab tab-mark newline-mark)))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
