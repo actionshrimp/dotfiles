@@ -11,11 +11,24 @@ values."
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
+   ;; Lazy installation of layers (i.e. layers are installed only when a file
+   ;; with a supported type is opened). Possible values are `all', `unused'
+   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
+   ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
+   ;; lazy install any layer that support lazy installation even the layers
+   ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
+   ;; installation feature and you have to explicitly list a layer in the
+   ;; variable `dotspacemacs-configuration-layers' to install it.
+   ;; (default 'unused)
+   dotspacemacs-enable-lazy-installation 'unused
+   ;; If non-nil then Spacemacs will ask for confirmation before installing
+   ;; a layer lazily. (default t)
+   dotspacemacs-ask-for-lazy-installation t
+   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load. If it is the symbol `all' instead
-   ;; of a list then all discovered layers will be installed.
+   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
@@ -37,7 +50,8 @@ values."
      org
      (shell :variables shell-default-height 30 shell-default-position 'bottom)
      syntax-checking
-     (version-control)
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
      clojure
      (haskell :variables
               haskell-enable-ghci-ng-support t
@@ -50,11 +64,12 @@ values."
      yaml
      purescript
      ruby
-     fix-muscle-memory
+     idris
+     ;;fix-muscle-memory
      my-clojure
      my-evil-lisp
      my-sql
-     my-js-json
+     ;;my-js-json
      )
 
    ;; List of additional packages that will be installed without being
@@ -79,6 +94,7 @@ values."
   ;; spacemacs settings.
 
   (setq-default
+   exec-path-from-shell-check-startup-files nil
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
    dotspacemacs-check-for-update t
@@ -98,7 +114,7 @@ values."
    dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(projects recents)
+   dotspacemacs-startup-lists '(recents projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -117,10 +133,15 @@ values."
                                :size 12
                                :weight thin
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
 
    ;; The leader key
    dotspacemacs-leader-key "SPC"
+   ;; The command key used for Evil commands (ex-commands) and
+   ;; Emacs commands (M-x).
+   ;; By default the command key is `:' so ex-commands are executed like in Vim
+   ;; with `:' and Emacs commands are executed with `<leader> :'.
+   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -130,11 +151,11 @@ values."
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m)
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The command key used for Evil commands (ex-commands) and
-   ;; Emacs commands (M-x).
-   ;; By default the command key is `:' so ex-commands are executed like in Vim
-   ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
+   ;; If non-nil `Y' is remapped to `y$' in Evil states. (default nil)
+   dotspacemacs-remap-Y-to-y$ nil
+   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
+   ;; there. (default t)
+   dotspacemacs-retain-visual-state-on-shift t
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -218,7 +239,7 @@ values."
   "Initialization function for user code.
   It is called immediately after `dotspacemacs/init'.  You are free to put any
   user code."
-  (global-linum-mode)
+  ;;(global-linum-mode)
   (add-to-list 'exec-path "~/.cabal/bin/")
   (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
   )
@@ -233,6 +254,10 @@ values."
       (setq fci-rule-width 4)
       (fci-mode 1)))
   (global-fci-mode)
+
+  (when (eq system-type 'darwin)
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier nil))
 
   (spacemacs/set-leader-keys-for-major-mode 'purescript-mode
     "ma" 'psc-ide-load-all
@@ -249,7 +274,7 @@ values."
 
   (global-unset-key (kbd "M-c"))
   (setq neo-vc-integration nil)
-  (global-flycheck-mode)
+  ;;(global-flycheck-mode)
 
   (unless (server-running-p)
     (server-start))
@@ -270,10 +295,18 @@ values."
     (kbd "C-w C-w") 'other-window)
 
   ;;(setq x-select-enable-clipboard nil)
-  )
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
+  (setq backup-directory-alist `(("." . "~/.backups/emacs/backup")))
+  (setq backup-by-copying t)
+  (setq auto-save-file-name-transforms `((".*" "~/.backups/emacs/auto-save" t)))
+  (setq create-lockfiles nil)
+  (setq helm-ag-use-temp-buffer t))
+
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -284,11 +317,13 @@ values."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
  '(cider-prompt-for-symbol nil)
- '(cider-prompt-save-file-on-load t)
- '(cider-repl-pop-to-buffer-on-connect nil)
+ '(cider-prompt-save-file-on-load t t)
+ '(cider-repl-pop-to-buffer-on-connect nil t)
  '(clean-aindent-mode t)
  '(cljr-sort-comparator
    (lambda
@@ -329,9 +364,13 @@ values."
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(editorconfig-mode t)
+ '(evil-search-module (quote evil-search))
+ '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#073642")
  '(fix-muscle-memory-problem-words
    (quote
@@ -352,7 +391,8 @@ values."
  '(flycheck-pos-tip-timeout 1)
  '(flycheck-standard-error-navigation nil)
  '(global-flycheck-mode t)
- '(global-whitespace-mode t)
+ '(global-whitespace-mode nil)
+ '(haskell-hoogle-command "stack hoogle")
  '(haskell-process-suggest-hoogle-imports t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
@@ -380,27 +420,30 @@ values."
  '(indent-tabs-mode nil)
  '(js-indent-level 2)
  '(js2-basic-offset 2)
- '(magit-branch-arguments nil)
- '(magit-diff-use-overlays nil)
  '(magit-merge-arguments (quote ("--no-ff")))
- '(magit-process-connection-type t)
- '(magit-process-log-max 3)
  '(magit-rebase-arguments (quote ("--autostash")))
- '(neo-auto-indent-point t)
+ '(neo-auto-indent-point t t)
  '(nrepl-log-messages nil)
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks cider clojure-mode hydra js2-mode xterm-color web-beautify spaceline rake persp-mode paradox spinner neotree helm-make git-timemachine flycheck-pos-tip evil-mc emmet-mode elm-mode dumb-jump smartparens helm helm-core haskell-mode flycheck yasnippet magit with-editor company dash zenburn-theme yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit sql-indent spacemacs-theme solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pug-mode psci psc-ide powerline pos-tip popwin orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file multi-term move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ido-vertical-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flycheck-haskell flycheck-elm flx-ido fix-muscle-memory fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-smartparens evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (packed auto-complete alert simple-httpd json-snatcher json-reformat haml-mode web-completion-data dash-functional ghc edn multiple-cursors paredit peg queue markdown-mode inflections bind-key tern iedit bind-map highlight request projectile skewer-mode magit-popup git-commit purescript-mode inf-ruby pcre2el idris-mode prop-menu erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks cider clojure-mode hydra js2-mode xterm-color web-beautify spaceline rake persp-mode paradox spinner neotree helm-make git-timemachine flycheck-pos-tip evil-mc emmet-mode elm-mode dumb-jump smartparens helm helm-core haskell-mode flycheck yasnippet magit with-editor company dash zenburn-theme yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit sql-indent spacemacs-theme solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pug-mode psci psc-ide powerline pos-tip popwin orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file multi-term move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ido-vertical-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flycheck-haskell flycheck-elm flx-ido fix-muscle-memory fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-smartparens evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal column-enforce-mode coffee-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(projectile-use-git-grep t)
+ '(psc-ide-add-import-on-completion t t)
+ '(psc-ide-rebuild-on-save nil t)
  '(ring-bell-function (quote ignore))
  '(safe-local-variable-values
    (quote
     ((eval define-clojure-indent
+           (lazy-seq 0)
+           (match 1)
+           (try+ 0)
+           (pdoseq 2))
+     (eval define-clojure-indent
            (lazy-seq 0)
            (match 1)
            (try+ 0))
@@ -513,3 +556,4 @@ values."
  '(sp-pair-overlay-face ((t (:inherit nil))))
  '(whitespace-empty ((t (:foreground "#073642" :inverse-video t))))
  '(whitespace-newline ((t (:foreground "dark slate gray")))))
+)
