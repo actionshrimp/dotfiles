@@ -31,6 +31,8 @@
 
 (defconst my-evil-lisp-packages
   '(evil-smartparens)
+  ;;parinfer
+
   "The list of Lisp packages required by the evil-lisp-bindings layer.
 
 Each entry is either:
@@ -65,5 +67,33 @@ Each entry is either:
     (add-hook 'clojurescript-mode-hook #'evil-smartparens-mode)
     (add-hook 'clojurec-mode-hook #'evil-smartparens-mode)
     (add-hook 'clojurex-mode-hook #'evil-smartparens-mode)))
+
+;;(defun my-evil-lisp/init-evil-cleverparens ()
+;;  ;;(add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
+;;  (when (configuration-layer/package-usedp 'clojure-mode) 
+;;    (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+;;    (add-hook 'clojurescript-mode-hook #'evil-cleverparens-mode)
+;;    (add-hook 'clojurec-mode-hook #'evil-cleverparens-mode)
+;;    (add-hook 'clojurex-mode-hook #'evil-cleverparens-mode)))
+
+;;(defun my-evil-lisp/init-parinfer ()
+;;  (use-package parinfer
+;;    :init
+;;    (progn
+;;      (setq-default parinfer-lighters '(" infer" . " (infer)"))
+;;      (setq-default parinfer-extensions
+;;                    '(defaults
+;;                       pretty-parens
+;;                       evil
+;;                       ;; lispy
+;;                       smart-tab
+;;                       smart-yank
+;;      (add-hook 'clojure-mode-hook #'parinfer-mode)
+;;      (add-hook 'clojurescript-mode-hook #'parinfer-mode)
+;;      (add-hook 'clojurec-mode-hook #'parinfer-mode)
+;;      (add-hook 'clojurex-mode-hook #'parinfer-mode)
+;;      (add-hook 'racket-mode-hook #'parinfer-mode)
+;;      (add-hook 'scheme-mode-hook #'parinfer-mode)
+;;      (add-hook 'emacs-lisp-mode-hook #'parinfer-mode))))
 
 ;;; packages.el ends here

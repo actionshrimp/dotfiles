@@ -13,6 +13,11 @@
 (dolist (m (list minibuffer-local-map))
   (define-key m (kbd "C-w") 'backward-kill-word))
 
+(evil-ex-define-cmd "W" "write")
+(evil-ex-define-cmd "Q" "q")
+
+(spacemacs/set-leader-keys "w SPC" 'ace-window)
+
 (add-hook 'helm-after-initialize-hook
           (lambda ()
             (dolist (m (list helm-map

@@ -1,4 +1,4 @@
-;;; packages.el --- my-js-json layer packages file for Spacemacs.
+;;; packages.el --- my-sql layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
 ;;
@@ -18,20 +18,21 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `my-js-json-packages'. Then, for each package PACKAGE:
+;; added to `my-sql-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `my-js-json/init-PACKAGE' to load and initialize the package.
+;;   function `my-sql/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `my-js-json/pre-init-PACKAGE' and/or
-;;   `my-js-json/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `my-sql/pre-init-PACKAGE' and/or
+;;   `my-sql/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst my-js-json-packages
-  '(json-mode)
-  "The list of Lisp packages required by the my-js-json layer.
+(defconst my-magit-packages
+  '(magit)
+  "The list of Lisp packages required by the my-sql layer.
+
 Each entry is either:
 
 1. A symbol, which is interpreted as a package to be installed, or
@@ -57,10 +58,5 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun my-js-json/init-json-mode ()
-  (add-hook 'json-mode-hook
-            (lambda ()
-              (make-local-variable 'js-indent-level)
-              (setq js-indent-level 2))))
 
 ;;; packages.el ends here
