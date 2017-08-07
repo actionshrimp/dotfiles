@@ -26,7 +26,10 @@ if [ -n "$INSIDE_EMACS" ]; then
   print -P "\033AnSiTc %d"
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-if type "rbenv" > /dev/null; then
-      eval "$(rbenv init -)"
-fi
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#if type "rbenv" > /dev/null; then
+#      eval "$(rbenv init -)"
+#fi
+
+# added by travis gem
+[ -f /Users/dave/.travis/travis.sh ] && source /Users/dave/.travis/travis.sh
