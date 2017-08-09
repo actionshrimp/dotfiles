@@ -4,17 +4,21 @@ filetype off
 set shellslash
 
 set rtp+=~/.vim/bundle/Vundle.vim
+
+let mapleader = "\<Space>"
+
 call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
+Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'scrooloose/nerdtree'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jnurmine/Zenburn'
@@ -22,7 +26,6 @@ Bundle 'othree/xml.vim'
 Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'ack.vim'
 Bundle 'paredit.vim'
 Bundle 'tpope/vim-fireplace'
 Bundle 'jiangmiao/simple-javascript-indenter'
@@ -30,7 +33,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'SirVer/ultisnips'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/tComment'
-Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'b4winckler/vim-angry'
@@ -42,6 +44,13 @@ Bundle 'eagletmt/ghcmod-vim'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'actionshrimp/vim-xpath'
 Bundle 'avakhov/vim-yaml'
+Bundle 'fatih/vim-go'
+
+Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
+
+Bundle 'easymotion/vim-easymotion'
+
 
 call vundle#end()
 
@@ -85,35 +94,35 @@ let g:airline_theme = 'solarized'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" airline symbols
+"" airline symbols
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '⮀'
-let g:airline_right_sep = '⮂'
-if s:os == "osx"
-    let g:airline_left_sep = ''
-    let g:airline_right_sep = ''
-endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇ '
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '*'
 let g:airline_symbols.whitespace = 'Ξ'
 
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#right_sep = '⮂'
-if s:os == "osx"
-    let g:airline#extensions#tabline#left_sep = ''
-    let g:airline#extensions#tabline#right_sep = ''
-endif
 let g:airline#extensions#branch#enabled = 1
 
-set t_Co=16
+set t_Co=256
 syntax enable
 "Colorscheme settings
 set background=dark
@@ -160,19 +169,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost /tmp*clj set bufhidden=delete
 noremap <leader>bo :BufOnly<CR>
 
-nmap <F2> :NERDTreeToggle<CR>
-nmap <leader><F2> :NERDTreeFind<CR>
-
-function! ToggleGStatus()
-    if buflisted(bufname('.git/index'))
-        bd .git/index
-    else
-        Gstatus
-    endif
-endfunction
-command ToggleGStatus :call ToggleGStatus()
-nmap <F3> :ToggleGStatus<CR>
-
 "Fullscreen when entering the gui
 if has('gui')
     au GUIEnter * simalt ~x
@@ -203,7 +199,6 @@ let g:SimpleJsIndenter_BriefMode = 1
 "Allow multiple visual indents
 vnoremap < <gv
 vnoremap > >gv
-
 
 let g:rainbows=0
 function! ToggleRainbows()
@@ -245,9 +240,6 @@ if filereadable(glob('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
-let g:ctrlp_root_markers = ['.ctrlp_root']
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|build|out|(resources\/public\/(out|css)))$'
-
 noremap <leader>d :windo ToggleDiff<CR>
 function! ToggleDiff()
     if &diff
@@ -259,9 +251,8 @@ endfunction
 command ToggleDiff :call ToggleDiff()
 
 "Vim fireplace bindings
-noremap <leader>ea :silent %Eval<CR>:Last!<CR>
-noremap <leader>ec :silent Eval<CR>:Last!<CR>
-command WeaselConnect :Piggieback (weasel.repl.websocket/repl-env :ip "0.0.0.0" :port 9001)<CR>
+"noremap <leader>ea :silent %Eval<CR>:Last!<CR>
+"noremap <leader>ec :silent Eval<CR>:Last!<CR>
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -271,7 +262,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_javascript_checkers = ['jshint', 'jscs', 'eslint', 'flow']
 let g:syntastic_python_checkers = ['python', 'pyflakes']
 au BufNewFile,BufRead *.jsx let b:syntastic_checkers = ['jsxhint']
 au BufNewFile,BufRead *.hs let b:syntastic_checkers = ['hdevtools', 'hlint']
@@ -283,3 +274,96 @@ set iskeyword+=-
 
 set exrc
 set secure
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! AgCurrentWord()
+    exec "Ag " . expand("<cword>")
+endfunction
+
+function! ToggleExplorerAtRoot()
+  if exists(':ProjectRootExe')
+    exe "ProjectRootExe NERDTreeToggle"
+  else
+    exe "NERDTreeToggle"
+  endif
+endfunction
+
+" errors (syntastic integration)
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    SyntasticToggleMode
+    " lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        " Errors
+        SyntasticCheck
+    endif
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Alphabetical and avoid <SILENT> for now.
+nmap <LEADER><TAB> <C-^>
+nmap <Leader>? :Unite output:nmap\ \<Leader\><CR>
+nmap <Leader>;  <Plug>Commentary
+nmap <Leader>;; <Plug>CommentaryLine
+omap <Leader>;  <Plug>Commentary
+vmap <Leader>;  <Plug>Commentary
+nmap <Leader>au :UndotreeToggle<CR>
+nmap <LEADER>bb :buffers<CR>
+nmap <LEADER>bd :bdelete<CR>
+nmap <LEADER>bn :bn<CR>
+nmap <LEADER>bp :bp<CR>
+nmap <LEADER>bR :e<CR>
+nmap <silent> <Leader>el :<C-u>call ToggleErrors()<CR>
+nmap <silent> <Leader>en :lnext<CR>
+nmap <silent> <Leader>ep :lprev<CR>
+nmap <LEADER>fed :e ~/.vimrc<CR>
+nmap <LEADER>feR :source ~/.vimrc<CR>
+"nmap <LEADER>ff :CtrlPCurFile<CR>
+"nmap <LEADER>fr :CtrlPMRU<CR>
+nmap <LEADER>fs :w<CR>
+nmap <LEADER>fS :wa<CR>
+nmap <LEADER>ft :NERDTreeToggle<CR>
+nmap <LEADER>gb :Gblame<CR>
+nmap <LEADER>gd :Gdiff<CR>
+nmap <LEADER>gs :Gstatus<CR>
+nmap <Leader>j= mzgg=G`z
+"nmap <LEADER>pf :CtrlPRoot<CR>
+nmap <LEADER>pt :call ToggleExplorerAtRoot()<CR>
+nmap <LEADER>qq :qa<CR>
+nmap <Leader>qQ :qa!<CR>
+nmap <Leader>qs :xa<CR>
+nmap <Leader>sc :noh<CR>
+nmap <LEADER>sp :Ag<SPACE>
+nmap <LEADER>tn :set number!<CR>
+nmap <LEADER>tl :set wrap!<CR>
+nmap <Leader>Td :GitGutterToggle<CR>
+nmap <LEADER>w- :sp<CR>
+nmap <LEADER>w/ :vsp<CR>
+nmap <LEADER>w= <C-W>=
+nmap <LEADER>wc :q<CR>
+nmap <LEADER>wh <C-W>h
+nmap <LEADER>wj <C-W>j
+nmap <LEADER>wk <C-W>k
+nmap <LEADER>wl <C-W>l
+nmap <LEADER>ws <C-W>s
+nmap <LEADER>wv <C-W>v
+nmap <LEADER>wm :MaximizerToggle<CR>
+nmap <LEADER>ww <C-W><C-W>
+nmap <Leader>y <Plug>(easymotion-bd-jk)
+
+nmap <LEADER>pf :Files<CR>
+nmap <Leader>/ :Ag<CR>
+nmap <Leader>* :call AgCurrentWord()<CR>
+nmap <Leader>jj <Plug>(easymotion-overwin-f)
+
+autocmd FileType clojure nmap <buffer> <Leader>ee 
+
+"Fix the left window binding in neovim
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
