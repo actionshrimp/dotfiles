@@ -73,6 +73,7 @@ values."
      my-evil-lisp
      my-sql
      my-js-json
+     my-haskell
      (go :variables go-use-gometalinter t)
      )
    ;; List of additional packages that will be installed without being
