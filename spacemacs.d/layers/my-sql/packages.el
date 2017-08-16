@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst my-sql-packages
-  '()
+  '(flycheck sql-mode)
   "The list of Lisp packages required by the my-sql layer.
 
 Each entry is either:
@@ -57,6 +57,9 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
+(defun my-sql/post-init-flycheck ()
+  (add-hook 'sql-mode-hook 'flycheck-mode))
 
 
 ;;; packages.el ends here
