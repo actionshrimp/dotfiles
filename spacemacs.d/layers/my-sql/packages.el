@@ -61,5 +61,6 @@ Each entry is either:
 (defun my-sql/post-init-flycheck ()
   (add-hook 'sql-mode-hook 'flycheck-mode))
 
+(defun my-sql/post-init-sql-mode ())
 
 ;;; packages.el ends here
