@@ -33,3 +33,5 @@ fi
 
 # added by travis gem
 [ -f /Users/dave/.travis/travis.sh ] && source /Users/dave/.travis/travis.sh
+
+source <(kubectl completion zsh)

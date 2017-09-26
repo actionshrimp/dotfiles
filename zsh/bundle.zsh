@@ -12,7 +12,6 @@ antigen bundle ~/dotfiles/zsh/scripts/sane-completion.zsh
 antigen bundle junegunn/fzf
 antigen bundle yonchu/grunt-zsh-completion
 antigen bundle StackExchange/blackbox
-antigen bundle ~/dotfiles/zsh/scripts/kubectl.zsh
 
 antigen theme ~/dotfiles/zsh/themes/actionshrimp.zsh
 antigen apply
