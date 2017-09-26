@@ -35,3 +35,4 @@ fi
 [ -f /Users/dave/.travis/travis.sh ] && source /Users/dave/.travis/travis.sh
 
 source <(kubectl completion zsh)
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/*.zsh.inc
