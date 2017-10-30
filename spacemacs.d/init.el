@@ -367,6 +367,10 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq exec-path-from-shell-check-startup-files nil)
+  (with-eval-after-load 'magit
+    (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules))
+  (setq solarized-use-variable-pitch nil
+        solarized-scale-org-headlines nil)
   )
 
 (defun dotspacemacs/user-config ()
