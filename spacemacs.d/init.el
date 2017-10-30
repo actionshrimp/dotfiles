@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(ocaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -57,6 +57,8 @@ This function should only modify configuration layer settings."
               haskell-enable-ghci-ng-support t
               haskell-completion-backend 'intero)
      javascript
+     (node :variables
+           node-add-modules-path t)
      shell-scripts
      html
      sql
