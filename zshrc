@@ -36,3 +36,5 @@ fi
 
 source <(kubectl completion zsh)
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/*.zsh.inc
+
+export KUBE_EDITOR=vim
