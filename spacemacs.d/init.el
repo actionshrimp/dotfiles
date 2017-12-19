@@ -382,6 +382,7 @@ before packages are loaded."
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
   (setq neo-theme 'arrow)
+  (setq company-idle-delay nil)
 
   )
 
