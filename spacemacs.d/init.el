@@ -62,7 +62,9 @@ This function should only modify configuration layer settings."
      shell-scripts
      html
      sql
-     (elm :variables elm-format-on-save t)
+     (elm :variables
+          elm-format-on-save t
+          elm-sort-imports-on-save t)
      yaml
      purescript
      ruby
