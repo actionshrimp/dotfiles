@@ -381,7 +381,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
-  (setq neo-theme 'arrow)
+  (setq neo-theme 'nerd)
   (setq company-idle-delay nil)
 
   )
