@@ -76,7 +76,6 @@ This function should only modify configuration layer settings."
      my-sql
      my-js-json
      my-haskell
-     (go :variables go-use-gometalinter t)
      my-ocaml
      )
    ;; List of additional packages that will be installed without being
