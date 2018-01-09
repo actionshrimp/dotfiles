@@ -422,7 +422,10 @@ This function is called at the very end of Spacemacs initialization."
            (pdoseq 2))
      (cider-refresh-after-fn . "bounce.core/start!")
      (cider-refresh-before-fn . "bounce.core/stop!")
-     (cider-cljs-lein-repl . "(user/cljs-repl)")))))
+     (cider-cljs-lein-repl . "(user/cljs-repl)")
+     (eval tuareg-opam-update-env "/Users/dave/dev/ai/sigmax")
+     (utop-command . "jbuilder utop . -- -emacs")))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
