@@ -30,7 +30,8 @@
 ;;; Code:
 
 (defconst my-ocaml-packages
-  '()
+  '(flycheck-ocaml
+    tuareg-mode)
   "The list of Lisp packages required by the my-ocaml layer.
 
 Each entry is either:
@@ -59,7 +60,20 @@ Each entry is either:
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
 
-(with-eval-after-load 'tuareg
+(defun my-ocaml/init-flycheck-ocaml ()
+  (use-package flycheck-ocaml
+    :defer t
+    :init (progn
+            (with-eval-after-load 'merlin
+              ;; Disable Merlin's own error checking
+              (setq merlin-error-after-save nil)
+
+              ;; Enable Flycheck checker
+              (flycheck-ocaml-setup))
+
+            (add-hook 'tuareg-mode-hook 'flycheck-mode))))
+
+(defun my/ocaml/post-init-tuareg-mode '()
   (progn
 
     ;; Noop to stop tuareg-abbrev-hook error popping up when hitting escape

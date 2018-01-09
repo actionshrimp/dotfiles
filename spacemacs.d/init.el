@@ -29,7 +29,11 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ocaml
+   '(
+     (osx :variables
+          osx-right-command-as 'meta
+          ;;osx-right-command-as 'super
+          )
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -72,6 +76,8 @@ This function should only modify configuration layer settings."
      idris
      rust
      python
+     ocaml
+     my-ocaml
      ;;fix-muscle-memory
      my-clojure
      ;; my-lispy
