@@ -75,11 +75,6 @@ Each entry is either:
 
 (defun my/ocaml/post-init-tuareg-mode '()
   (progn
-
-    ;; Noop to stop tuareg-abbrev-hook error popping up when hitting escape
-    (defun tuareg-abbrev-hook ()
-      ())
-
     (defun tuareg-run-imandra ()
       (interactive)
       (minibuffer-with-setup-hook
