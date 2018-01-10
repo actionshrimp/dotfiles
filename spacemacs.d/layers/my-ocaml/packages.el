@@ -73,7 +73,7 @@ Each entry is either:
 
             (add-hook 'tuareg-mode-hook 'flycheck-mode))))
 
-(defun my/ocaml/post-init-tuareg-mode '()
+(defun my-ocaml/post-init-tuareg-mode '()
   (progn
     (defun tuareg-run-imandra ()
       (interactive)
