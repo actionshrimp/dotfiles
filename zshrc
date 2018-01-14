@@ -13,28 +13,24 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
 
 SPACESHIP_TIME_SHOW=true
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 
-#fzf_platform='*darwin*amd64*'
-#if [[ $(uname) == 'Linux' ]]; then
-#    fzf_platform='*linux*amd64*'
-#fi
-#zplug "junegunn/fzf-bin", \
-#      from:gh-r, \
-#      as:command, \
-#      rename-to:fzf, \
-#      use:"${fzf_platform}"
-#unset fzf_platform
-
-if ! [[ -f ~/.fzf.zsh ]] ; then
-    if ! [[ -f ~/.fzf/install ]] ; then
-        rm -rf ~/.fzf
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    fi
-    ~/.fzf/install --all
+fzf_platform='*darwin*amd64*'
+if [[ $(uname) == 'Linux' ]]; then
+    fzf_platform='*linux*amd64*'
 fi
+zplug "junegunn/fzf-bin", \
+      from:gh-r, \
+      as:command, \
+      rename-to:fzf, \
+      use:"${fzf_platform}"
+unset fzf_platform
+zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+zplug "junegunn/fzf", use:"shell/completion.zsh"
+zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -48,8 +44,9 @@ PATH=$ZPLUG_BIN:$PATH
 
 # Then, source plugins and add commands to $PATH
 zplug load
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget
 HISTFILE=.zhistory
-source ~/.fzf.zsh
 alias gs="git status"
 alias gc="git commit"
 alias gp="git pull"
