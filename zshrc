@@ -45,6 +45,8 @@ PATH=$ZPLUG_BIN:$PATH
 # Then, source plugins and add commands to $PATH
 zplug load
 
+zle     -N   fzf-file-widget
+bindkey '^T' fzf-file-widget
 zle     -N    fzf-cd-widget
 bindkey '\ec' fzf-cd-widget
 zle     -N   fzf-history-widget
