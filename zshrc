@@ -50,3 +50,11 @@ PATH=$ZPLUG_BIN:$PATH
 zplug load
 HISTFILE=.zhistory
 source ~/.fzf.zsh
+alias gs="git status"
+alias gc="git commit"
+alias gp="git pull"
+alias gl="git log"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
+alias gco="git checkout"
