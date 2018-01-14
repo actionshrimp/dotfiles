@@ -58,3 +58,5 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 alias gco="git checkout"
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
