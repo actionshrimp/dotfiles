@@ -2,5 +2,7 @@
 
 export COMPLETION_WAITING_DOTS="true"
 export ZSH_TMUX_AUTOQUIT=false
-PATH=./node_modules/.bin:$GOPATH/bin:$PATH
-export GOPATH=~/.go
+
+PATH=~/.node_modules/bin:$PATH
+PATH=./node_modules/.bin:$PATH
+PATH=~/.local/bin:$PATH

@@ -1,40 +1,52 @@
-source ~/dotfiles/zsh/platform.zsh
-source ~/dotfiles/zsh/settings.zsh
-source ~/dotfiles/zsh/antigen.zsh
-source ~/dotfiles/zsh/bundle.zsh
+# brew install zplug / aura -As zplug
 
-source ~/dotfiles/zsh/scripts/sane-completion.zsh
-source ~/dotfiles/zsh/scripts/fzf.zsh
-
-source ~/dotfiles/zsh/aliases.zsh
-
-if [[ $platform == "linux" ]]; then
-    source ~/dotfiles/zsh/platforms/linux.zsh
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
 fi
 
-if [[ $platform == "osx" ]]; then
-    source ~/dotfiles/zsh/platforms/osx.zsh
-fi
+source ~/.zplug/init.zsh
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-[[ $TERM == eterm-color ]] && export TERM=xterm
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
 
-if [ -n "$INSIDE_EMACS" ]; then
-  chpwd() { print -P "\033AnSiTc %d" }
-  print -P "\033AnSiTu %n"
-  print -P "\033AnSiTc %d"
-fi
+SPACESHIP_TIME_SHOW=true
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#if type "rbenv" > /dev/null; then
-#      eval "$(rbenv init -)"
+#fzf_platform='*darwin*amd64*'
+#if [[ $(uname) == 'Linux' ]]; then
+#    fzf_platform='*linux*amd64*'
 #fi
+#zplug "junegunn/fzf-bin", \
+#      from:gh-r, \
+#      as:command, \
+#      rename-to:fzf, \
+#      use:"${fzf_platform}"
+#unset fzf_platform
 
-# added by travis gem
-[ -f /Users/dave/.travis/travis.sh ] && source /Users/dave/.travis/travis.sh
+if ! [[ -f ~/.fzf.zsh ]] ; then
+    if ! [[ -f ~/.fzf/install ]] ; then
+        rm -rf ~/.fzf
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    fi
+    ~/.fzf/install --all
+fi
 
-source <(kubectl completion zsh)
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/*.zsh.inc
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-export KUBE_EDITOR=vim
+# Temporary workaround for zplug bug
+PATH=$ZPLUG_BIN:$PATH
+
+# Then, source plugins and add commands to $PATH
+zplug load
+HISTFILE=.zhistory
+source ~/.fzf.zsh
