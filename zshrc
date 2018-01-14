@@ -44,8 +44,12 @@ PATH=$ZPLUG_BIN:$PATH
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+zle     -N    fzf-cd-widget
+bindkey '\ec' fzf-cd-widget
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
+
 HISTFILE=.zhistory
 alias gs="git status"
 alias gc="git commit"
