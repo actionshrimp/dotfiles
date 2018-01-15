@@ -11,7 +11,6 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
@@ -90,7 +89,7 @@ set guioptions-=e
 
 "Statusline (and powerline) config
 set laststatus=2
-let g:airline_theme = 'solarized'
+"let g:airline_theme = 'solarized'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -126,7 +125,7 @@ set t_Co=256
 syntax enable
 "Colorscheme settings
 set background=dark
-colorscheme solarized
+"colorscheme afterglow
 
 set foldmethod=syntax
 let g:xml_syntax_folding=1
