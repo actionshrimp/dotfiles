@@ -62,3 +62,5 @@ alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 alias gco="git checkout"
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+[ -f ~/.bash_profile ] && source ~/.bash_profile
