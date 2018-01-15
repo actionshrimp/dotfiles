@@ -13,7 +13,6 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-autosuggestions"
 
 SPACESHIP_TIME_SHOW=true
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
