@@ -1,5 +1,6 @@
 # brew install zplug / aura -As zplug
 
+# This needs to come before zsh-syntax-highlighting for some reason
 autoload -U select-word-style
 select-word-style bash
 
