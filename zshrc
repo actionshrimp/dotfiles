@@ -54,7 +54,10 @@ bindkey '^T' fzf-file-widget
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-HISTFILE=.zhistory
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+setopt inc_append_history share_history
+
 alias gs="git status"
 alias gc="git commit"
 alias gp="git pull"
