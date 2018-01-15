@@ -48,8 +48,6 @@ zplug load
 FZF_TMUX=1
 zle     -N   fzf-file-widget
 bindkey '^T' fzf-file-widget
-zle     -N    fzf-cd-widget
-bindkey '\ec' fzf-cd-widget
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
