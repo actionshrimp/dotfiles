@@ -86,6 +86,7 @@ This function should only modify configuration layer settings."
      my-js-json
      my-haskell
      my-ocaml
+     my-python
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -424,8 +425,10 @@ This function is called at the very end of Spacemacs initialization."
      (cider-refresh-before-fn . "bounce.core/stop!")
      (cider-cljs-lein-repl . "(user/cljs-repl)")
      (eval tuareg-opam-update-env "/Users/dave/dev/ai/sigmax")
-     (utop-command . "jbuilder utop . -- -emacs")))))
-
+     (utop-command . "jbuilder utop . -- -emacs")
+     (eval tuareg-opam-update-env "/home/dave/dev/ai/sigmax")
+     (eval pyvenv-activate "/home/dave/dev/ai/test-manager/venv")
+     ))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
