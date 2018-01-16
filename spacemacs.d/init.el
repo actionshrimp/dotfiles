@@ -390,6 +390,10 @@ before packages are loaded."
   (setq neo-theme 'nerd)
   (setq company-idle-delay nil)
 
+  ;;Disable the annoying M-SPC just-one-space binding
+  (global-unset-key (kbd "M-SPC"))
+  (global-unset-key (kbd "H-x"))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
