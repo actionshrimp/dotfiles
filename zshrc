@@ -54,7 +54,8 @@ bindkey '^T' fzf-file-widget
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-SAVEHIST=1000
+SAVEHIST=10000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 setopt inc_append_history share_history
 
