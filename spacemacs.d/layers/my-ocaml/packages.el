@@ -73,8 +73,16 @@ Each entry is either:
 
             (add-hook 'tuareg-mode-hook 'flycheck-mode))))
 
-(defun my-ocaml/post-init-tuareg-mode '()
+(defun my-ocaml/post-init-tuareg-mode ()
   (progn
+
+    (when (file-directory-p "~/.opam/system/share")
+      (add-to-list 'load-path "~/.opam/system/share")
+      (require 'ocamlformat)
+      (add-hook 'tuareg-mode-hook
+                (lambda ()
+                  (add-hook 'before-save-hook 'ocamlformat-before-save))))
+
     (defun tuareg-run-imandra ()
       (interactive)
       (minibuffer-with-setup-hook
