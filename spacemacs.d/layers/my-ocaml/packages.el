@@ -31,7 +31,7 @@
 
 (defconst my-ocaml-packages
   '(flycheck-ocaml
-    tuareg-mode)
+    tuareg)
   "The list of Lisp packages required by the my-ocaml layer.
 
 Each entry is either:
@@ -73,9 +73,8 @@ Each entry is either:
 
             (add-hook 'tuareg-mode-hook 'flycheck-mode))))
 
-(defun my-ocaml/post-init-tuareg-mode ()
+(defun my-ocaml/post-init-tuareg ()
   (progn
-
     (when (file-directory-p "~/.opam/system/share")
       (add-to-list 'load-path "~/.opam/system/share")
       (require 'ocamlformat)
