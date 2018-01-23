@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst my-python-packages
-  '(flycheck python)
+  '(python)
   "The list of Lisp packages required by the my-python layer.
 
 Each entry is either:
@@ -58,7 +58,7 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun my-python/init-python-mode ()
+(defun my-python/post-init-python ()
   (defun flycheck-virtualenv-executable-find (executable)
     "Find an EXECUTABLE in the current virtualenv if any."
     (if (bound-and-true-p python-shell-virtualenv-root)
