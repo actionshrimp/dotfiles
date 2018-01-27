@@ -73,6 +73,11 @@ Each entry is either:
 
             (add-hook 'tuareg-mode-hook 'flycheck-mode))))
 
+(defun my-reload-dir-locals-for-current-buffer ()
+  "reload dir locals for the current buffer"
+  (let ((enable-local-variables :all))
+    (hack-dir-local-variables-non-file-buffer)))
+
 (defun my-ocaml/post-init-tuareg ()
   (progn
     (when (and (file-exists-p "~/.opam/system/bin/ocamlformat")
