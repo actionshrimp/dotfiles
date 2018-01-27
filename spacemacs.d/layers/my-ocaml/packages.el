@@ -88,6 +88,17 @@ Each entry is either:
                 (lambda ()
                   (add-hook 'before-save-hook 'ocamlformat-before-save))))
 
+    (defvar last-buffer-name nil)
+
+    (defun reload-vars-for-tuareg ()
+      (when (not (equal (buffer-name) last-buffer-name))
+        (setq last-buffer-name (buffer-name))
+
+        (when (member major-mode '(tuareg-mode))
+          (hack-local-variables-apply))))
+
+    (add-hook 'post-command-hook 'reload-vars-for-tuareg)
+
     (defun tuareg-run-imandra ()
       (interactive)
       (minibuffer-with-setup-hook
