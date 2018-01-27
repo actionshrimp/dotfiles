@@ -81,8 +81,9 @@ Each entry is either:
 (defun my-ocaml/post-init-tuareg ()
   (progn
     (when (and (file-exists-p "~/.opam/system/bin/ocamlformat")
-               (file-directory-p "~/.opam/system/share"))
-      (add-to-list 'load-path "~/.opam/system/share")
+               (file-directory-p "~/.opam/system/share/emacs/site-lisp"))
+
+      (add-to-list 'load-path "~/.opam/system/share/emacs/site-lisp")
       (require 'ocamlformat)
       (add-hook 'tuareg-mode-hook
                 (lambda ()
