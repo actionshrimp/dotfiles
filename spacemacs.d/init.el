@@ -376,7 +376,13 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq exec-path-from-shell-check-startup-files nil)
   (with-eval-after-load 'magit
-    (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules)))
+    (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules))
+
+  (eval-after-load 'smartparens
+    '(progn
+       (sp-pair "\"" nil :actions :rem)
+       (sp-pair "\\\"" nil :actions :rem)))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
