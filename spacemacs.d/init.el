@@ -399,6 +399,8 @@ before packages are loaded."
   (global-unset-key (kbd "M-SPC"))
   (global-unset-key (kbd "H-x"))
 
+  (add-to-list 'safe-local-variable-values
+               '(eval tuareg-opam-update-env "/home/dave/dev/ai/sigmax"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
