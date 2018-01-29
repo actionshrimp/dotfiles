@@ -77,6 +77,7 @@ This function should only modify configuration layer settings."
      rust
      python
      ocaml
+     ipython-notebook
      ;;fix-muscle-memory
      my-clojure
      ;; my-lispy
