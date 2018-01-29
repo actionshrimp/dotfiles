@@ -70,4 +70,7 @@ alias gco="git checkout"
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+if [[ -x "$(command -v kubectl)" ]]; then
+    source <(kubectl completion zsh)
+fi
 [ -f ~/.bash_profile ] && source ~/.bash_profile
