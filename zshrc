@@ -70,7 +70,14 @@ alias gco="git checkout"
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+
 if [[ -x "$(command -v kubectl)" ]]; then
     source <(kubectl completion zsh)
 fi
-[ -f ~/.bash_profile ] && source ~/.bash_profile
+
+if [[ $(uname) == 'Linux' ]]; then
+    export npm_config_prefix=~/.node_modules
+fi
+
+# This is to keep emacs happy on osx
+[ -f ~/.bash_profile ] && [[ $(uname) != 'Linux' ]] && source ~/.bash_profile
