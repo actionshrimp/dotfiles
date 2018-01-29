@@ -26,3 +26,4 @@
 ;;(setq-default sql-password "")
 ;;(setq-default sql-server "localhost")
 ;;(setq-default sql-user "dbname")
+(require 'my-db-config "~/dotfiles/spacemacs.d/layers/my-sql/my-db-config.el.gpg")
