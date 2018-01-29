@@ -402,6 +402,7 @@ before packages are loaded."
 
   (add-to-list 'safe-local-variable-values
                '(eval tuareg-opam-update-env "/home/dave/dev/ai/sigmax"))
+  (add-to-list 'safe-local-variable-values '(utop-command . "jbuilder utop . -- -emacs"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
