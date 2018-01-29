@@ -30,8 +30,7 @@
 ;;; Code:
 
 (defconst my-ocaml-packages
-  '(flycheck-ocaml
-    tuareg)
+  '(tuareg)
   "The list of Lisp packages required by the my-ocaml layer.
 
 Each entry is either:
@@ -58,20 +57,6 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
-
-
-(defun my-ocaml/init-flycheck-ocaml ()
-  (use-package flycheck-ocaml
-    :defer t
-    :init (progn
-            (with-eval-after-load 'merlin
-              ;; Disable Merlin's own error checking
-              (setq merlin-error-after-save nil)
-
-              ;; Enable Flycheck checker
-              (flycheck-ocaml-setup))
-
-            (add-hook 'tuareg-mode-hook 'flycheck-mode))))
 
 (defun my-reload-dir-locals-for-current-buffer ()
   "reload dir locals for the current buffer"
