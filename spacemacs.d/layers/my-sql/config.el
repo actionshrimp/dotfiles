@@ -1,3 +1,6 @@
+;; Example config. Encrypted db config is loaded in spacemacs/user-config as it requires
+;; some init to be performed first on OSX (not sure what exactly, perhaps exec-path-from-shell?)
+
 ;; (setq sql-connection-alist
 ;;  '(("db-name"
 ;;      (sql-product 'postgres)
@@ -26,4 +29,3 @@
 ;;(setq-default sql-password "")
 ;;(setq-default sql-server "localhost")
 ;;(setq-default sql-user "dbname")
-(require 'my-db-config "~/dotfiles/spacemacs.d/layers/my-sql/my-db-config.el.gpg")

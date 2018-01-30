@@ -421,6 +421,10 @@ before packages are loaded."
 
   (setq magit-rebase-arguments '("--autostash"))
 
+  ;;on OSX - brew install gnupg gpg-agent pinentry-mac
+  ;;$ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.config
+  (require 'my-db-config "~/dotfiles/spacemacs.d/layers/my-sql/my-db-config.el.gpg")
+
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
     (load-file custom-file))
