@@ -35,6 +35,10 @@ zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
 zplug "junegunn/fzf", use:"shell/completion.zsh"
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 
+if [[ $(uname) == 'Darwin' ]]; then
+    zplug "plugins/gpg-agent", from:oh-my-zsh
+fi
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
