@@ -79,6 +79,10 @@ if [[ -x "$(command -v kubectl)" ]]; then
     source <(kubectl completion zsh)
 fi
 
+if [[ $(uname) == 'Darwin' ]]; then
+    [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
+
 if [[ $(uname) == 'Linux' ]]; then
     export npm_config_prefix=~/.node_modules
 fi
