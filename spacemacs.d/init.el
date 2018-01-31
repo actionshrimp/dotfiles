@@ -393,7 +393,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
        (sp-pair "\\\"" nil :actions :rem)
        ))
 
-  (print (system-name))
   (setq-default dotspacemacs-default-font
                 `("Fira Mono"
                   :size ,(if (string= (system-name) "baracus")
