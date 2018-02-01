@@ -19,6 +19,10 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
 SPACESHIP_TIME_SHOW=true
+if [[ $(uname) == 'Darwin' ]]; then
+    SPACESHIP_CHAR_SYMBOL=">"
+    SPACESHIP_CHAR_SUFFIX=" "
+fi
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 
 fzf_platform='*darwin*amd64*'
