@@ -264,6 +264,7 @@ color15  #f2f2f2
 
 # Clipboard
 map ctrl+shift+v        paste_from_clipboard
+map cmd+v               paste_from_clipboard
 map ctrl+shift+s        paste_from_selection
 map ctrl+shift+c        copy_to_clipboard
 map shift+insert        paste_from_selection
@@ -380,7 +381,7 @@ map ctrl+shift+f11      toggle_fullscreen
 # such as macOS/Wayland that do not have the concept of primary selections. Note
 # that this is a security risk, as all programs, including websites open in your
 # browser can read the contents of the clipboard.
-copy_on_select yes
+copy_on_select no
 
 # Hide the kitty window's title bar on macOS.
 macos_hide_titlebar yes
