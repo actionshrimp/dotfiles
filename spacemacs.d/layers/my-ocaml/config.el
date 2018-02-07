@@ -5,3 +5,5 @@
 (add-hook 'tuareg-mode-hook
           (lambda ()
             (setq-local comment-style 'indent)))
+
+(setq-default ocamlformat-enabled nil)

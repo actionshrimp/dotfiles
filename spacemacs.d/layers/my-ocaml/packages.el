@@ -72,7 +72,9 @@ Each entry is either:
       (require 'ocamlformat)
       (add-hook 'tuareg-mode-hook
                 (lambda ()
-                  (add-hook 'before-save-hook 'ocamlformat-before-save))))
+                  (add-hook 'before-save-hook (lambda ()
+                                                (when ocamlformat-enabled
+                                                  (ocamlformat-before-save)))))))
 
     (defvar last-buffer-name nil)
 
