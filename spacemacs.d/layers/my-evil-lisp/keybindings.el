@@ -14,7 +14,7 @@
 ;;
 ;;(define-key evil-lisp-state-map (kbd "C") 'evil-sp-change-line)
 ;;
-(define-key evil-lisp-state-map (kbd "A") '(lambda ()
-                                             (interactive)
-                                             (evil-lisp-state-sp-end-of-sexp)
-                                             (evil-lisp-state-evil-insert-state))) 
+;;(define-key evil-lisp-state-map (kbd "A") '(lambda ()
+;;                                             (interactive)
+;;                                             (evil-lisp-state-sp-end-of-sexp)
+;;                                             (evil-lisp-state-evil-insert-state))) 
