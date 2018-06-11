@@ -113,33 +113,35 @@ Each entry is either:
   ;;           (flycheck-sanitize-errors errors))
   ;;   errors)
 
-  (flycheck-define-checker javascript-flow
-    "Javascript type checking using Flow."
-    :command ("flow" "--json" source-original)
-    :error-parser my/flycheck-parse-flow
-    :modes js2-mode
-    :next-checkers ((error . javascript-my-eslint)))
+;;   (flycheck-define-checker javascript-flow
+;;     "Javascript type checking using Flow."
+;;     :command ("flow" "--json" source-original)
+;;     :error-parser my/flycheck-parse-flow
+;;     :modes js2-mode
+;;     :next-checkers ((error . javascript-my-eslint)))
 
 
-  (flycheck-define-checker javascript-my-eslint
-    "A Javascript syntax and style checkefor r using eslint.
+;;   (flycheck-define-checker javascript-my-eslint
+;;     "A Javascript syntax and style checkefor r using eslint.
 
-See URL `https://github.com/eslint/eslint'."
-    :command ("eslint" "--format=checkstyle"
-              (option-list "--rulesdir" flycheck-eslint-rules-directories)
-              "--stdin" "--stdin-filename" source-original)
-    :standard-input t
-    :error-parser flycheck-parse-checkstyle
-    ;;:error-filter my/flycheck-filter-eslint-errors
-    :modes (js-mode js-jsx-mode js2-mode js2-jsx-mode js3-mode rjsx-mode)
-    :next-checkers ((warning . javascript-jscs)))
+;; See URL `https://github.com/eslint/eslint'."
+;;     :command ("eslint" "--format=checkstyle"
+;;               (option-list "--rulesdir" flycheck-eslint-rules-directories)
+;;               "--stdin" "--stdin-filename" source-original)
+;;     :standard-input t
+;;     :error-parser flycheck-parse-checkstyle
+;;     ;;:error-filter my/flycheck-filter-eslint-errors
+;;     :modes (js-mode js-jsx-mode js2-mode js2-jsx-mode js3-mode rjsx-mode)
+;;     :next-checkers ((warning . javascript-jscs)))
 
-  (add-to-list 'flycheck-disabled-checkers 'javascript-eslint)
+;;   (add-to-list 'flycheck-disabled-checkers 'javascript-eslint)
 
-  (add-to-list 'flycheck-checkers 'javascript-flow)
-  (add-to-list 'flycheck-checkers 'javascript-my-eslint)
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-  (add-hook 'flycheck-mode-hook #'my/use-flow-from-node-modules))
+;;   (add-to-list 'flycheck-checkers 'javascript-flow)
+;;   (add-to-list 'flycheck-checkers 'javascript-my-eslint)
+
+;;   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+;;   (add-hook 'flycheck-mode-hook #'my/use-flow-from-node-modules)
+  )
 
 ;; (defun my-js-json/init-json-mode ()
 ;;   (add-hook 'json-mode-hook
