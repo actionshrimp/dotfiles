@@ -384,8 +384,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq custom-file "~/.spacemacs.d/custom.el")
 
   (setq exec-path-from-shell-check-startup-files nil)
-  (with-eval-after-load 'magit
-    (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules))
+  ;; (with-eval-after-load 'magit
+  ;;   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules)
+  ;;   )
 
   (eval-after-load 'smartparens
     '(progn
