@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(nginx
      (osx :variables
           osx-right-command-as 'meta
           ;;osx-right-command-as 'super
@@ -43,11 +43,12 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      my-evil
-     (auto-completion :variables
-                      auto-completion-return-key-behavior 'complete
-                      auto-completion-tab-key-behaviour 'cycle
-                      auto-completion-complete-with-key-sequence nil
-                      auto-completion-complete-with-key-sequence-delay 0.5)
+     auto-completion
+     ;; (auto-completion :variables
+     ;;                  auto-completion-return-key-behavior 'complete
+     ;;                  auto-completion-tab-key-behaviour 'cycle
+     ;;                  auto-completion-complete-with-key-sequence nil
+     ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
      helm
      emacs-lisp
      git
@@ -59,10 +60,10 @@ This function should only modify configuration layer settings."
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
-     clojure
-     (haskell :variables
-              haskell-enable-ghci-ng-support t
-              haskell-completion-backend 'intero)
+     ;; clojure
+     ;; (haskell :variables
+     ;;          haskell-enable-ghci-ng-support t
+     ;;          haskell-completion-backend 'intero)
      javascript
      (node :variables
            node-add-modules-path t)
@@ -74,13 +75,14 @@ This function should only modify configuration layer settings."
           elm-format-on-save t
           elm-sort-imports-on-save t)
      yaml
-     purescript
+     ;; purescript
      ruby
-     idris
-     rust
-     python
+     ;; idris
+     ;; rust
+     (python :variables python-backend 'anaconda)
      ocaml
      ipython-notebook
+     docker
      ;;fix-muscle-memory
      my-clojure
      ;; my-lispy
