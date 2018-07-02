@@ -76,6 +76,20 @@ alias gdc="git diff --cached"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 alias gco="git checkout"
 
+#kubectl config set-context dev-imarkets --cluster gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster --user gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster
+#kubectl config set-context dev-try1 --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --namespace try1
+#kubectl config set-context dev-try2 --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --namespace try2
+alias kube-dev-imkts="kubectl config use-context dev-imarkets"
+alias kube-dev-try1="kubectl config use-context dev-try1"
+alias kube-dev-try2="kubectl config use-context dev-try2"
+
+#kubectl config set-context prod-imarkets --cluster gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster --user gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster
+#kubectl config set-context prod-try1 --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster
+#kubectl config set-context prod-try2 --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster
+alias kube-prod-imkts="kubectl config use-context prod-imarkets"
+alias kube-prod-try1="kubectl config use-context prod-try1"
+alias kube-prod-try2="kubectl config use-context prod-try2"
+
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 
