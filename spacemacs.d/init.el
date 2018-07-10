@@ -83,6 +83,7 @@ This function should only modify configuration layer settings."
      ocaml
      ipython-notebook
      docker
+     github
      ;;fix-muscle-memory
      my-clojure
      ;; my-lispy
