@@ -94,12 +94,13 @@ alias kube-prod-try2="kubectl config use-context prod-try2"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 
-if [[ -x "$(command -v kubectl)" ]]; then
-    source <(kubectl completion zsh)
+if [[ $(uname) == 'Darwin' ]]; then
+    [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/ ] && export PATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/:$PATH
+    [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
-if [[ $(uname) == 'Darwin' ]]; then
-    [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [[ -x "$(command -v kubectl)" ]]; then
+    source <(kubectl completion zsh)
 fi
 
 if [[ $(uname) == 'Linux' ]]; then
