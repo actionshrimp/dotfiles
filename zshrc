@@ -36,6 +36,7 @@ zplug "junegunn/fzf-bin", \
       use:"${fzf_platform}"
 unset fzf_platform
 zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3, if:"[[ $(command -v tmuxinator) ]]"
 zplug "junegunn/fzf", use:"shell/completion.zsh"
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 
