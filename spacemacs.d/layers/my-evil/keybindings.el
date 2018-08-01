@@ -1,6 +1,3 @@
-(evil-define-key 'visual evil-surround-mode-map "s" 'evil-substitute)
-(evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
-
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
 ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
