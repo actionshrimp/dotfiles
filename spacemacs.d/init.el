@@ -84,6 +84,7 @@ This function should only modify configuration layer settings."
      ipython-notebook
      docker
      github
+     terraform
      ;;fix-muscle-memory
      my-clojure
      ;; my-lispy
