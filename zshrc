@@ -77,17 +77,33 @@ alias gdc="git diff --cached"
 alias glg="git log --pretty=oneline --decorate --graph --abbrev-commit"
 alias gco="git checkout"
 
+#gcloud container clusters --project imandra-dev get-credentials --region europe-west1-c imandra-markets-dev-cluster
 #kubectl config set-context dev-imarkets --cluster gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster --user gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster
+
+#gcloud container clusters --project imandra-gs-dev get-credentials --region europe-west2-a imandra-gs-dev-cluster
+#kubectl config set-context dev-gs --cluster gke_imandra-gs-dev_europe-west2-a_imandra-gs-dev-cluster --user gke_imandra-gs-dev_europe-west2-a_imandra--gs-dev-cluster
+
+#gcloud container clusters --project imandra-dev get-credentials --region europe-west1-c try-imandra-dev-cluster
 #kubectl config set-context dev-try1 --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --namespace try1
 #kubectl config set-context dev-try2 --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster --namespace try2
 alias kube-dev-imkts="kubectl config use-context dev-imarkets"
+alias kube-dev-gs="kubectl config use-context dev-gs"
 alias kube-dev-try1="kubectl config use-context dev-try1"
 alias kube-dev-try2="kubectl config use-context dev-try2"
 
+#gcloud container clusters --project imandra-prod get-credentials --region europe-west1-c imandra-markets-prod-cluster
 #kubectl config set-context prod-imarkets --cluster gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster --user gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster
+
+#gcloud container clusters --project imandra-gs-prod get-credentials --region europe-west2-a imandra-gs-prod-cluster
+#kubectl config set-context prod-gs --cluster gke_imandra-gs-prod_europe-west2-a_imandra-markets-gs-prod-cluster --user gke_imandra-gs-prod_europe-west2-a_imandra-markets-gs-prod-cluster
+
+#gcloud container clusters --project imandra-prod get-credentials --region europe-west1-c prod-tryimandra-try1-cluster
 #kubectl config set-context prod-try1 --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster
+
+#gcloud container clusters --project imandra-prod get-credentials --region europe-west1-c prod-tryimandra-try2-cluster
 #kubectl config set-context prod-try2 --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster
 alias kube-prod-imkts="kubectl config use-context prod-imarkets"
+alias kube-prod-gs="kubectl config use-context prod-gs"
 alias kube-prod-try1="kubectl config use-context prod-try1"
 alias kube-prod-try2="kubectl config use-context prod-try2"
 
