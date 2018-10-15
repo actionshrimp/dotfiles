@@ -83,7 +83,7 @@ This function should only modify configuration layer settings."
      ocaml
      ipython-notebook
      docker
-     github
+     ;; github
      terraform
      ;;fix-muscle-memory
      my-clojure
