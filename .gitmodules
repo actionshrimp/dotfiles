@@ -6,3 +6,6 @@
 	path = emacs.d/hindent
 	url = git@github.com:chrisdone/hindent
 	ignore = dirty
+[submodule "spacemacs.d/layers/reason"]
+	path = spacemacs.d/layers/reason
+	url = git@github.com:fredyr/reason.git

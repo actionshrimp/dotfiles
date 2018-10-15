@@ -94,6 +94,8 @@ This function should only modify configuration layer settings."
      my-haskell
      my-ocaml
      my-python
+
+     reason
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
