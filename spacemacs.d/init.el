@@ -443,6 +443,8 @@ before packages are loaded."
   (let ((gls "/usr/local/bin/gls"))
     (if (file-exists-p gls) (setq insert-directory-program gls)))
 
+  (setq mac-system-move-file-to-trash-use-finder nil)
+
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
     (load-file custom-file))
