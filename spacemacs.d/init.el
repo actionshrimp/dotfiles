@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(nginx
+   '(rust
      (osx :variables
           osx-right-command-as 'meta
           ;;osx-right-command-as 'super
