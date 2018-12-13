@@ -418,6 +418,8 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-to-list 'auto-mode-alist '("Dockerfile*" . dockerfile-mode))
 
+  (setq create-lockfiles nil)
+
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
   (setq neo-theme 'nerd)
