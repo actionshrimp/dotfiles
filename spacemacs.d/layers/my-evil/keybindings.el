@@ -21,10 +21,4 @@
                              helm-grep-map))
               (define-key m (kbd "C-w") 'backward-kill-word))))
 
-(defun my-expand-lines ()
-  (interactive)
-  (let ((hippie-expand-try-functions-list
-         '(try-expand-line-all-buffers)))
-    (call-interactively 'hippie-expand)))
-
-(define-key evil-insert-state-map (kbd "C-x C-l") 'my-expand-lines)
+(define-key evil-insert-state-map (kbd "C-x C-l") 'company-hippie-line)
