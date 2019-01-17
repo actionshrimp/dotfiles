@@ -15,6 +15,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
