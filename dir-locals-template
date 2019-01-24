@@ -1,0 +1,3 @@
+((tuareg-mode . ((tuareg-opam-update-env . "bs-generic")))
+ (reason-mode . ((refmt-command . "~/.opam/bs-generic/bin/refmt")
+                 (eval . (tuareg-opam-update-env "bs-generic")))))
