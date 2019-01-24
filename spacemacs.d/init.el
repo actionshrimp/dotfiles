@@ -431,9 +431,6 @@ before packages are loaded."
   (global-unset-key (kbd "M-SPC"))
   (global-unset-key (kbd "H-x"))
 
-  (add-to-list 'safe-local-variable-values
-               '(eval tuareg-opam-update-env "/home/dave/dev/ai/sigmax"))
-  (add-to-list 'safe-local-variable-values '(utop-command . "jbuilder utop . -- -emacs"))
 
   (setq magit-rebase-arguments '("--autostash"))
 
@@ -446,9 +443,13 @@ before packages are loaded."
 
   (setq mac-system-move-file-to-trash-use-finder nil)
 
+  ;; MOVED TO custom-file
+  ;; (add-to-list 'safe-local-variable-values '(refmt-command . "~/.opam/bs-generic/bin/refmt"))
+
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
     (load-file custom-file))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
