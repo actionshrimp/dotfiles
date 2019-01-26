@@ -450,6 +450,9 @@ before packages are loaded."
   (when (file-exists-p custom-file)
     (load-file custom-file))
 
+  (custom-set-variables
+   '(tuareg-opam-insinuate t))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

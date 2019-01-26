@@ -12,8 +12,7 @@
            (projectile-project-root))
      (eval tuareg-opam-update-env
            (string-remove-suffix "/"
-                                 (projectile-project-root))))))
- '(tuareg-opam-insinuate t))
+                                 (projectile-project-root)))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
