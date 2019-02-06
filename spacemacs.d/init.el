@@ -67,7 +67,6 @@ This function should only modify configuration layer settings."
      javascript
      (node :variables
            node-add-modules-path t)
-     neotree
      shell-scripts
      html
      sql
