@@ -397,8 +397,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (eval-after-load 'smartparens
     '(progn
-       (sp-pair "\"" nil :actions :rem)
-       (sp-pair "\\\"" nil :actions :rem)
+       ;; (sp-pair "\"" nil :actions :rem)
+       (sp-local-pair 'reason-mode "`" nil :actions nil)
+       (sp-local-pair 'tuareg-mode "`" nil :actions nil)
        ))
 
   (setq-default dotspacemacs-default-font
