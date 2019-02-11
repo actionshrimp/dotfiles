@@ -451,7 +451,9 @@ before packages are loaded."
     (load-file custom-file))
 
   (custom-set-variables
-   '(tuareg-opam-insinuate t))
+   '(tuareg-opam-insinuate t)
+   '(refmt-command 'opam)
+   )
 
   )
 
