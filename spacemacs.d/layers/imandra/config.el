@@ -1,5 +1,5 @@
 (defvar imandra-cli-file-path "imandra-repl-dev") ;; script running `docker run -it --rm ..` or symlink to imandra-service
-(defvar imandra-syntax "reason")
+(defvar imandra-syntax "ocaml")
 
 (defvar imandra-prompt-regexp "^#\s-")
 
