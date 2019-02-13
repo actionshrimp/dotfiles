@@ -91,7 +91,7 @@ This function should only modify configuration layer settings."
      my-sql
      my-js-json
      my-haskell
-     my-ocaml
+     ;; my-ocaml
      my-python
 
      reason
