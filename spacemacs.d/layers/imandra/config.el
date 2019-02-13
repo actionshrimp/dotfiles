@@ -19,7 +19,8 @@
 
     (apply 'make-comint-in-buffer "Imandra" buffer-name
            imandra-program nil "-raw"
-           (if (string= imandra-syntax "reason") '("-reason") '()))
+           (append (if (string= imandra-syntax "reason") '("-reason") '())
+                   '("-require" "imandra-prelude")))
 
     (with-current-buffer buffer-name
       (imandra-mode))
