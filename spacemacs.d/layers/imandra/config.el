@@ -15,7 +15,7 @@
     ;;   (apply 'make-comint-in-buffer "Imandra" buffer-name
     ;;          imandra-program nil nil "-raw"
     ;;          (if (string= imandra-syntax "reason") '("-reason") '()))
-    ;;   (imandra-mode))
+    ;;   (imandra-repl-mode))
 
     (apply 'make-comint-in-buffer "Imandra" buffer-name
            imandra-program nil "-raw"
@@ -23,12 +23,12 @@
                    '("-require" "imandra-prelude")))
 
     (with-current-buffer buffer-name
-      (imandra-mode))
+      (imandra-repl-mode))
 
     (pop-to-buffer-same-window buffer-name)))
 
-(define-derived-mode imandra-mode comint-mode "Imandra"
-  "Major mode for `imandra`" nil "Imandra"
+(define-derived-mode imandra-repl-mode comint-mode "Imandra Repl"
+  "Major mode for `imandra-repl`" nil "Imandra Repl"
   ;; (require 'tuareg)
   ;; (tuareg-install-font-lock)
   (setq comint-prompt-regexp imandra-prompt-regexp)
@@ -40,7 +40,7 @@
   ;; (set (make-local-variable 'font-lock-defaults) '(tuareg-font-lock-keywords t))
   (set (make-local-variable 'comint-eol-on-send) t))
 
-(define-key imandra-mode-map (kbd "C-c C-l") #'comint-clear-buffer)
+(define-key imandra-repl-mode-map (kbd "C-c C-l") #'comint-clear-buffer)
 
 (add-to-list 'auto-mode-alist '("\\.iml\\'" . tuareg-mode))
 (add-to-list 'auto-mode-alist '("\\.ire\\'" . reason-mode))
