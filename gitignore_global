@@ -4,3 +4,4 @@
 .tern-port
 .scratch.sql
 .#*
+.imandra_init.log
