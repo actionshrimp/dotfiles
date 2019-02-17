@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(rust
+   '(
      (osx :variables
           osx-right-command-as 'meta
           ;;osx-right-command-as 'super
@@ -51,6 +51,9 @@ This function should only modify configuration layer settings."
      ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
      helm
      emacs-lisp
+     rust
+     treemacs
+     multiple-cursors
      git
      markdown
      org
@@ -82,6 +85,7 @@ This function should only modify configuration layer settings."
      ocaml
      ipython-notebook
      docker
+     markdown
      ;; github
      terraform
      ;;fix-muscle-memory
@@ -93,6 +97,8 @@ This function should only modify configuration layer settings."
      my-haskell
      ;; my-ocaml
      my-python
+
+     lsp
 
      reason
      imandra
@@ -371,7 +377,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup t
+   dotspacemacs-whitespace-cleanup 'trailing
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
@@ -380,6 +386,14 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-pretty-docs nil
    ))
+
+(defun dotspacemacs/user-env ()
+  "Environment variables setup.
+This function defines the environment variables for your Emacs session. By
+default it calls `spacemacs/load-spacemacs-env' which loads the environment
+variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
+See the header of this file for more information."
+  (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -433,7 +447,7 @@ before packages are loaded."
 
 
   (setq magit-rebase-arguments '("--autostash"))
-  (setq flycheck-check-syntax-automatically '(save))
+  ;;(setq flycheck-check-syntax-automatically '(save))
 
   ;;on OSX - brew install gnupg gpg-agent pinentry-mac
   ;;$ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.config
@@ -455,6 +469,12 @@ before packages are loaded."
    '(tuareg-opam-insinuate t)
    '(refmt-command 'opam)
    )
+
+  ;; (with-eval-after-load 'lsp-mode
+  ;;   (lsp-register-client
+  ;;    (make-lsp-client :new-connection (lsp-stdio-connection '("/home/dave/dev/merlin/ocamlmerlin-lsp"))
+  ;;                     :major-modes '(tuareg-mode)
+  ;;                     :server-id 'ocamlmerlin-lsp)))
 
   )
 
