@@ -47,9 +47,11 @@
 
 (add-hook 'tuareg-mode-hook
           (lambda ()
-            (cond ((string-match "\\.iml\\'" buffer-file-name)
-                   (setq-local merlin-buffer-flags "-reader imandra -package imandra-prelude -open Imandra_prelude"))
-                  ;; Currently doesnt quite work - something else seems to be interfering with merlin-buffer-flags (refmt?)
-                  ;; ((string-match "\\.ire\\'" buffer-file-name)
-                  ;;  (setq-local merlin-buffer-flags "-reader imandra-reason -package imandra-prelude -open Imandra_prelude"))
-                  )))
+            (when (string-match "\\.iml\\'" buffer-file-name)
+              (setq-local merlin-buffer-flags "-reader imandra -package imandra-prelude -open Imandra_prelude"))))
+
+(add-hook 'reason-mode-hook
+          (lambda ()
+            ;; Currently doesnt quite work - something else seems to be interfering with merlin-buffer-flags (refmt?)
+            (when (string-match "\\.ire\\'" buffer-file-name)
+              (setq-local merlin-buffer-flags "-reader imandra-reason -package imandra-prelude -open Imandra_prelude"))))
