@@ -3,22 +3,21 @@
 
 (defvar imandra-prompt-regexp "^#\s-")
 
-
-(defun imandra ()
+(defun imandra-repl ()
   (interactive)
-  (let* ((imandra-program imandra-cli-file-path)
+  (let* ((imandra-repl-program imandra-cli-file-path)
          (buffer-name "*Imandra*"))
 
     ;; (pop-to-buffer-same-window buffer-name)
 
     ;; (unless (comint-check-proc buffer-name)
     ;;   (apply 'make-comint-in-buffer "Imandra" buffer-name
-    ;;          imandra-program nil nil "-raw"
+    ;;          imandra-repl-program nil nil "-raw"
     ;;          (if (string= imandra-syntax "reason") '("-reason") '()))
     ;;   (imandra-repl-mode))
 
     (apply 'make-comint-in-buffer "Imandra" buffer-name
-           imandra-program nil "-raw"
+           imandra-repl-program nil "-raw"
            (append (if (string= imandra-syntax "reason") '("-reason") '())
                    '("-require" "imandra-prelude")))
 
