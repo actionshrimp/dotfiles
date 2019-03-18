@@ -49,7 +49,8 @@ This function should only modify configuration layer settings."
      ;;                  auto-completion-tab-key-behaviour 'cycle
      ;;                  auto-completion-complete-with-key-sequence nil
      ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
-     helm
+     ;; helm
+     ivy
      emacs-lisp
      rust
      treemacs
