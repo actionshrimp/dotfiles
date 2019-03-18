@@ -111,6 +111,7 @@ alias wk="watch kubectl"
 #kubectl config set-context dev-core1     --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace core1
 #kubectl config set-context prod-core-europe-west1     --cluster gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster --user gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster
 #kubectl config set-context prod-core-us-central1      --cluster gke_imandra-prod_us-central1-c_prod-imandracore-us-central1-cluster --user gke_imandra-prod_us-central1-c_prod-imandracore-us-central1-cluster
+#kubectl config set-context local-core1 --cluster docker-desktop --namespace core1 --user docker-desktop
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
