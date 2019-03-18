@@ -1,30 +1,58 @@
 (defvar imandra-cli-file-path "imandra-repl-dev") ;; script running `docker run -it --rm ..` or symlink to imandra-service
-(defvar imandra-syntax "ocaml")
+;; (defvar imandra-syntax "reason")
 
 (defvar imandra-prompt-regexp "^#\s-")
 
-(defun imandra-repl ()
+(defvar imandra-buffer-name "*Imandra*")
+
+(defun imandra-repl-eval-string (string &optional mode)
   (interactive)
-  (let* ((imandra-repl-program imandra-cli-file-path)
-         (buffer-name "*Imandra*"))
+  (with-current-buffer imandra-buffer-name
+    ;; Insert it at the end of the utop buffer
+    (goto-char (point-max))
+    (insert string)
+    (insert imandra-phrase-terminator)
+    ;; Send input to utop now, telling it to automatically add the
+    ;; phrase terminator
+    (comint-send-input)))
 
-    ;; (pop-to-buffer-same-window buffer-name)
+(defun imandra-repl-eval (start end &optional mode)
+  "Eval the given region in utop."
+  ;; Select the text of the region
+  (imandra-repl-eval-string (buffer-substring-no-properties start end) mode))
 
-    ;; (unless (comint-check-proc buffer-name)
-    ;;   (apply 'make-comint-in-buffer "Imandra" buffer-name
-    ;;          imandra-repl-program nil nil "-raw"
-    ;;          (if (string= imandra-syntax "reason") '("-reason") '()))
-    ;;   (imandra-repl-mode))
+(defun imandra-repl-eval-region (start end)
+  "Eval the current region in utop."
+  (interactive "r")
+  (imandra-repl-eval start end :multi))
 
-    (apply 'make-comint-in-buffer "Imandra" buffer-name
+(defun imandra-repl--ml ()
+  (interactive)
+  (let* ((imandra-repl-program imandra-cli-file-path))
+
+    (apply 'make-comint-in-buffer "Imandra" imandra-buffer-name
            imandra-repl-program nil "-raw"
-           (append (if (string= imandra-syntax "reason") '("-reason") '())
-                   '("-require" "imandra-prelude")))
+           '("-require" "imandra-prelude"))
 
-    (with-current-buffer buffer-name
-      (imandra-repl-mode))
+    (with-current-buffer imandra-buffer-name
+      (imandra-repl-mode)
+      (setq-local imandra-phrase-terminator ";;"))
 
-    (pop-to-buffer-same-window buffer-name)))
+    (pop-to-buffer-same-window imandra-buffer-name)))
+
+(defun imandra-repl--re ()
+  (interactive)
+  (let* ((imandra-repl-program imandra-cli-file-path))
+
+    (apply 'make-comint-in-buffer "Imandra" imandra-buffer-name
+           imandra-repl-program nil "-raw"
+           '("-reason" "-require" "imandra-prelude"))
+
+    (with-current-buffer imandra-buffer-name
+      (imandra-repl-mode)
+      (setq-local imandra-phrase-terminator ";"))
+
+    (pop-to-buffer-same-window imandra-buffer-name)))
 
 (define-derived-mode imandra-repl-mode comint-mode "Imandra Repl"
   "Major mode for `imandra-repl`" nil "Imandra Repl"
