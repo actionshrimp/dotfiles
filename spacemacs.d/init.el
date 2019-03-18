@@ -54,7 +54,6 @@ This function should only modify configuration layer settings."
      emacs-lisp
      rust
      treemacs
-     multiple-cursors
      git
      markdown
      org
