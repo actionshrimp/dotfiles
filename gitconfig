@@ -4,7 +4,7 @@
 [user]
     name = Dave Aitken
     email = dave.aitken@gmail.com
-	  signingkey = EDB3240E95F9F2B8A24251AAFE09FD0729375918
+    signingkey = EDB3240E95F9F2B8A24251AAFE09FD0729375918
 
 [color]
     ui = true
@@ -31,3 +31,5 @@
     lg = log --pretty=oneline --decorate --graph --abbrev-commit
 [rerere]
     enabled = 1
+[commit]
+    gpgsign = true
