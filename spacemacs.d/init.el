@@ -62,6 +62,8 @@ This function should only modify configuration layer settings."
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
+     ;; (spell-checking :variables enable-flyspell-auto-completion t)
+     spell-checking
      ;; clojure
      ;; (haskell :variables
      ;;          haskell-enable-ghci-ng-support t
