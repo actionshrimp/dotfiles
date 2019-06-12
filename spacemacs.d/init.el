@@ -477,6 +477,18 @@ before packages are loaded."
   ;;                     :major-modes '(tuareg-mode)
   ;;                     :server-id 'ocamlmerlin-lsp)))
 
+  ;; kill-new broken upstream
+  (defun my/copy-file-path ()
+    "Copy and show the file path of the current buffer."
+    (interactive)
+    (if-let (file-path (spacemacs--file-path))
+        (progn
+          (kill-new file-path)
+          (message "%s" file-path))
+      (message "WARNING: Current buffer is not attached to a file!")))
+
+  (define-key evil-normal-state-map (kbd "SPC f y y") 'my/copy-file-path)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
