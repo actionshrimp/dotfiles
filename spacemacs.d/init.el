@@ -49,7 +49,7 @@ This function should only modify configuration layer settings."
      ;;                  auto-completion-tab-key-behaviour 'cycle
      ;;                  auto-completion-complete-with-key-sequence nil
      ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
-      helm
+     helm
      emacs-lisp
      rust
      treemacs
@@ -84,13 +84,11 @@ This function should only modify configuration layer settings."
      ;; rust
      (python :variables python-backend 'anaconda)
      ocaml
-     ipython-notebook
-     docker
      markdown
      ;; github
      terraform
      ;;fix-muscle-memory
-     my-clojure
+     ;; my-clojure
      ;; my-lispy
      my-evil-lisp
      my-sql
@@ -101,7 +99,7 @@ This function should only modify configuration layer settings."
 
      lsp
 
-     reason
+     (reasonml :variables reason-auto-refmt t)
      imandra
      xclipboard
      )
@@ -109,7 +107,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(prettier-js editorconfig)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -448,7 +446,7 @@ before packages are loaded."
 
 
   (setq magit-rebase-arguments '("--autostash"))
-  ;;(setq flycheck-check-syntax-automatically '(save))
+  (setq flycheck-check-syntax-automatically '(save idle-buffer-switch mode-enabled))
 
   ;;on OSX - brew install gnupg gpg-agent pinentry-mac
   ;;$ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.config
@@ -469,13 +467,34 @@ before packages are loaded."
   (custom-set-variables
    '(tuareg-opam-insinuate t)
    '(refmt-command 'opam)
+   '(refmt-show-errors 'echo)
    )
 
-  ;; (with-eval-after-load 'lsp-mode
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client :new-connection (lsp-stdio-connection '("/home/dave/dev/merlin/ocamlmerlin-lsp"))
-  ;;                     :major-modes '(tuareg-mode)
-  ;;                     :server-id 'ocamlmerlin-lsp)))
+  (with-eval-after-load 'lsp-mode
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection ;'("/Users/dave/.opam/default/bin/ocamlmerlin-lsp")
+                                       '("/Users/dave/dev/ai/imandra-web/_opam/bin/ocamlmerlin-lsp")
+                                                            )
+                      :major-modes '(tuareg-mode)
+                      :priority 1
+                      :server-id 'ocamlmerlin-lsp))
+
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection '("/Users/dave/.opam/default/bin/ocamlmerlin-lsp"))
+                      :major-modes '(reason-mode)
+                      :priority 1
+                      :server-id 'ocamlmerlin-lsp-reason)))
+
+  ;; (spacemacs/toggle-indent-guide-globally-on)
+  (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
+  (add-hook 'reason-mode-hook 'highlight-indentation-mode)
+
+
+  ;; useful for temporarily disabling custom ignores
+  ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
+  (add-to-list 'treemacs-ignored-file-predicates
+               (lambda (f _)
+                 (string-suffix-p ".bs.js" f)))
 
   ;; kill-new broken upstream
   (defun my/copy-file-path ()
@@ -487,9 +506,7 @@ before packages are loaded."
           (message "%s" file-path))
       (message "WARNING: Current buffer is not attached to a file!")))
 
-  (define-key evil-normal-state-map (kbd "SPC f y y") 'my/copy-file-path)
-
-  )
+  (define-key evil-normal-state-map (kbd "SPC f y y") 'my/copy-file-path))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
