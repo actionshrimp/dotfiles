@@ -470,20 +470,20 @@ before packages are loaded."
    '(refmt-show-errors 'echo)
    )
 
-  (with-eval-after-load 'lsp-mode
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection ;'("/Users/dave/.opam/default/bin/ocamlmerlin-lsp")
-                                       '("/Users/dave/dev/ai/imandra-web/_opam/bin/ocamlmerlin-lsp")
-                                                            )
-                      :major-modes '(tuareg-mode)
-                      :priority 1
-                      :server-id 'ocamlmerlin-lsp))
+  ;;(with-eval-after-load 'lsp-mode
+  ;;  (lsp-register-client
+  ;;   (make-lsp-client :new-connection (lsp-stdio-connection ;'("/Users/dave/.opam/default/bin/ocamlmerlin-lsp")
+  ;;                                     '("/Users/dave/dev/ai/imandra-web/_opam/bin/ocamlmerlin-lsp")
+  ;;                                                          )
+  ;;                    :major-modes '(tuareg-mode)
+  ;;                    :priority 1
+  ;;                    :server-id 'ocamlmerlin-lsp))
 
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection '("/Users/dave/.opam/default/bin/ocamlmerlin-lsp"))
-                      :major-modes '(reason-mode)
-                      :priority 1
-                      :server-id 'ocamlmerlin-lsp-reason)))
+  ;;  (lsp-register-client
+  ;;   (make-lsp-client :new-connection (lsp-stdio-connection '("/Users/dave/.opam/default/bin/ocamlmerlin-lsp"))
+  ;;                    :major-modes '(reason-mode)
+  ;;                    :priority 1
+  ;;                    :server-id 'ocamlmerlin-lsp-reason)))
 
   ;; (spacemacs/toggle-indent-guide-globally-on)
   (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
