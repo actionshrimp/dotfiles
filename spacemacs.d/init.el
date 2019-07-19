@@ -458,6 +458,8 @@ before packages are loaded."
 
   ;; MOVED TO custom-file
   ;; (add-to-list 'safe-local-variable-values '(refmt-command . "~/.opam/bs-generic/bin/refmt"))
+  (add-to-list 'safe-local-variable-values '(merlin-command . esy))
+  (add-to-list 'safe-local-variable-values '(refmt-command . esy))
 
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
