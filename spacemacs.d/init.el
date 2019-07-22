@@ -493,9 +493,10 @@ before packages are loaded."
 
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
-  (add-to-list 'treemacs-ignored-file-predicates
-               (lambda (f _)
-                 (string-suffix-p ".bs.js" f)))
+  (with-eval-after-load 'treemacs
+    (add-to-list 'treemacs-ignored-file-predicates
+                 (lambda (f _)
+                   (string-suffix-p ".bs.js" f))))
 
   ;; kill-new broken upstream
   (defun my/copy-file-path ()
