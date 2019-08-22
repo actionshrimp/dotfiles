@@ -508,6 +508,17 @@ before packages are loaded."
           (message "%s" file-path))
       (message "WARNING: Current buffer is not attached to a file!")))
 
+  (with-eval-after-load 'merlin
+    (defun merlin-jump-to-type-definition ()
+      (interactive)
+      (setq merlin-enclosing-types nil)
+      (merlin--type-enclosing-query)
+      (let ((type (car (elt merlin-enclosing-types 0))))
+        (merlin-locate-ident type)))
+
+    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
+      "gt" 'merlin-jump-to-type-definition))
+
   (define-key evil-normal-state-map (kbd "SPC f y y") 'my/copy-file-path))
 
 ;; Do not write anything past this comment. This is where Emacs will
