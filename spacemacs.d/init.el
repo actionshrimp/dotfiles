@@ -52,7 +52,8 @@ This function should only modify configuration layer settings."
      helm
      emacs-lisp
      rust
-     treemacs
+     (treemacs :variables
+               treemacs-project-follow-cleanup t)
      git
      markdown
      org
