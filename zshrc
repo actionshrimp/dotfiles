@@ -23,6 +23,11 @@ SPACESHIP_TIME_SHOW=true
 if [[ $(uname) == 'Darwin' ]]; then
     SPACESHIP_CHAR_SYMBOL=">"
     SPACESHIP_CHAR_SUFFIX=" "
+    SPACESHIP_DOCKER_SHOW=false
+    SPACESHIP_NODE_SHOW=false
+    #SPACESHIP_GIT_SHOW=false
+    #SPACESHIP_GIT_BRANCH_SHOW=false
+    SPACESHIP_KUBECONTEXT_SHOW=false
 fi
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 
@@ -80,6 +85,7 @@ alias gco="git checkout"
 
 alias k="kubectl"
 alias kc="kubectl config use-context"
+alias kcc="kubectl config current-context"
 alias wk="watch kubectl"
 
 #gcloud container clusters --project imandra-dev get-credentials     --region europe-west1-c imandra-markets-dev-cluster
