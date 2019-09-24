@@ -71,6 +71,10 @@ Each entry is either:
       (add-to-list 'load-path "~/.opam/default/share/emacs/site-lisp")
       (require 'ocamlformat)
 
+
+      ;;stop syntax error popup
+      (setq ocamlformat-show-errors nil)
+
       (add-hook 'tuareg-mode-hook
                 (lambda ()
                   (when ocaml-auto-ocamlformat
