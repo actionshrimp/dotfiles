@@ -6,4 +6,4 @@
           (lambda ()
             (setq-local comment-style 'indent)))
 
-(setq-default ocamlformat-enabled nil)
+(defvar-local ocaml-auto-ocamlformat nil)

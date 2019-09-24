@@ -71,22 +71,24 @@ Each entry is either:
       (add-to-list 'load-path "~/.opam/default/share/emacs/site-lisp")
       (require 'ocamlformat)
 
+      (add-hook 'tuareg-mode-hook
+                (lambda ()
+                  (when ocaml-auto-ocamlformat
+                    (add-hook 'before-save-hook 'ocamlformat-before-save nil t)))))
+
       (spacemacs|add-toggle ocamlformat
         :documentation "Toggle automatic ocamlformat on save."
-        :status ocamlformat-enabled
-        :on (setq-local ocamlformat-enabled t)
-        :off (setq-local ocamlformat-enabled nil))
+        :status ocaml-auto-ocamlformat
+        :on (progn
+              (setq ocaml-auto-ocamlformat t)
+              (add-hook 'before-save-hook 'ocamlformat-before-save nil t))
+        :off (progn
+               (setq ocaml-auto-ocamlformat nil)
+               (remove-hook 'before-save-hook 'ocamlformat-before-save t)))
 
       (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
         "b=" 'ocamlformat
-        "t=" 'spacemacs/toggle-ocamlformat
-        )
-
-      (add-hook 'tuareg-mode-hook
-                (lambda ()
-                  (add-hook 'before-save-hook (lambda ()
-                                                (when ocamlformat-enabled
-                                                  (ocamlformat-before-save)))))))
+        "t=" 'spacemacs/toggle-ocamlformat)
 
     (defvar last-buffer-name nil)
 
