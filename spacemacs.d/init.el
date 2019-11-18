@@ -491,6 +491,7 @@ before packages are loaded."
   (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
   (add-hook 'reason-mode-hook 'highlight-indentation-mode)
 
+  (setq-default ocaml-auto-ocamlformat t)
 
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
