@@ -51,6 +51,7 @@ This function should only modify configuration layer settings."
      ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
      ;; helm
      ivy
+     my-ivy
      emacs-lisp
      rust
      (treemacs :variables
