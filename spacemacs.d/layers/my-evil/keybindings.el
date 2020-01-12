@@ -1,4 +1,5 @@
-(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+;;(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+(define-key evil-insert-state-map (kbd "DEL") 'sp-backward-delete-char)
 
 ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
