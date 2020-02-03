@@ -72,13 +72,43 @@
 (add-to-list 'auto-mode-alist '("\\.iml\\'" . tuareg-mode))
 (add-to-list 'auto-mode-alist '("\\.ire\\'" . reason-mode))
 
+;; (add-hook 'tuareg-mode-hook
+;;           (lambda ()
+;;             (when (string-match "\\.iml\\'" buffer-file-name)
+;;               (setq-local merlin-buffer-flags "-reader imandra -package imandra-prelude -open Imandra_prelude"))))
+
+;; (add-hook 'reason-mode-hook
+;;           (lambda ()
+;;             ;; Currently doesnt quite work - something else seems to be interfering with merlin-buffer-flags (refmt?)
+;;             (when (string-match "\\.ire\\'" buffer-file-name)
+;;               (setq-local merlin-buffer-flags "-reader imandra-reason -package imandra-prelude -open Imandra_prelude"))))
+
+(defun imandra--opam-config-var (var)
+  (with-temp-buffer
+    (if (eq (call-process-shell-command
+             (concat "opam config var " var) nil (current-buffer) nil) 0)
+        (replace-regexp-in-string "\n$" "" (buffer-string))
+      (progn
+        (message "merlin-command: opam config failed (%S)"
+                 (buffer-string))
+        '()))))
+
 (add-hook 'tuareg-mode-hook
           (lambda ()
             (when (string-match "\\.iml\\'" buffer-file-name)
-              (setq-local merlin-buffer-flags "-reader imandra -package imandra-prelude -open Imandra_prelude"))))
-
-(add-hook 'reason-mode-hook
-          (lambda ()
-            ;; Currently doesnt quite work - something else seems to be interfering with merlin-buffer-flags (refmt?)
-            (when (string-match "\\.ire\\'" buffer-file-name)
-              (setq-local merlin-buffer-flags "-reader imandra-reason -package imandra-prelude -open Imandra_prelude"))))
+              (setq-local merlin-configuration-function
+                          (lambda ()
+                            (progn
+                              (let* ((bin-path (imandra--opam-config-var "bin"))
+                                     (lib-path (imandra--opam-config-var "lib"))
+                                     (stublibs-path (imandra--opam-config-var "stublibs"))
+                                     (env (list (concat "PATH=" bin-path)
+                                                (concat "CAML_LD_LIBRARY_PATH="
+                                                        stublibs-path ":"
+                                                        (concat lib-path "/ocaml/stublibs") ":"
+                                                        (concat lib-path "/ocaml"))))
+                                     (command (list (concat bin-path "/imandra-merlin"))))
+                                (list
+                                 (cons 'name "imandra")
+                                 (cons 'env env)
+                                 (cons 'command command)))))))))
