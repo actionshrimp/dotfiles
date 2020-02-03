@@ -502,16 +502,6 @@ before packages are loaded."
                  (lambda (f _)
                    (string-suffix-p ".bs.js" f))))
 
-  ;; kill-new broken upstream
-  (defun my/copy-file-path ()
-    "Copy and show the file path of the current buffer."
-    (interactive)
-    (if-let (file-path (spacemacs--file-path))
-        (progn
-          (kill-new file-path)
-          (message "%s" file-path))
-      (message "WARNING: Current buffer is not attached to a file!")))
-
   (with-eval-after-load 'merlin
     (defun merlin-jump-to-type-definition ()
       (interactive)
@@ -521,9 +511,7 @@ before packages are loaded."
         (merlin-locate-ident type)))
 
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-      "gt" 'merlin-jump-to-type-definition))
-
-  (define-key evil-normal-state-map (kbd "SPC f y y") 'my/copy-file-path))
+      "gt" 'merlin-jump-to-type-definition)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
