@@ -72,3 +72,7 @@
 (use-package evil-nerd-commenter
   :config
   (map! :leader (:prefix-map "c" "l" #'evilnc-comment-or-uncomment-lines)))
+
+(map! :leader "/" #'+default/search-project)
+
+(map! :leader "SPC" #'counsel-M-x)
