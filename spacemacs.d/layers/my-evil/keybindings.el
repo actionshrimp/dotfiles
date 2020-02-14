@@ -24,3 +24,11 @@
               (define-key m (kbd "C-w") 'backward-kill-word))))
 
 (define-key evil-insert-state-map (kbd "C-x C-l") 'company-hippie-line)
+
+(define-key evil-normal-state-map (kbd "R") 'evil-multiedit-match-all)
+(define-key evil-normal-state-map (kbd "M-n") 'evil-multiedit-match-and-next)
+(define-key evil-normal-state-map (kbd "M-p") 'evil-multiedit-match-and-prev)
+
+(define-key evil-visual-state-map (kbd "R") 'evil-multiedit-match-all)
+(define-key evil-visual-state-map (kbd "M-n") 'evil-multiedit-match-and-next)
+(define-key evil-visual-state-map (kbd "M-p") 'evil-multiedit-match-and-prev)
