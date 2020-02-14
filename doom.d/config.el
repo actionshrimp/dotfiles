@@ -60,6 +60,10 @@
 
 (map! :n "R" #'evil-multiedit-match-all)
 (map! :v "R" #'evil-multiedit-match-all)
+(map! :n "M-n" #'evil-multiedit-match-and-next)
+(map! :v "M-n" #'evil-multiedit-match-and-next)
+(map! :n "M-p" #'evil-multiedit-match-and-prev)
+(map! :v "M-p" #'evil-multiedit-match-and-prev)
 
 (setq company-idle-delay nil)
 (setq flycheck-check-syntax-automatically '(save idle-buffer-switch mode-enabled))
@@ -71,8 +75,9 @@
 
 (use-package evil-nerd-commenter
   :config
-  (map! :leader (:prefix-map "c" "l" #'evilnc-comment-or-uncomment-lines)))
+  (map! :leader (:prefix-map ("c" . "code") "l" #'evilnc-comment-or-uncomment-lines)))
 
 (map! :leader "/" #'+default/search-project)
 
 (map! :leader "SPC" #'counsel-M-x)
+(map! :leader "ry" #'counsel-yank-pop)
