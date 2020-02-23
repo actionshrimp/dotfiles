@@ -521,7 +521,10 @@ before packages are loaded."
       "gt" 'merlin-jump-to-type-definition))
 
   (when (display-graphic-p)
-    (treemacs-resize-icons 16)))
+    (treemacs-resize-icons 16))
+
+  (keychain-refresh-environment)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
