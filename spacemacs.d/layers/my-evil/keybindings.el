@@ -33,3 +33,6 @@
 (define-key evil-visual-state-map (kbd "R") 'evil-multiedit-match-all)
 (define-key evil-visual-state-map (kbd "M-n") 'evil-multiedit-match-and-next)
 (define-key evil-visual-state-map (kbd "M-p") 'evil-multiedit-match-and-prev)
+
+;; stop doc thing popping up when doing VGk
+(define-key evil-visual-state-map (kbd "K") 'evil-previous-line)
