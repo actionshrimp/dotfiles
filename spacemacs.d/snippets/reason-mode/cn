@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : className Css
+#key : cn
+#contributor : Dave Aitken
+# --
+className=Css.(style([$1]))
