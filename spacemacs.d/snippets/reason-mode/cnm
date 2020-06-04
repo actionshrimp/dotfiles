@@ -3,4 +3,4 @@
 #key : cnm
 #contributor : Dave Aitken
 # --
-className=Css.(merge([$1, style([])]))
+className=Css.(merge([$1, style([$2])]))
