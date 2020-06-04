@@ -524,7 +524,10 @@ before packages are loaded."
     (treemacs-resize-icons 16))
 
   (keychain-refresh-environment)
-  )
+
+  ;; kill/yank in emacs doesnt pollute the system clipboard
+  ;; use + register instead
+  (setq x-select-enable-clipboard nil))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
