@@ -35,14 +35,7 @@ fzf_platform='*darwin*amd64*'
 if [[ $(uname) == 'Linux' ]]; then
     fzf_platform='*linux*amd64*'
 fi
-zplug "junegunn/fzf-bin", \
-      from:gh-r, \
-      as:command, \
-      rename-to:fzf, \
-      use:"${fzf_platform}"
-unset fzf_platform
 zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
-zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh", defer:3, if:"[[ $(command -v tmuxinator) ]]"
 zplug "junegunn/fzf", use:"shell/completion.zsh"
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 
