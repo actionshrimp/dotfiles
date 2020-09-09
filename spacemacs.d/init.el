@@ -473,7 +473,8 @@ before packages are loaded."
    '(refmt-command 'opam)
    '(refmt-show-errors 'echo)
    '(spacemacs-theme-org-height nil)
-   '(spacemacs-theme-org-agenda-height nil))
+   '(spacemacs-theme-org-agenda-height nil)
+   '(merlin-eldoc-occurrences nil))
 
   (custom-set-faces
    '(markdown-header-face-1 ((t (:inherit bold :foreground "#4f97d7" :height 1))))
