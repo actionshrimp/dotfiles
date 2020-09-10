@@ -88,9 +88,8 @@ alias wk="watch kubectl"
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-tryimandra-try1-cluster
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-tryimandra-try2-cluster
 
-#gcloud container clusters --project imandra-gs-dev get-credentials  --region europe-west2-a imandra-gs-dev-cluster
 #gcloud container clusters --project imandra-gs-prod get-credentials --region europe-west2-a imandra-gs-prod-cluster
-#
+
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-imandracore-europe-west1-cluster
 #gcloud container clusters --project imandra-prod get-credentials    --region us-central1-c  prod-imandracore-us-central1-cluster
 
@@ -104,9 +103,8 @@ alias wk="watch kubectl"
 #kubectl config set-context prod-try2     --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster
 #kubectl config set-context prod-core2    --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --namespace core2
 
-#kubectl config set-context dev-gs        --cluster gke_imandra-gs-dev_europe-west2-a_imandra-gs-dev-cluster     --user gke_imandra-gs-dev_europe-west2-a_imandra-gs-dev-cluster
 #kubectl config set-context prod-gs       --cluster gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster   --user gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster
-#
+
 #kubectl config set-context dev-core1     --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace core1
 #kubectl config set-context prod-core-europe-west1     --cluster gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster --user gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster
 #kubectl config set-context prod-core-us-central1      --cluster gke_imandra-prod_us-central1-c_prod-imandracore-us-central1-cluster --user gke_imandra-prod_us-central1-c_prod-imandracore-us-central1-cluster
