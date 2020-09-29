@@ -107,7 +107,7 @@
                                                         stublibs-path ":"
                                                         (concat lib-path "/ocaml/stublibs") ":"
                                                         (concat lib-path "/ocaml"))))
-                                     (command (list (concat bin-path "/imandra-merlin"))))
+                                     (command (concat bin-path "/imandra-merlin")))
                                 (list
                                  (cons 'name "imandra")
                                  (cons 'env env)
