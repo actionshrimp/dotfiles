@@ -529,7 +529,8 @@ before packages are loaded."
 
   ;; kill/yank in emacs doesnt pollute the system clipboard
   ;; use + register instead
-  (setq x-select-enable-clipboard nil))
+  (setq x-select-enable-clipboard nil)
+  (setq projectile-indexing-method 'hybrid))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
