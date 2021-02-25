@@ -531,6 +531,7 @@ before packages are loaded."
   ;; use + register instead
   (setq x-select-enable-clipboard nil)
   (setq projectile-indexing-method 'hybrid)
+  (setq xclipboard-paste-command "powershell.exe Get-Clipboard")
 
   (add-hook 'magit-diff-mode-hook (lambda () (evil-magit-revert-section-bindings))))
 
