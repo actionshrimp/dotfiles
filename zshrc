@@ -19,17 +19,19 @@ zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
-SPACESHIP_TIME_SHOW=true
-if [[ $(uname) == 'Darwin' ]]; then
-    SPACESHIP_CHAR_SYMBOL=">"
-    SPACESHIP_CHAR_SUFFIX=" "
-    SPACESHIP_DOCKER_SHOW=false
-    SPACESHIP_NODE_SHOW=false
-    #SPACESHIP_GIT_SHOW=false
-    #SPACESHIP_GIT_BRANCH_SHOW=false
-    SPACESHIP_KUBECONTEXT_SHOW=false
-fi
-zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+#SPACESHIP_TIME_SHOW=true
+#if [[ $(uname) == 'Darwin' ]]; then
+#    SPACESHIP_CHAR_SYMBOL=">"
+#    SPACESHIP_CHAR_SUFFIX=" "
+#    SPACESHIP_DOCKER_SHOW=false
+#    SPACESHIP_NODE_SHOW=false
+#    #SPACESHIP_GIT_SHOW=false
+#    #SPACESHIP_GIT_BRANCH_SHOW=false
+#    SPACESHIP_KUBECONTEXT_SHOW=false
+#fi
+# zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+
+# curl -fsSL https://starship.rs/install.sh | bash
 
 fzf_platform='*darwin*amd64*'
 if [[ $(uname) == 'Linux' ]]; then
@@ -55,6 +57,10 @@ PATH=$ZPLUG_BIN:$PATH
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+RPS1=""
+STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init zsh)"
 
 FZF_TMUX=1
 zle     -N   fzf-file-widget
