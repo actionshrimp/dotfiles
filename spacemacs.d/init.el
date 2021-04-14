@@ -53,11 +53,13 @@ This function should only modify configuration layer settings."
      ivy
      my-ivy
      emacs-lisp
-     rust
+     lsp
+     (rust :variables rust-backend 'lsp rust-format-on-save t)
      (treemacs :variables
                treemacs-project-follow-cleanup t)
      git
      markdown
+     sql
      org
      (shell :variables
             shell-default-height 30
@@ -70,12 +72,11 @@ This function should only modify configuration layer settings."
      ;; (haskell :variables
      ;;          haskell-enable-ghci-ng-support t
      ;;          haskell-completion-backend 'intero)
-     javascript
+     (javascript :variables javascript-backend 'tern)
      (node :variables
            node-add-modules-path t)
      shell-scripts
      html
-     sql
      (elm :variables
           elm-format-on-save t
           elm-sort-imports-on-save t)
@@ -85,10 +86,11 @@ This function should only modify configuration layer settings."
      ;; idris
      ;; rust
      (python :variables python-backend 'anaconda)
-     ocaml
+     ;; ocaml
      markdown
      ;; github
      terraform
+     json
      ;;fix-muscle-memory
      ;; my-clojure
      ;; my-lispy
@@ -96,24 +98,27 @@ This function should only modify configuration layer settings."
      my-sql
      my-js-json
      my-haskell
-     my-ocaml
+     (my-ocaml :variables my-ocaml/format-on-save t)
      my-python
 
-     lsp
 
-     (reasonml :variables reason-auto-refmt t)
-     imandra
+     ;; (reasonml :variables reason-auto-refmt t)
+     ;; imandra
+     (ipl :variables ipl-path-to-language-server "/home/dave/dev/ai/ipl-worker/ipl/ipl-vscode/xtext-server/bin/ipl-server")
      xclipboard
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(keychain-environment)
+   dotspacemacs-additional-packages
+   '(keychain-environment
+    ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(merlin-eldoc)
+   dotspacemacs-excluded-packages '(merlin-eldoc smartparens)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -404,6 +409,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Set the Emacs customization file path. Must be done here in user-init.
   (setq custom-file "~/.spacemacs.d/custom.el")
+  (setq comp-deferred-compilation-black-list '("/powerline\\.el$"))
 
   (setq exec-path-from-shell-check-startup-files nil)
   ;; (with-eval-after-load 'magit
@@ -415,7 +421,13 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
        ;; (sp-pair "\"" nil :actions :rem)
        (sp-local-pair 'reason-mode "`" nil :actions nil)
        (sp-local-pair 'tuareg-mode "`" nil :actions nil)
+       (sp-pair "(" nil :actions :rem)
+       (sp-pair "[" nil :actions :rem)
+       (sp-pair "'" nil :actions :rem)
+       (sp-pair "\"" nil :actions :rem)
+       (sp-pair "{" nil :actions :rem)
        ))
+
 
   (setq-default dotspacemacs-default-font
                 `("Fira Mono"
@@ -446,7 +458,6 @@ before packages are loaded."
   (global-unset-key (kbd "M-SPC"))
   (global-unset-key (kbd "H-x"))
 
-
   (setq magit-rebase-arguments '("--autostash"))
   (setq flycheck-check-syntax-automatically '(save idle-buffer-switch mode-enabled))
 
@@ -463,6 +474,7 @@ before packages are loaded."
   ;; (add-to-list 'safe-local-variable-values '(refmt-command . "~/.opam/bs-generic/bin/refmt"))
   (add-to-list 'safe-local-variable-values '(merlin-command . esy))
   (add-to-list 'safe-local-variable-values '(refmt-command . esy))
+  (add-to-list 'safe-local-variable-values '(lsp-ocaml-lsp-server-command . '("esy" "ocamllsp")))
 
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
@@ -475,7 +487,8 @@ before packages are loaded."
    '(spacemacs-theme-org-height nil)
    '(spacemacs-theme-org-agenda-height nil)
    '(merlin-eldoc-occurrences nil)
-   '(lsp-auto-configure nil))
+   ;; '(lsp-auto-configure nil)
+   )
 
   (custom-set-faces
    '(markdown-header-face-1 ((t (:inherit bold :foreground "#4f97d7" :height 1))))
@@ -483,26 +496,8 @@ before packages are loaded."
    '(markdown-header-face-3 ((t (:foreground "#67b11d" :weight normal :height 1))))
    '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1)))))
 
-  ;;(with-eval-after-load 'lsp-mode
-  ;;  (lsp-register-client
-  ;;   (make-lsp-client :new-connection (lsp-stdio-connection ;'("/Users/dave/.opam/default/bin/ocamlmerlin-lsp")
-  ;;                                     '("/Users/dave/dev/ai/imandra-web/_opam/bin/ocamlmerlin-lsp")
-  ;;                                                          )
-  ;;                    :major-modes '(tuareg-mode)
-  ;;                    :priority 1
-  ;;                    :server-id 'ocamlmerlin-lsp))
-
-  ;;  (lsp-register-client
-  ;;   (make-lsp-client :new-connection (lsp-stdio-connection '("/Users/dave/.opam/default/bin/ocamlmerlin-lsp"))
-  ;;                    :major-modes '(reason-mode)
-  ;;                    :priority 1
-  ;;                    :server-id 'ocamlmerlin-lsp-reason)))
-
-  ;; (spacemacs/toggle-indent-guide-globally-on)
   (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
   (add-hook 'reason-mode-hook 'highlight-indentation-mode)
-
-  (setq-default ocaml-auto-ocamlformat t)
 
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
@@ -510,17 +505,6 @@ before packages are loaded."
     (add-to-list 'treemacs-ignored-file-predicates
                  (lambda (f _)
                    (string-suffix-p ".bs.js" f))))
-
-  (with-eval-after-load 'merlin
-    (defun merlin-jump-to-type-definition ()
-      (interactive)
-      (setq merlin-enclosing-types nil)
-      (merlin--type-enclosing-query)
-      (let ((type (car (elt merlin-enclosing-types 0))))
-        (merlin-locate-ident type)))
-
-    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-      "gt" 'merlin-jump-to-type-definition))
 
   (when (display-graphic-p)
     (treemacs-resize-icons 16))
@@ -533,7 +517,15 @@ before packages are loaded."
   (setq projectile-indexing-method 'hybrid)
   (setq xclipboard-paste-command "powershell.exe Get-Clipboard")
 
-  (add-hook 'magit-diff-mode-hook (lambda () (evil-magit-revert-section-bindings))))
+  (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-eldoc-enable-hover nil)
+  ;;(setq lsp-enable-symbol-highlighting nil)
+
+  ;; make ctrl+enter work to open current version of diff in magit again
+  (add-hook 'magit-diff-mode-hook (lambda () (evil-collection-magit-revert-section-bindings)))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
