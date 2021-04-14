@@ -127,9 +127,17 @@ if [[ -x "$(command -v kubectl)" ]]; then
     source <(kubectl completion zsh)
 fi
 
-if [[ $(uname) == 'Linux' ]]; then
-    export npm_config_prefix=~/.node_modules
-fi
-
 # This is to keep emacs happy on osx
 [ -f ~/.bash_profile ] && [[ $(uname) != 'Linux' ]] && source ~/.bash_profile
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/dave/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dave/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/dave/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dave/google-cloud-sdk/completion.zsh.inc'; fi
+
+# fnm
+export PATH=/home/dave/.fnm:$PATH
+eval "`fnm env --multi`"
+
+alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\""
