@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst my-ocaml-packages
-  '(tuareg)
+  '(tuareg reason-mode)
   "The list of Lisp packages required by the my-ocaml layer.
 
 Each entry is either:
@@ -63,73 +63,33 @@ Each entry is either:
   (let ((enable-local-variables :all))
     (hack-dir-local-variables-non-file-buffer)))
 
-(defun my-ocaml/post-init-tuareg ()
+(defun my-ocaml/format-on-save ()
+  (when my-ocaml/format-on-save
+    (lsp-format-buffer)))
+
+(defun my-ocaml/init-tuareg ()
   (progn
-    (when (and (file-exists-p "/usr/local/bin/ocamlformat")
-               (file-directory-p "~/.opam/default/share/emacs/site-lisp"))
-
-      (add-to-list 'load-path "~/.opam/default/share/emacs/site-lisp")
-      (require 'ocamlformat)
-
-
-      ;;stop syntax error popup
-      (setq ocamlformat-show-errors nil)
-
       (add-hook 'tuareg-mode-hook
                 (lambda ()
-                  (when ocaml-auto-ocamlformat
-                    (add-hook 'before-save-hook 'ocamlformat-before-save nil t)))))
-
-      (spacemacs|add-toggle ocamlformat
-        :documentation "Toggle automatic ocamlformat on save."
-        :status ocaml-auto-ocamlformat
-        :on (progn
-              (setq ocaml-auto-ocamlformat t)
-              (add-hook 'before-save-hook 'ocamlformat-before-save nil t))
-        :off (progn
-               (setq ocaml-auto-ocamlformat nil)
-               (remove-hook 'before-save-hook 'ocamlformat-before-save t)))
+                  (setq-local comment-style 'indent)
+                  (setq-local font-lock-maximum-decoration 0)
+                  (lsp)
+                  (add-hook 'before-save-hook 'my-ocaml/format-on-save nil t)))
 
       (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-        "b=" 'ocamlformat
-        "t=" 'spacemacs/toggle-ocamlformat)
+        "gg" 'xref-find-definitions
+        "ht" 'lsp-describe-thing-at-point)))
 
-    (defvar last-buffer-name nil)
+(defun my-ocaml/init-reason-mode ()
+  (progn
 
-    (defun reload-vars-for-tuareg ()
-      (when (not (equal (buffer-name) last-buffer-name))
-        (setq last-buffer-name (buffer-name))
+    (add-hook 'reason-mode-hook
+              (lambda ()
+                (lsp)
+                (add-hook 'before-save-hook 'my-ocaml/format-on-save nil t)))
 
-        (when (member major-mode '(tuareg-mode))
-          (hack-local-variables-apply))))
-
-    (add-hook 'post-command-hook 'reload-vars-for-tuareg)
-
-    (defun tuareg-run-imandra ()
-      (interactive)
-      (minibuffer-with-setup-hook
-          (lambda ()
-            (kill-whole-line)
-            (insert "/usr/local/bin/imandra-emacs"))
-
-        (call-interactively #'tuareg-run-ocaml)))
-
-    (defun utop-jbuilder ()
-      (interactive)
-      (minibuffer-with-setup-hook
-          (lambda ()
-            (kill-whole-line)
-            (insert "jbuilder utop . -- -emacs"))
-
-        (call-interactively #'utop)))
-
-    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-      "er" 'tuareg-eval-region
-      "ep" 'tuareg-eval-phrase
-      "eb" 'tuareg-eval-buffer
-      "sco" 'tuareg-run-ocaml
-      "sci" 'tuareg-run-imandra
-      "scj" 'utop-jbuilder
-      )))
+    (spacemacs/set-leader-keys-for-major-mode 'reason-mode
+      "gg" 'xref-find-definitions
+      "ht" 'lsp-describe-thing-at-point)))
 
 ;;; packages.el ends here

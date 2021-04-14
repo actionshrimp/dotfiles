@@ -1,9 +1,11 @@
 ;; Noop to stop tuareg-abbrev-hook error popping up when hitting escape
-(defun tuareg-abbrev-hook ()
-  ())
+;; (defun tuareg-abbrev-hook ()
+;;   ())
 
-(add-hook 'tuareg-mode-hook
-          (lambda ()
-            (setq-local comment-style 'indent)))
+(defvar my-ocaml/format-on-save nil)
 
-(defvar-local ocaml-auto-ocamlformat nil)
+(spacemacs|add-toggle my-ocaml/ocamlformat-on-save
+  :documentation "Toggle ocamlformat"
+  :status my-ocaml/format-on-save
+  :on (progn (setq my-ocaml/format-on-save t))
+  :off (progn (setq my-ocaml/format-on-save nil)))
