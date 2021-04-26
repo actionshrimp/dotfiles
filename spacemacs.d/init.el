@@ -515,7 +515,7 @@ before packages are loaded."
   ;; use + register instead
   (setq x-select-enable-clipboard nil)
   (setq projectile-indexing-method 'hybrid)
-  (setq xclipboard-paste-command "powershell.exe Get-Clipboard")
+  (setq xclipboard-paste-command "~/dotfiles/bin/paste.exe")
 
   (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
   (setq lsp-ui-sideline-enable nil)
