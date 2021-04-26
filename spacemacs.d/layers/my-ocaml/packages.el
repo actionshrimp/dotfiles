@@ -73,7 +73,10 @@ Each entry is either:
                 (lambda ()
                   (setq-local comment-style 'indent)
                   (setq-local font-lock-maximum-decoration 0)
+                  ;; use a delay to give a chance to read .dir-locals.el
+                  (hack-local-variables)
                   (lsp)
+
                   (add-hook 'before-save-hook 'my-ocaml/format-on-save nil t)))
 
       (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
@@ -85,7 +88,10 @@ Each entry is either:
 
     (add-hook 'reason-mode-hook
               (lambda ()
+                ;; use a delay to give a chance to read .dir-locals.el
+                (hack-local-variables)
                 (lsp)
+
                 (add-hook 'before-save-hook 'my-ocaml/format-on-save nil t)))
 
     (spacemacs/set-leader-keys-for-major-mode 'reason-mode

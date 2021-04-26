@@ -474,7 +474,7 @@ before packages are loaded."
   ;; (add-to-list 'safe-local-variable-values '(refmt-command . "~/.opam/bs-generic/bin/refmt"))
   (add-to-list 'safe-local-variable-values '(merlin-command . esy))
   (add-to-list 'safe-local-variable-values '(refmt-command . esy))
-  (add-to-list 'safe-local-variable-values '(lsp-ocaml-lsp-server-command . '("esy" "ocamllsp")))
+  (add-to-list 'safe-local-variable-values '(lsp-ocaml-lsp-server-command . ("esy" "ocamllsp")))
 
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
