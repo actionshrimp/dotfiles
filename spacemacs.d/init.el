@@ -89,7 +89,7 @@ This function should only modify configuration layer settings."
      ;; ocaml
      markdown
      ;; github
-     terraform
+     (terraform :variables terraform-backend 'lsp)
      json
      ;;fix-muscle-memory
      ;; my-clojure
@@ -521,10 +521,13 @@ before packages are loaded."
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-doc-enable nil)
   (setq lsp-eldoc-enable-hover nil)
+  (setq lsp-terraform-server '("terraform-ls" "serve"))
+
   ;;(setq lsp-enable-symbol-highlighting nil)
 
   ;; make ctrl+enter work to open current version of diff in magit again
   (add-hook 'magit-diff-mode-hook (lambda () (evil-collection-magit-revert-section-bindings)))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
