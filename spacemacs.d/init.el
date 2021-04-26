@@ -55,8 +55,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      lsp
      (rust :variables rust-backend 'lsp rust-format-on-save t)
-     (treemacs :variables
-               treemacs-project-follow-cleanup t)
+     (treemacs :variables treemacs-use-follow-mode nil)
      git
      markdown
      sql
