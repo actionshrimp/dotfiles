@@ -80,6 +80,7 @@ This function should only modify configuration layer settings."
           elm-format-on-save t
           elm-sort-imports-on-save t)
      yaml
+     docker
      ;; purescript
      ruby
      ;; idris
@@ -87,6 +88,7 @@ This function should only modify configuration layer settings."
      (python :variables python-backend 'anaconda)
      ;; ocaml
      markdown
+     csv
      ;; github
      (terraform :variables terraform-backend 'lsp)
      json
@@ -102,7 +104,7 @@ This function should only modify configuration layer settings."
 
 
      ;; (reasonml :variables reason-auto-refmt t)
-     ;; imandra
+     imandra
      (ipl :variables ipl-path-to-language-server "/home/dave/dev/ai/ipl-worker/ipl/ipl-vscode/xtext-server/bin/ipl-server")
      xclipboard
      )
@@ -117,7 +119,7 @@ This function should only modify configuration layer settings."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(merlin-eldoc smartparens)
+   dotspacemacs-excluded-packages '(merlin-eldoc)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -408,7 +410,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Set the Emacs customization file path. Must be done here in user-init.
   (setq custom-file "~/.spacemacs.d/custom.el")
-  (setq comp-deferred-compilation-black-list '("/powerline\\.el$"))
+  (setq comp-deferred-compilation-deny-list '("/powerline\\.el$"))
 
   (setq exec-path-from-shell-check-startup-files nil)
   ;; (with-eval-after-load 'magit
@@ -420,13 +422,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
        ;; (sp-pair "\"" nil :actions :rem)
        (sp-local-pair 'reason-mode "`" nil :actions nil)
        (sp-local-pair 'tuareg-mode "`" nil :actions nil)
-       (sp-pair "(" nil :actions :rem)
-       (sp-pair "[" nil :actions :rem)
-       (sp-pair "'" nil :actions :rem)
-       (sp-pair "\"" nil :actions :rem)
-       (sp-pair "{" nil :actions :rem)
+       ;; (sp-pair "(" nil :actions :rem)
+       ;; (sp-pair "[" nil :actions :rem)
+       ;; (sp-pair "'" nil :actions :rem)
+       ;; (sp-pair "\"" nil :actions :rem)
+       ;; (sp-pair "{" nil :actions :rem)
        ))
-
 
   (setq-default dotspacemacs-default-font
                 `("Fira Mono"
@@ -443,10 +444,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (add-to-list 'auto-mode-alist '("Dockerfile*" . dockerfile-mode))
-
   (setq create-lockfiles nil)
-
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
   (setq neo-theme 'nerd)
@@ -495,8 +493,8 @@ before packages are loaded."
    '(markdown-header-face-3 ((t (:foreground "#67b11d" :weight normal :height 1))))
    '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1)))))
 
-  (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
-  (add-hook 'reason-mode-hook 'highlight-indentation-mode)
+  ;; (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
+  ;; (add-hook 'reason-mode-hook 'highlight-indentation-mode)
 
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
@@ -512,6 +510,7 @@ before packages are loaded."
 
   ;; kill/yank in emacs doesnt pollute the system clipboard
   ;; use + register instead
+
   (setq x-select-enable-clipboard nil)
   (setq projectile-indexing-method 'hybrid)
   (setq xclipboard-paste-command "~/dotfiles/bin/paste.exe")
@@ -520,6 +519,9 @@ before packages are loaded."
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-doc-enable nil)
   (setq lsp-eldoc-enable-hover nil)
+  ;; (setq lsp-enable-symbol-highlighting nil)
+  ;; (setq lsp-enable-imenu nil)
+  ;; (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-terraform-server '("terraform-ls" "serve"))
 
   ;;(setq lsp-enable-symbol-highlighting nil)
