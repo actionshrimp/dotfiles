@@ -87,10 +87,12 @@ alias kc="kubectl config use-context"
 alias kcc="kubectl config current-context"
 alias wk="watch kubectl"
 
-#gcloud container clusters --project imandra-dev get-credentials     --region europe-west1-c imandra-markets-dev-cluster
+#OLD ********** gcloud container clusters --project imandra-dev get-credentials     --region europe-west1-c imandra-markets-dev-cluster
+#gcloud container clusters --project imandra-dev get-credentials     --region europe-west1-c dev-imandra-web-cluster
 #gcloud container clusters --project imandra-dev get-credentials     --region europe-west1-c try-imandra-dev-cluster
 
-#gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c imandra-markets-prod-cluster
+#OLD ********** gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c imandra-markets-prod-cluster
+#gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-imandra-web-cluster
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-tryimandra-try1-cluster
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-tryimandra-try2-cluster
 
@@ -99,15 +101,17 @@ alias wk="watch kubectl"
 #gcloud container clusters --project imandra-prod get-credentials    --region europe-west1-c prod-imandracore-europe-west1-cluster
 #gcloud container clusters --project imandra-prod get-credentials    --region us-central1-c  prod-imandracore-us-central1-cluster
 
-#kubectl config set-context dev-imarkets  --cluster gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster   --user gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster
-#kubectl config set-context dev-try1      --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace try1
-#kubectl config set-context dev-try2      --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace try2
-#kubectl config set-context dev-core1     --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace core1
-#kubectl config set-context prod-imarkets --cluster gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster --user gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster
-#kubectl config set-context prod-try1     --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster
-#kubectl config set-context prod-core1    --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --namespace core1
-#kubectl config set-context prod-try2     --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster
-#kubectl config set-context prod-core2    --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --namespace core2
+#OLD ********** kubectl config set-context dev-imarkets  --cluster gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster   --user gke_imandra-dev_europe-west1-c_imandra-markets-dev-cluster
+#kubectl config set-context dev-imandra-web  --cluster gke_imandra-dev_europe-west1-c_dev-imandra-web-cluster       --user gke_imandra-dev_europe-west1-c_dev-imandra-web-cluster
+#kubectl config set-context dev-try1         --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace try1
+#kubectl config set-context dev-try2         --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace try2
+#kubectl config set-context dev-core1        --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace core1
+#OLD ********** kubectl config set-context prod-imarkets --cluster gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster --user gke_imandra-prod_europe-west1-c_imandra-markets-prod-cluster
+#kubectl config set-context prod-imandra-web --cluster gke_imandra-prod_europe-west1-c_prod-imandra-web-cluster --user gke_imandra-prod_europe-west1-c_prod-imandra-web-cluster
+#kubectl config set-context prod-try1        --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster
+#kubectl config set-context prod-core1       --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try1-cluster --namespace core1
+#kubectl config set-context prod-try2        --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster
+#kubectl config set-context prod-core2       --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --namespace core2
 
 #kubectl config set-context prod-gs       --cluster gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster   --user gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster
 
@@ -141,3 +145,4 @@ export PATH=/home/dave/.fnm:$PATH
 eval "`fnm env --multi`"
 
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\""
+export LESS="R"
