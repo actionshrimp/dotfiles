@@ -49,9 +49,9 @@ This function should only modify configuration layer settings."
      ;;                  auto-completion-tab-key-behaviour 'cycle
      ;;                  auto-completion-complete-with-key-sequence nil
      ;;                  auto-completion-complete-with-key-sequence-delay 0.5)
-     ;; helm
-     ivy
-     my-ivy
+     helm
+     ;; ivy
+     ;; my-ivy
      emacs-lisp
      lsp
      (rust :variables rust-backend 'lsp rust-format-on-save t)
@@ -67,7 +67,7 @@ This function should only modify configuration layer settings."
      (version-control :variables version-control-global-margin nil)
      ;; (spell-checking :variables enable-flyspell-auto-completion t)
      spell-checking
-     ;; clojure
+     (clojure :variables clojure-enable-linters '(clj-kondo joker) clojure-backend 'cider)
      ;; (haskell :variables
      ;;          haskell-enable-ghci-ng-support t
      ;;          haskell-completion-backend 'intero)
