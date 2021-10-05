@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst my-ocaml-packages
-  '(tuareg reason-mode)
+  '(tuareg reason-mode dune)
   "The list of Lisp packages required by the my-ocaml layer.
 
 Each entry is either:
@@ -98,4 +98,6 @@ Each entry is either:
       "gg" 'xref-find-definitions
       "ht" 'lsp-describe-thing-at-point)))
 
+(defun my-ocaml/init-dune ()
+  (use-package dune :defer t))
 ;;; packages.el ends here

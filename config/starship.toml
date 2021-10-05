@@ -1,0 +1,11 @@
+#[git_status]
+#disabled = true
+#
+#[git_branch]
+#disabled = true
+#
+#[gcloud]
+#disabled = true
+#
+#[python]
+#disabled = true
