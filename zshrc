@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # brew install zplug / aura -As zplug
 
 # This needs to come before zsh-syntax-highlighting for some reason
@@ -131,18 +132,22 @@ if [[ -x "$(command -v kubectl)" ]]; then
     source <(kubectl completion zsh)
 fi
 
+if [[ $(uname) == 'Linux' ]]; then
+    export npm_config_prefix=~/.node_modules
+fi
+
+export LESS="R"
+
 # This is to keep emacs happy on osx
 [ -f ~/.bash_profile ] && [[ $(uname) != 'Linux' ]] && source ~/.bash_profile
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/dave/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dave/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/dave/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dave/google-cloud-sdk/completion.zsh.inc'; fi
+alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\""
 
 # fnm
 export PATH=/home/dave/.fnm:$PATH
-eval "`fnm env --multi`"
+eval "`fnm env`"
 
-alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\""
-export LESS="R"
+# zprof
+
+# opam configuration
+[[ ! -r /home/dave/.opam/opam-init/init.zsh ]] || source /home/dave/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
