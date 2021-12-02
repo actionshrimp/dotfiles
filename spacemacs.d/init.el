@@ -114,6 +114,7 @@ This function should only modify configuration layer settings."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(keychain-environment
+     direnv
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -528,6 +529,7 @@ before packages are loaded."
 
   ;; make ctrl+enter work to open current version of diff in magit again
   (add-hook 'magit-diff-mode-hook (lambda () (evil-collection-magit-revert-section-bindings)))
+  (direnv-mode t)
 
   )
 
