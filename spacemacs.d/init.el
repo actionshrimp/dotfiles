@@ -113,8 +113,7 @@ This function should only modify configuration layer settings."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
-   '(keychain-environment
-     direnv
+   '(direnv
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -506,8 +505,6 @@ before packages are loaded."
 
   (when (display-graphic-p)
     (treemacs-resize-icons 16))
-
-  (keychain-refresh-environment)
 
   ;; kill/yank in emacs doesnt pollute the system clipboard
   ;; use + register instead
