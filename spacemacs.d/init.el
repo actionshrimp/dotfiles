@@ -428,13 +428,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
        ;; (sp-pair "{" nil :actions :rem)
        ))
 
-  (setq-default dotspacemacs-default-font
-                `("Fira Mono"
-                  :size ,(if (string= (system-name) "baracus")
-                             15 13)
-      :weight thin
-                  :width normal
-                  :powerline-scale 1.3))
   )
 
 (defun dotspacemacs/user-config ()
