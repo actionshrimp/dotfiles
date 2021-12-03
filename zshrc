@@ -115,6 +115,7 @@ alias wk="watch kubectl"
 #kubectl config set-context prod-core2       --cluster gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --user gke_imandra-prod_europe-west1-c_prod-tryimandra-try2-cluster --namespace core2
 
 #kubectl config set-context prod-gs       --cluster gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster   --user gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster
+#kubectl config set-context prod-gs-jm    --cluster gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster   --user gke_imandra-gs-prod_europe-west2-a_imandra-gs-prod-cluster --namespace sigmax-job-manager
 
 #kubectl config set-context dev-core1     --cluster gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --user gke_imandra-dev_europe-west1-c_try-imandra-dev-cluster       --namespace core1
 #kubectl config set-context prod-core-europe-west1     --cluster gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster --user gke_imandra-prod_europe-west1-c_prod-imandracore-europe-west1-cluster
