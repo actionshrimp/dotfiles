@@ -60,9 +60,6 @@ This function should only modify configuration layer settings."
      markdown
      sql
      org
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (version-control :variables version-control-global-margin nil)
      ;; (spell-checking :variables enable-flyspell-auto-completion t)
