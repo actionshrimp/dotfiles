@@ -102,6 +102,7 @@ This function should only modify configuration layer settings."
      my-haskell
      (my-ocaml :variables my-ocaml/format-on-save t)
      my-python
+     my-projectile
 
 
      ;; (reasonml :variables reason-auto-refmt t)
@@ -528,6 +529,8 @@ before packages are loaded."
   ;; make ctrl+enter work to open current version of diff in magit again
   (add-hook 'magit-diff-mode-hook (lambda () (evil-collection-magit-revert-section-bindings)))
   (direnv-mode t)
+
+  (setq projectile-switch-project-action 'projectile-dired)
 
   )
 
