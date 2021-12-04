@@ -14,4 +14,5 @@
 
 (spacemacs/set-leader-keys
   "P/" 'helm-projectile-search-other-project
-  "Pf" 'helm-projectile-find-files-other-project)
+  "Pf" 'helm-projectile-find-files-other-project
+  "Pp" 'helm-projectile-find-files-other-project)
