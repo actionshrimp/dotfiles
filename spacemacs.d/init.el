@@ -523,6 +523,8 @@ before packages are loaded."
 
   (setq projectile-switch-project-action 'projectile-dired)
 
+  (add-to-list 'org-babel-load-languages '(calc . t))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
