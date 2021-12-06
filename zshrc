@@ -135,6 +135,7 @@ fi
 
 if [[ $(uname) == 'Linux' ]]; then
     export npm_config_prefix=~/.node_modules
+    [ -d ~/google-cloud-sdk/bin/ ] && export PATH=~/google-cloud-sdk/bin/:$PATH
 fi
 
 export LESS="R"
