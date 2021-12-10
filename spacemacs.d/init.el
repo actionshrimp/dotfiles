@@ -523,7 +523,8 @@ before packages are loaded."
 
   (setq projectile-switch-project-action 'projectile-dired)
 
-  (add-to-list 'org-babel-load-languages '(calc . t))
+  (with-eval-after-load 'org
+    (add-to-list 'org-babel-load-languages '(calc . t)))
 
   )
 
