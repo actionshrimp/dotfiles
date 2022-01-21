@@ -81,6 +81,7 @@ Each entry is either:
 
       (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
         "gg" 'xref-find-definitions
+        "gb" 'xref-pop-marker-stack
         "ht" 'lsp-describe-thing-at-point)))
 
 (defun my-ocaml/init-reason-mode ()
@@ -96,6 +97,7 @@ Each entry is either:
 
     (spacemacs/set-leader-keys-for-major-mode 'reason-mode
       "gg" 'xref-find-definitions
+      "gb" 'xref-pop-marker-stack
       "ht" 'lsp-describe-thing-at-point)))
 
 (defun my-ocaml/init-dune ()
