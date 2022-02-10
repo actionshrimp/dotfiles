@@ -510,6 +510,9 @@ before packages are loaded."
   (setq lsp-ui-doc-enable nil)
   (setq lsp-eldoc-enable-hover nil)
   (setq lsp-lens-enable nil)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-modeline-code-actions-enable nil)
+
   ;; (setq lsp-enable-symbol-highlighting nil)
   ;; (setq lsp-enable-imenu nil)
   ;; (setq lsp-headerline-breadcrumb-enable nil)
