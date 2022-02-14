@@ -30,10 +30,7 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     (osx :variables
-          osx-right-command-as 'meta
-          ;;osx-right-command-as 'super
-          )
+     ;; (osx :variables osx-right-command-as 'meta osx-right-command-as 'super )
 
      ;; fix font underlining on OSX via tmux with $({ infocmp -x screen-256color; printf '\t%s\n' 'ncv@,'; } > /tmp/t && tic -x /tmp/t)
      tmux
