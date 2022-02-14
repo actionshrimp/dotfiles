@@ -473,6 +473,7 @@ before packages are loaded."
    '(spacemacs-theme-org-height nil)
    '(spacemacs-theme-org-agenda-height nil)
    '(merlin-eldoc-occurrences nil)
+   '(git-gutter:modified-sign "%")
    ;; '(lsp-auto-configure nil)
    )
 
