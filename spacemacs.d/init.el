@@ -93,7 +93,7 @@ This function should only modify configuration layer settings."
      my-evil-lisp
      my-sql
      my-js-json
-     my-haskell
+     ;; my-haskell
      (my-ocaml :variables my-ocaml/format-on-save t)
      my-python
      my-projectile
