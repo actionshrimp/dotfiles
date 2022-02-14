@@ -58,7 +58,7 @@ This function should only modify configuration layer settings."
      sql
      org
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
-     (version-control :variables version-control-global-margin nil)
+     (version-control :variables version-control-diff-tool 'git-gutter)
      ;; (spell-checking :variables enable-flyspell-auto-completion t)
      spell-checking
      (clojure :variables clojure-enable-linters '(clj-kondo joker) clojure-backend 'cider)
