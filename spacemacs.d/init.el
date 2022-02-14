@@ -498,10 +498,12 @@ before packages are loaded."
 
   ;; kill/yank in emacs doesnt pollute the system clipboard
   ;; use + register instead
-
+  ;; for clipboard on VM+ssh on windows, run vcxsrv. and DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }'):0 ssh shrimpstack-nixos -Xssh -X
+  ;; vcxsrv bridges its clipboard with the windows clipboard.
   (setq x-select-enable-clipboard nil)
+  ;;(setq xclipboard-paste-command "~/dotfiles/bin/paste.exe")
+
   (setq projectile-indexing-method 'hybrid)
-  (setq xclipboard-paste-command "~/dotfiles/bin/paste.exe")
 
   (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
   (setq lsp-ui-sideline-enable nil)
