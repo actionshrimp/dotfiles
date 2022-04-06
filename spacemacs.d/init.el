@@ -527,6 +527,10 @@ before packages are loaded."
 
   (setq projectile-switch-project-action 'projectile-dired)
 
+  (setq native-comp-async-report-warnings-errors nil)
+
+  (setq undo-tree-auto-save-history nil)
+
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
