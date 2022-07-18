@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst my-js-json-packages
-  '(flycheck)
+  '()
   "The list of Lisp packages required by the my-js-json layer.
 Each entry is either:
 
@@ -57,96 +57,21 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun my/flycheck-parse-flow (output checker buffer)
-  (let ((json-array-type 'list))
-    (let ((o (json-read-from-string output)))
-      (mapcar #'(lambda (errp)
-                  (let ((err (cadr (assoc 'message errp)))
-                        (err2 (cadr (cdr (assoc 'message errp)))))
-                    (flycheck-error-new
-                     :line (cdr (assoc 'line err))
-                     :column (cdr (assoc 'start err))
-                     :level 'error
-                     :message (concat (cdr (assoc 'descr err)) ". " (cdr (assoc 'descr err2)))
-                     :filename (f-relative
-                                (cdr (assoc 'path err))
-                                (f-dirname (file-truename
-                                            (buffer-file-name))))
-                     :buffer buffer
-                     :checker checker)))
-              (cdr (assoc 'errors o))))))
-
-(defun my/use-eslint-from-node-modules ()
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/.bin/eslint"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-my-eslint-executable eslint))))
-
-(defun my/use-flow-from-node-modules ()
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/.bin/flow"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-flow-executable eslint))))
-
-(defun my-js-json/post-init-flycheck ()
-  ;; (defun my/flycheck-filter-eslint-errors (errors)
-  ;;   (seq-do (lambda (err)
-  ;;             ;; Parse error ID from the error message
-  ;;             (setf (flycheck-error-message err)
-  ;;                   (replace-regexp-in-string
-  ;;                    (rx " ("
-  ;;                        (group (one-or-more (not (any ")"))))
-  ;;                        ")" string-end)
-  ;;                    (lambda (s)
-  ;;                      (setf (flycheck-error-id err)
-  ;;                            (match-string 1 s))
-  ;;                      "")
-  ;;                    (flycheck-error-message err))))
-  ;;           (flycheck-sanitize-errors errors))
-  ;;   errors)
-
-;;   (flycheck-define-checker javascript-flow
-;;     "Javascript type checking using Flow."
-;;     :command ("flow" "--json" source-original)
-;;     :error-parser my/flycheck-parse-flow
-;;     :modes js2-mode
-;;     :next-checkers ((error . javascript-my-eslint)))
-
-
-;;   (flycheck-define-checker javascript-my-eslint
-;;     "A Javascript syntax and style checkefor r using eslint.
-
-;; See URL `https://github.com/eslint/eslint'."
-;;     :command ("eslint" "--format=checkstyle"
-;;               (option-list "--rulesdir" flycheck-eslint-rules-directories)
-;;               "--stdin" "--stdin-filename" source-original)
-;;     :standard-input t
-;;     :error-parser flycheck-parse-checkstyle
-;;     ;;:error-filter my/flycheck-filter-eslint-errors
-;;     :modes (js-mode js-jsx-mode js2-mode js2-jsx-mode js3-mode rjsx-mode)
-;;     :next-checkers ((warning . javascript-jscs)))
-
-;;   (add-to-list 'flycheck-disabled-checkers 'javascript-eslint)
-
-;;   (add-to-list 'flycheck-checkers 'javascript-flow)
-;;   (add-to-list 'flycheck-checkers 'javascript-my-eslint)
-
-;;   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-;;   (add-hook 'flycheck-mode-hook #'my/use-flow-from-node-modules)
-  )
-
 ;; (defun my-js-json/init-json-mode ()
 ;;   (add-hook 'json-mode-hook
 ;;             (lambda ()
 ;;               (make-local-variable 'js-indent-level)
 ;;         for       (setq js-indent-level 2))))
 
-;;; packages.el ends here
+(defun maybe-use-prettier ()
+  "Enable prettier-js-mode if an rc file is located."
+  (if (or (locate-dominating-file default-directory ".prettierrc")
+          (locate-dominating-file default-directory "prettier.config.js"))
+      (prettier-js-mode +1)))
+
+
+(add-hook 'typescript-mode-hook 'maybe-use-prettier)
+(add-hook 'js2-mode-hook 'maybe-use-prettier)
+(add-hook 'js2-jsx-mode-hook 'maybe-use-prettier)
+(add-hook 'js-mode-hook 'maybe-use-prettier)
+(add-hook 'js-jsx-mode-hook 'maybe-use-prettier)
