@@ -88,6 +88,7 @@ This function should only modify configuration layer settings."
      (terraform :variables terraform-backend 'lsp)
      json
      typescript
+     tree-sitter
      ;;fix-muscle-memory
      ;; my-clojure
      ;; my-lispy
