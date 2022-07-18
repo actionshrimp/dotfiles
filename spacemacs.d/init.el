@@ -115,7 +115,7 @@ This function should only modify configuration layer settings."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(merlin-eldoc)
+   dotspacemacs-excluded-packages '(merlin-eldoc smartparens)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -332,9 +332,9 @@ It should only modify the values of Spacemacs settings."
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
-   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
-   dotspacemacs-activate-smartparens-mode nil
 
+   dotspacemacs-activate-smartparens-mode nil
+   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
@@ -414,19 +414,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (with-eval-after-load 'magit
   ;;   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules)
   ;;   )
-
-  (eval-after-load 'smartparens
-    '(progn
-       ;; (sp-pair "\"" nil :actions :rem)
-       (sp-local-pair 'reason-mode "`" nil :actions nil)
-       (sp-local-pair 'tuareg-mode "`" nil :actions nil)
-       ;; (sp-pair "(" nil :actions :rem)
-       ;; (sp-pair "[" nil :actions :rem)
-       ;; (sp-pair "'" nil :actions :rem)
-       ;; (sp-pair "\"" nil :actions :rem)
-       ;; (sp-pair "{" nil :actions :rem)
-       ))
-
   )
 
 (defun dotspacemacs/user-config ()
