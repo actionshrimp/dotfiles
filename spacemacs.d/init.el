@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
      ;; (haskell :variables
      ;;          haskell-enable-ghci-ng-support t
      ;;          haskell-completion-backend 'intero)
-     (javascript :variables javascript-backend 'tern)
+     (javascript :variables javascript-backend 'tern node-add-modules-path t)
      (node :variables
            node-add-modules-path t)
      shell-scripts
