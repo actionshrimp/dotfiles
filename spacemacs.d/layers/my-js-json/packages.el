@@ -71,6 +71,7 @@ Each entry is either:
 
 
 (add-hook 'typescript-mode-hook 'maybe-use-prettier)
+(add-hook 'typescript-tsx-mode-hook 'maybe-use-prettier)
 (add-hook 'js2-mode-hook 'maybe-use-prettier)
 (add-hook 'js2-jsx-mode-hook 'maybe-use-prettier)
 (add-hook 'js-mode-hook 'maybe-use-prettier)
