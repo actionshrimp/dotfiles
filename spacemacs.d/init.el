@@ -411,6 +411,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Set the Emacs customization file path. Must be done here in user-init.
   (setq custom-file "~/.spacemacs.d/custom.el")
   (setq comp-deferred-compilation-deny-list '("/powerline\\.el$"))
+  (setq epa-pinentry-mode 'loopback)
 
   (setq exec-path-from-shell-check-startup-files nil)
   ;; (with-eval-after-load 'magit
