@@ -82,7 +82,8 @@ Each entry is either:
       (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
         "gg" 'xref-find-definitions
         "gb" 'xref-pop-marker-stack
-        "ht" 'lsp-describe-thing-at-point)))
+        "ht" 'lsp-describe-thing-at-point
+        "hl" 'lsp-document-highlight)))
 
 (defun my-ocaml/init-reason-mode ()
   (progn
@@ -98,7 +99,8 @@ Each entry is either:
     (spacemacs/set-leader-keys-for-major-mode 'reason-mode
       "gg" 'xref-find-definitions
       "gb" 'xref-pop-marker-stack
-      "ht" 'lsp-describe-thing-at-point)))
+      "ht" 'lsp-describe-thing-at-point
+      "hl" 'lsp-document-highlight)))
 
 (defun my-ocaml/init-dune ()
   (use-package dune :defer t))

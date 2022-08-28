@@ -40,7 +40,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      my-evil
-     auto-completion
+     (auto-completion :variables auto-completion-idle-delay nil)
      ;; (auto-completion :variables
      ;;                  auto-completion-return-key-behavior 'complete
      ;;                  auto-completion-tab-key-behaviour 'cycle
@@ -429,8 +429,8 @@ before packages are loaded."
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
   (setq neo-theme 'nerd)
-  (with-eval-after-load 'company
-    (setq company-idle-delay nil))
+  ;; (with-eval-after-load 'company
+  ;;   (setq company-idle-delay nil))
 
   ;;Disable the annoying M-SPC just-one-space binding
   (global-unset-key (kbd "M-SPC"))
@@ -501,6 +501,7 @@ before packages are loaded."
   (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-show-with-cursor nil)
   (setq lsp-eldoc-enable-hover nil)
   (setq lsp-eldoc-hook nil)
   (setq lsp-lens-enable nil)
@@ -508,6 +509,7 @@ before packages are loaded."
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-signature-auto-activate nil)
   (setq flycheck-display-errors-function nil)
+  (setq lsp-enable-symbol-highlighting nil)
 
   ;; (setq lsp-enable-symbol-highlighting nil)
   ;; (setq lsp-enable-imenu nil)
