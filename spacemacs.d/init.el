@@ -509,7 +509,7 @@ before packages are loaded."
   (setq lsp-ui-sideline-show-code-actions nil)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-signature-auto-activate nil)
-  ;;(setq flycheck-display-errors-function nil)
+  (setq flycheck-display-errors-function nil)
   ;;(setq lsp-enable-symbol-highlighting nil)
   (setq lsp-headerline-breadcrumb-enable nil)
 
