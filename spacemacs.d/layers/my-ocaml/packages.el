@@ -83,7 +83,9 @@ Each entry is either:
         "gg" 'xref-find-definitions
         "gb" 'xref-pop-marker-stack
         "ht" 'lsp-describe-thing-at-point
-        "hl" 'lsp-document-highlight)))
+        "hl" 'lsp-document-highlight
+        "Tlb" 'lsp-headerline-breadcrumb-mode
+        )))
 
 (defun my-ocaml/init-reason-mode ()
   (progn
@@ -100,7 +102,9 @@ Each entry is either:
       "gg" 'xref-find-definitions
       "gb" 'xref-pop-marker-stack
       "ht" 'lsp-describe-thing-at-point
-      "hl" 'lsp-document-highlight)))
+      "hl" 'lsp-document-highlight
+      "Tlb" 'lsp-headerline-breadcrumb-mode
+      )))
 
 (defun my-ocaml/init-dune ()
   (use-package dune :defer t))
