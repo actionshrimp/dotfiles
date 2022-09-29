@@ -1,0 +1,23 @@
+/*
+To hide the native tabs, you'll have to add a new file called userChrome.css and the css property visibility: collapse.
+
+To do this, in Firefox click on Click on Menu -> Help -> Troubleshooting Information or navigate to about:support in the address bar.
+
+Under the Application Basics section, there will be a section called Profile Directory with a button to Open Directory.
+
+In the Profile Directory create a new folder called chrome. In the chrome folder create or edit the file userChrome.css if it already exists.
+
+
+Finally, go to about:config and set toolkit.legacyUserProfileCustomizations.stylesheets to true
+
+*/
+
+/* hides the title bar */
+#titlebar {
+  visibility: collapse;
+}
+
+/* hides the sidebar */
+#sidebar-header {
+  visibility: collapse !important;
+}
