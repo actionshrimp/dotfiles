@@ -83,7 +83,7 @@ This function should only modify configuration layer settings."
      ;; ocaml
      markdown
      csv
-     nixos
+     (nixos :variables nixos-format-on-save t)
      ;; github
      (terraform :variables terraform-backend 'lsp)
      json
