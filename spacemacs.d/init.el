@@ -451,8 +451,6 @@ before packages are loaded."
 
   (setq mac-system-move-file-to-trash-use-finder nil)
 
-  ;; MOVED TO custom-file
-  ;; (add-to-list 'safe-local-variable-values '(refmt-command . "~/.opam/bs-generic/bin/refmt"))
   (add-to-list 'safe-local-variable-values '(merlin-command . esy))
   (add-to-list 'safe-local-variable-values '(refmt-command . esy))
   (add-to-list 'safe-local-variable-values '(lsp-ocaml-lsp-server-command . ("esy" "ocamllsp")))
@@ -461,26 +459,6 @@ before packages are loaded."
   ;; Lastly, load custom-file (but only if the file exists).
   (when (file-exists-p custom-file)
     (load-file custom-file))
-
-  (custom-set-variables
-   '(tuareg-opam-insinuate t)
-   '(refmt-command 'opam)
-   '(refmt-show-errors 'echo)
-   '(spacemacs-theme-org-height nil)
-   '(spacemacs-theme-org-agenda-height nil)
-   '(merlin-eldoc-occurrences nil)
-   '(git-gutter:modified-sign "%")
-   ;; '(lsp-auto-configure nil)
-   )
-
-  (custom-set-faces
-   '(markdown-header-face-1 ((t (:inherit bold :foreground "#4f97d7" :height 1))))
-   '(markdown-header-face-2 ((t (:inherit bold :foreground "#2d9574" :height 1))))
-   '(markdown-header-face-3 ((t (:foreground "#67b11d" :weight normal :height 1))))
-   '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1)))))
-
-  ;; (add-hook 'tuareg-mode-hook 'highlight-indentation-mode)
-  ;; (add-hook 'reason-mode-hook 'highlight-indentation-mode)
 
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))

@@ -1,6 +1,5 @@
 *.swp
 *.cache
 .DS_Store
-spacemacs.d/custom.el
 spacemacs.d/spacemacs.env
 spacemacs.d/.spacemacs.env
