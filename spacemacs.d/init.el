@@ -116,6 +116,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(direnv
      nix-update
+     utop
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -527,6 +528,8 @@ before packages are loaded."
   (setq native-comp-async-report-warnings-errors nil)
 
   (setq undo-tree-auto-save-history nil)
+
+  (setq utop-command "opam exec -- dune utop .")
 
   (setq org-roam-directory "~/Library/CloudStorage/Dropbox/org-roam")
   (org-roam-db-autosync-mode)
