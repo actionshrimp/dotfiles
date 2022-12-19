@@ -56,7 +56,8 @@ This function should only modify configuration layer settings."
      git
      markdown
      sql
-     org
+     (org :variables org-enable-roam-support t
+                     org-enable-roam-ui t)
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (version-control :variables version-control-diff-tool 'git-gutter)
      ;; (spell-checking :variables enable-flyspell-auto-completion t)
@@ -509,6 +510,14 @@ before packages are loaded."
   (setq native-comp-async-report-warnings-errors nil)
 
   (setq undo-tree-auto-save-history nil)
+
+  (setq org-roam-directory "~/Library/CloudStorage/Dropbox/org-roam")
+  (org-roam-db-autosync-mode)
+
+  (defun org-roam--insert-timestamp ()
+    (org-entry-put nil "CREATED" (format-time-string "[%Y-%m-%d %a %H:%M]")))
+
+  (add-hook 'org-roam-capture-new-node-hook #'org-roam--insert-timestamp)
 
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
