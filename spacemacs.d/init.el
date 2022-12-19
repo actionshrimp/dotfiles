@@ -461,6 +461,23 @@ before packages are loaded."
   (when (file-exists-p custom-file)
     (load-file custom-file))
 
+  (custom-set-variables
+   '(refmt-command 'opam)
+   '(refmt-show-errors 'echo)
+   '(spacemacs-theme-org-agenda-height nil)
+   '(spacemacs-theme-org-height nil)
+   '(tuareg-opam-insinuate t))
+
+  (custom-set-faces
+   '(flycheck-error ((t (:weight bold :background nil :foreground "#fefefe"))))
+   '(flycheck-warning ((t (:weight bold :background nil :foreground "#cdcdcd"))))
+   '(markdown-header-face-1 ((t (:inherit bold :foreground "#4f97d7" :height 1))))
+   '(markdown-header-face-2 ((t (:inherit bold :foreground "#2d9574" :height 1))))
+   '(markdown-header-face-3 ((t (:foreground "#67b11d" :weight normal :height 1))))
+   '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1))))
+   )
+
+
   ;; useful for temporarily disabling custom ignores
   ;; (setq treemacs-ignored-file-predicates '(treemacs--std-ignore-file-predicate treemacs--mac-ignore-file-predicate))
   (with-eval-after-load 'treemacs
