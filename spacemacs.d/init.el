@@ -121,6 +121,7 @@ This function should only modify configuration layer settings."
    '(direnv
      nix-update
      utop
+     keychain-environment
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -545,6 +546,9 @@ before packages are loaded."
 
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
+
+  ;; get ssh-agent vars from shell env
+  (keychain-refresh-environment)
 
   )
 
