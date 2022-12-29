@@ -428,6 +428,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules)
   ;;   )
 
+  (setq spacemacs-theme-org-height nil)
+  (setq spacemacs-theme-org-agenda-height nil)
+
   ;; free up right alt for the # key
   (setq mac-right-option-modifier nil)
   )
@@ -473,18 +476,11 @@ before packages are loaded."
   (custom-set-variables
    '(refmt-command 'opam)
    '(refmt-show-errors 'echo)
-   '(spacemacs-theme-org-agenda-height nil)
-   '(spacemacs-theme-org-height nil)
    '(tuareg-opam-insinuate t))
 
   (custom-set-faces
-   '(flycheck-error ((t (:weight bold :background nil :foreground "#fefefe"))))
-   '(flycheck-warning ((t (:weight bold :background nil :foreground "#cdcdcd"))))
-   '(markdown-header-face-1 ((t (:inherit bold :foreground "#4f97d7" :height 1))))
-   '(markdown-header-face-2 ((t (:inherit bold :foreground "#2d9574" :height 1))))
-   '(markdown-header-face-3 ((t (:foreground "#67b11d" :weight normal :height 1))))
-   '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1))))
-   )
+   '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1.0))))
+   '(markdown-code-face ((t (:inherit nil)))))
 
 
   ;; useful for temporarily disabling custom ignores
