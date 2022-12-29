@@ -431,8 +431,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq spacemacs-theme-org-height nil)
   (setq spacemacs-theme-org-agenda-height nil)
 
+  (setq-default dotspacemacs-default-font
+                `("JetBrainsMono Nerd Font Mono"
+                  :size 15
+                  :weight normal
+                  :width normal
+                  ))
+
   ;; free up right alt for the # key
   (setq mac-right-option-modifier nil)
+
   )
 
 (defun dotspacemacs/user-config ()
