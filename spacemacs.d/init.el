@@ -427,6 +427,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (with-eval-after-load 'magit
   ;;   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-submodules)
   ;;   )
+
+  ;; free up right alt for the # key
+  (setq mac-right-option-modifier nil)
   )
 
 (defun dotspacemacs/user-config ()
