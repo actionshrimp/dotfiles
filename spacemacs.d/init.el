@@ -31,9 +31,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(
      (osx :variables osx-command-as 'control
-                     osx-control-as 'control
+                     osx-control-as 'control)
 
-          )
      ;; (osx :variables osx-right-command-as 'meta osx-right-command-as 'super )
 
      ;; fix font underlining on OSX via tmux with $({ infocmp -x screen-256color; printf '\t%s\n' 'ncv@,'; } > /tmp/t && tic -x /tmp/t)
@@ -86,7 +85,6 @@ This function should only modify configuration layer settings."
      ;; rust
      (python :variables python-backend 'anaconda)
      ;; ocaml
-     markdown
      csv
      (nixos :variables
             nixos-format-on-save t
@@ -459,6 +457,7 @@ before packages are loaded."
   ;;Disable the annoying M-SPC just-one-space binding
   (global-unset-key (kbd "M-SPC"))
   (global-unset-key (kbd "H-x"))
+
 
   (setq magit-rebase-arguments '("--autostash"))
   (setq flycheck-check-syntax-automatically '(save idle-buffer-switch mode-enabled))
