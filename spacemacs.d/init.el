@@ -542,7 +542,11 @@ before packages are loaded."
 
   (setq utop-command "opam exec -- dune utop .")
 
-  (setq org-roam-directory "~/Library/CloudStorage/Dropbox/org-roam")
+  (setq org-roam-directory
+        (let ((n (system-name)))
+          (cond ((= n "shrimpstack-nixos") "~/Dropbox/org-roam")
+                ((= n "daves-imandra-mbp.local" "~/Library/CloudStorage/Dropbox/org-roam")))))
+
   (org-roam-db-autosync-mode)
 
   (defun org-roam--insert-timestamp ()
