@@ -546,7 +546,7 @@ before packages are loaded."
   (setq org-roam-directory
         (let ((n (system-name) ))
           (cond ((equal n "shrimpstack-nixos") "~/Dropbox/org-roam")
-                ((equal n "daves-imandra-mbp.local" "~/Library/CloudStorage/Dropbox/org-roam")))))
+                ((equal n "daves-imandra-mbp.local") "~/Library/CloudStorage/Dropbox/org-roam"))))
 
   (org-roam-db-autosync-mode)
 
