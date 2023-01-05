@@ -543,9 +543,9 @@ before packages are loaded."
   (setq utop-command "opam exec -- dune utop .")
 
   (setq org-roam-directory
-        (let ((n (system-name)))
-          (cond ((= n "shrimpstack-nixos") "~/Dropbox/org-roam")
-                ((= n "daves-imandra-mbp.local" "~/Library/CloudStorage/Dropbox/org-roam")))))
+        (let ((n (system-name) ))
+          (cond ((equal n "shrimpstack-nixos") "~/Dropbox/org-roam")
+                ((equal n "daves-imandra-mbp.local" "~/Library/CloudStorage/Dropbox/org-roam")))))
 
   (org-roam-db-autosync-mode)
 
@@ -558,7 +558,8 @@ before packages are loaded."
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
   ;; get ssh-agent vars from shell env
-  (keychain-refresh-environment)
+  (when (= (system-name "daves-imandra-mbp.local"))
+    (keychain-refresh-environment))
 
   )
 
