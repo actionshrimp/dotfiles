@@ -435,11 +435,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                   :weight normal
                   :width normal
                   ))
-
-  (when (= (system-name "daves-imandra-mbp.local"))
-    ;; free up right alt for the # key
-    (setq ns-right-alternate-modifier (quote none)))
-
   )
 
 (defun dotspacemacs/user-config ()
@@ -558,9 +553,11 @@ before packages are loaded."
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
-  (when (= (system-name "daves-imandra-mbp.local"))
+  (when (equal (system-name) "daves-imandra-mbp.local")
     ;; get ssh-agent vars from shell env
-    (keychain-refresh-environment))
+    (keychain-refresh-environment)
+    ;; free up right alt for the # key
+    (setq ns-right-alternate-modifier (quote none)))
 
   )
 
