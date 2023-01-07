@@ -559,6 +559,8 @@ before packages are loaded."
     ;; free up right alt for the # key
     (setq ns-right-alternate-modifier (quote none)))
 
+  ;; force helm to load on startup
+  (require 'helm)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
