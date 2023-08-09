@@ -120,6 +120,7 @@ This function should only modify configuration layer settings."
      nix-update
      utop
      keychain-environment
+     nixpkgs-fmt
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -554,6 +555,8 @@ before packages are loaded."
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
   (when (equal (system-name) "daves-imandra-mbp.local")
+
+  (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)
     ;; get ssh-agent vars from shell env
     (keychain-refresh-environment)
     ;; free up right alt for the # key
