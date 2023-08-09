@@ -554,9 +554,10 @@ before packages are loaded."
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
-  (when (equal (system-name) "daves-imandra-mbp.local")
 
   (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)
+
+  (when (string-prefix-p "daves-imandra-mbp" (system-name))
     ;; get ssh-agent vars from shell env
     (keychain-refresh-environment)
     ;; free up right alt for the # key
