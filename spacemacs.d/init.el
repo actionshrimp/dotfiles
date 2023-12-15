@@ -91,7 +91,7 @@ This function should only modify configuration layer settings."
             nix-backend 'lsp)
      ;; github
      (terraform :variables terraform-backend 'lsp)
-     json
+     (json :variables json-backend 'lsp)
      typescript
      tree-sitter
      ;;fix-muscle-memory
@@ -108,7 +108,7 @@ This function should only modify configuration layer settings."
 
      ;; (reasonml :variables reason-auto-refmt t)
      imandra
-     (ipl :variables ipl-path-to-language-server "/home/dave/dev/ai/ipl-worker/ipl/ipl-vscode/xtext-server/bin/ipl-server")
+     (ipl :variables ipl-path-to-language-server "/Users/dave/dev/ai/ipl/ipl-vscode/xtext-server/bin/ipl-server")
      xclipboard
      )
    ;; List of additional packages that will be installed without being
@@ -121,6 +121,7 @@ This function should only modify configuration layer settings."
      utop
      keychain-environment
      nixpkgs-fmt
+     sqlite3
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -431,11 +432,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq spacemacs-theme-org-agenda-height nil)
 
   (setq-default dotspacemacs-default-font
-                `("JetBrainsMono Nerd Font Mono"
-                  :size 15
+                `("Source Code Pro"
                   :weight normal
                   :width normal
-                  ))
+                  :size 15))
   )
 
 (defun dotspacemacs/user-config ()
@@ -446,7 +446,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq create-lockfiles nil)
   (setq mac-pass-command-to-system nil)
-  (setq magit-diff-refine-hunk t) ;;wordwise diffs for selected hunk
+  (setq magit-diff-refine-hunk t) ;; wordwise diffs for selected hunk
   (setq neo-theme 'nerd)
   ;; (with-eval-after-load 'company
   ;;   (setq company-idle-delay nil))
@@ -506,7 +506,7 @@ before packages are loaded."
 
   (setq projectile-indexing-method 'hybrid)
 
-  (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
+  ;; (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-doc-show-with-cursor nil)
@@ -539,10 +539,11 @@ before packages are loaded."
 
   (setq utop-command "opam exec -- dune utop .")
 
+  ;; HERE
   (setq org-roam-directory
         (let ((n (system-name) ))
           (cond ((equal n "shrimpstack-nixos") "~/Dropbox/org-roam")
-                ((equal n "daves-imandra-mbp.local") "~/Library/CloudStorage/Dropbox/org-roam"))))
+                ((string-prefix-p "daves-imandra-mbp" n) "~/Library/CloudStorage/Dropbox/org-roam"))))
 
   (org-roam-db-autosync-mode)
 
@@ -564,9 +565,9 @@ before packages are loaded."
     ;; free up right alt for the # key
     (setq ns-right-alternate-modifier (quote none)))
 
-  ;; force helm to load on startup
+  ;; force helm / treemacs to load on startup
   (require 'helm)
-  )
+  (require 'treemacs))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
