@@ -25,6 +25,7 @@
               (define-key m (kbd "C-w") 'backward-kill-word))))
 
 (define-key evil-insert-state-map (kbd "C-x C-l") 'company-hippie-line)
+(define-key evil-insert-state-map (kbd "C-x C-o") 'company-complete)
 
 (define-key evil-normal-state-map (kbd "R") 'evil-iedit-state/iedit-mode)
 (define-key evil-visual-state-map (kbd "R") 'evil-iedit-state/iedit-mode)
