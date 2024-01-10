@@ -448,8 +448,8 @@ before packages are loaded."
   (setq mac-pass-command-to-system nil)
   (setq magit-diff-refine-hunk t) ;; wordwise diffs for selected hunk
   (setq neo-theme 'nerd)
-  ;; (with-eval-after-load 'company
-  ;;   (setq company-idle-delay nil))
+  (with-eval-after-load 'company
+    (setq company-idle-delay nil))
 
   ;;Disable the annoying M-SPC just-one-space binding
   (global-unset-key (kbd "M-SPC"))
