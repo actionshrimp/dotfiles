@@ -91,7 +91,7 @@ This function should only modify configuration layer settings."
             nix-backend 'lsp)
      ;; github
      (terraform :variables terraform-backend 'lsp)
-     (json :variables json-backend 'lsp)
+     (json :variables json-backend nil)
      typescript
      tree-sitter
      ;;fix-muscle-memory
@@ -555,7 +555,8 @@ before packages are loaded."
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
-  (add-hook 'json-mode-hook (lambda () (setq-local 'flycheck-checkers '(json-jq))))
+  (add-hook 'json-mode-hook (lambda () (setq-local flycheck-checkers '(json-jq))))
+  ;; (add-hook 'json-mode-hook (lambda () (setq-local flycheck-checkers '(json-jsonlint))))
 
   (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)
 
