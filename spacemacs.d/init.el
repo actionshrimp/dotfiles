@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      my-evil
+
      (auto-completion :variables auto-completion-idle-delay nil)
      ;; (auto-completion :variables
      ;;                  auto-completion-return-key-behavior 'complete
@@ -86,14 +87,13 @@ This function should only modify configuration layer settings."
      (python :variables python-backend 'anaconda)
      ;; ocaml
      csv
-     (nixos :variables
-            nixos-format-on-save t
-            nix-backend 'lsp)
+     (nixos :variables nix-backend 'lsp)
      ;; github
      (terraform :variables terraform-backend 'lsp)
      (json :variables json-backend nil)
      typescript
      tree-sitter
+     (go :variables go-backend 'lsp)
      ;;fix-muscle-memory
      ;; my-clojure
      ;; my-lispy
@@ -121,7 +121,7 @@ This function should only modify configuration layer settings."
      utop
      keychain-environment
      nixpkgs-fmt
-     sqlite3
+     ;; sqlite3
     ;; (smartparens :location (recipe :fetcher github :repo "mnewt/smartparens" :branch "fix-while-no-input-compilation"))
      )
    ;; A list of packages that cannot be updated.
@@ -482,6 +482,7 @@ before packages are loaded."
    '(refmt-show-errors 'echo)
    '(tuareg-opam-insinuate t))
 
+
   (custom-set-faces
    '(treemacs-root-face ((t (:inherit font-lock-constant-face :underline t :weight bold :height 1.0))))
    '(markdown-code-face ((t (:inherit nil)))))
@@ -545,30 +546,29 @@ before packages are loaded."
           (cond ((equal n "shrimpstack-nixos") "~/Dropbox/org-roam")
                 ((string-prefix-p "daves-imandra-mbp" n) "~/Library/CloudStorage/Dropbox/org-roam"))))
 
-  (org-roam-db-autosync-mode)
-
-  (defun org-roam--insert-timestamp ()
-    (org-entry-put nil "CREATED" (format-time-string "[%Y-%m-%d %a %H:%M]")))
-
-  (add-hook 'org-roam-capture-new-node-hook #'org-roam--insert-timestamp)
-
   (with-eval-after-load 'org
     (add-to-list 'org-babel-load-languages '(calc . t)))
 
   (add-hook 'json-mode-hook (lambda () (setq-local flycheck-checkers '(json-jq))))
   ;; (add-hook 'json-mode-hook (lambda () (setq-local flycheck-checkers '(json-jsonlint))))
 
-  (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)
-
   (when (string-prefix-p "daves-imandra-mbp" (system-name))
     ;; get ssh-agent vars from shell env
+    (print "refreshing keychain environment")
     (keychain-refresh-environment)
     ;; free up right alt for the # key
     (setq ns-right-alternate-modifier (quote none)))
 
   ;; force helm / treemacs to load on startup
   (require 'helm)
-  (require 'treemacs))
+  (require 'treemacs)
+
+  (org-roam-db-autosync-mode)
+
+  (defun org-roam--insert-timestamp ()
+    (org-entry-put nil "CREATED" (format-time-string "[%Y-%m-%d %a %H:%M]")))
+
+  (add-hook 'org-roam-capture-new-node-hook #'org-roam--insert-timestamp))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
